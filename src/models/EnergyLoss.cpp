@@ -6,10 +6,10 @@
 
 #include <cmath>
 
-double EnergyLoss::compute(double energy_eV) const
+double EnergyLoss::compute_keV_g_cm2(double energy_eV) const
 {
-    double value = compute_joy_luo1989(energy_eV);
-    return value;
+    double value_keV_g_cm2 = compute_joy_luo1989(energy_eV);
+    return value_keV_g_cm2;
 }
 
 double EnergyLoss::compute_bethe1930(double energy_eV) const

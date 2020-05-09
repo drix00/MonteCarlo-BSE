@@ -37,16 +37,16 @@ TEST_CASE("EnergyLoss compute_joy_luo1989", "[models]")
     REQUIRE(model.compute_joy_luo1989(100000.0) == Approx(-2487.0540175087).margin(0.01));
 }
 
-TEST_CASE("EnergyLoss compute", "[models]")
+TEST_CASE("EnergyLoss compute_keV_g_cm2", "[models]")
 {
     EnergyLoss model{ 13, 26.98 };
 
     //    REQUIRE(model.compute_joy_luo1989(1.0) == Approx(-167405.6897613208).margin(0.01));
-    REQUIRE(model.compute(10.0) == Approx(-230075.2937567497).margin(0.01));
-    REQUIRE(model.compute(50.0) == Approx(-226563.7595207261).margin(0.01));
-    REQUIRE(model.compute(200.0) == Approx(-167405.6897613208).margin(0.01));
-    REQUIRE(model.compute(300.0) == Approx(-144247.2503022708).margin(0.01));
-    REQUIRE(model.compute(1000.0) == Approx(-79368.3510660936).margin(0.01));
-    REQUIRE(model.compute(10000.0) == Approx(-16207.925895783).margin(0.01));
-    REQUIRE(model.compute(100000.0) == Approx(-2487.0540175087).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(10.0) == Approx(-230075.2937567497).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(50.0) == Approx(-226563.7595207261).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(200.0) == Approx(-167405.6897613208).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(300.0) == Approx(-144247.2503022708).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(1000.0) == Approx(-79368.3510660936).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(10000.0) == Approx(-16207.925895783).margin(0.01));
+    REQUIRE(model.compute_keV_g_cm2(100000.0) == Approx(-2487.0540175087).margin(0.01));
 }
