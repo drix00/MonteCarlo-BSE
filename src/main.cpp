@@ -1,4 +1,4 @@
-#include <functional>
+//#include <functional>
 #include <iostream>
 
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_DEBUG
@@ -18,7 +18,7 @@ int main(int argc, const char **argv)
 {
     std::cout << argc << '\n';
 
-    for (int i=0;i<argc; ++i) {
+    for (int i = 0; i < argc; ++i) {
         std::cout << argv[i] << '\n';
     }
 
@@ -36,7 +36,7 @@ int main(int argc, const char **argv)
     spdlog::info("Positional args are {1} {0}..", "too", "supported");
     spdlog::info("{:<30}", "left aligned");
 
-    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
+    spdlog::set_level(spdlog::level::debug);// Set global log level to debug
     spdlog::debug("This message should be displayed..");
 
     // change log pattern
