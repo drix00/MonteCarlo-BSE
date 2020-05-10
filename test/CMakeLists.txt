@@ -8,13 +8,13 @@ endif ()
 
 add_library(catch_main STATIC catch_main.cpp)
 target_link_libraries(catch_main PUBLIC CONAN_PKG::catch2)
-target_link_libraries(catch_main PRIVATE project_options)
+target_link_libraries(catch_main PRIVATE project_options CONAN_PKG::spdlog)
 
-set(source_files ../src/inputs/Input.cpp ../src/inputs/Element.cpp ../src/inputs/Element.h ../src/models/Rutherford.cpp ../src/models/Rutherford.h ../src/models/EnergyLoss.cpp ../src/models/EnergyLoss.h ../src/models/MeanFreePath.cpp ../src/models/MeanFreePath.h ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h ../src/models/RandomNumber.cpp ../src/models/RandomNumber.h ../src/results/Statistic.cpp ../src/results/Statistic.h)
-set(test_source_files inputs/Input_test.cpp inputs/Element_test.cpp models/Rutherford_test.cpp models/EnergyLoss_test.cpp models/MeanFreePath_test.cpp models/DirectionCosine_test.cpp simulation/Simulation_test.cpp models/RandomNumber_test.cpp results/Statistic_test.cpp)
+set(source_files ../src/inputs/Input.cpp ../src/inputs/Element.cpp ../src/inputs/Element.h ../src/models/Rutherford.cpp ../src/models/Rutherford.h ../src/models/EnergyLoss.cpp ../src/models/EnergyLoss.h ../src/models/MeanFreePath.cpp ../src/models/MeanFreePath.h ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h ../src/models/RandomNumber.cpp ../src/models/RandomNumber.h ../src/results/Statistic.cpp ../src/results/Statistic.h ../src/models/RandomSeed.cpp ../src/models/RandomSeed.h)
+set(test_source_files inputs/Input_test.cpp inputs/Element_test.cpp models/Rutherford_test.cpp models/EnergyLoss_test.cpp models/MeanFreePath_test.cpp models/DirectionCosine_test.cpp simulation/Simulation_test.cpp models/RandomNumber_test.cpp results/Statistic_test.cpp models/RandomSeed_test.cpp)
 
 add_executable(tests tests.cpp ${test_source_files} ${source_files})
-target_link_libraries(tests PRIVATE project_warnings project_options catch_main)
+target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog)
 target_include_directories(tests PRIVATE ../src)
 
 
