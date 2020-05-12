@@ -83,7 +83,7 @@ void Simulation::do_simulation()
 double Simulation::elapse_time_s()
 {
     auto elapse_time_s = std::chrono::duration_cast<std::chrono::seconds>(elapse_time_ns).count();
-    auto fraction = elapse_time_ns.count() - elapse_time_s * 1.0e9;
-    double time_s = elapse_time_s + fraction * 1.0e-9;
+    double fraction = static_cast<double>(elapse_time_ns.count()) - static_cast<double>(elapse_time_s) * 1.0e9;
+    double time_s = static_cast<double>(elapse_time_s) + fraction * 1.0e-9;
     return time_s;
 }

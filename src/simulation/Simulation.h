@@ -17,7 +17,7 @@
 class Simulation
 {
   public:
-    Simulation(Input input_, unsigned int seed) : input{ input_ },
+    Simulation(Input input_, unsigned int long seed) : input{ input_ },
                                                   energy_loss{ input_.element.atomic_number, input_.element.atomic_weight_g_mol },
                                                   mean_free_path{ input_.element.atomic_weight_g_mol, input_.element.density_g_cm3 },
                                                   cross_section{ input_.element.atomic_number },

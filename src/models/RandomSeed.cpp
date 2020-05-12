@@ -9,7 +9,7 @@
 #include <sstream>
 #include <chrono>
 
-unsigned int RandomSeed::operator()()
+unsigned int long RandomSeed::operator()()
 {
     std::random_device device;
     if (device.entropy() > minimum_entropy) {
@@ -18,6 +18,6 @@ unsigned int RandomSeed::operator()()
         std::ostringstream ss;
         ss << std::this_thread::get_id();
         auto time_now{ std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count() };
-        return std::stoul(ss.str()) + static_cast<unsigned int>(time_now);
+        return std::stoul(ss.str()) + static_cast<unsigned int long>(time_now);
     }
 }

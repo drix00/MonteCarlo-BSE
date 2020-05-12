@@ -21,11 +21,11 @@ TEST_CASE("Simulation do_simulation C", "[simulation]")
     double const tolerance = 0.0001;
     REQUIRE(simulation.bse.counts() == number_trajectories);
     REQUIRE(simulation.bse.mean() == Approx(0.071).margin(tolerance));
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.256824843).margin(tolerance));
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0081215146).margin(tolerance));
     REQUIRE(simulation.te.counts() == number_trajectories);
     REQUIRE(simulation.te.mean() == Approx(0.0).margin(tolerance));
     REQUIRE(simulation.te.standard_deviation() == Approx(0.0).margin(tolerance));
-    REQUIRE(simulation.elapse_time_s() < 1.0);
+    REQUIRE(simulation.elapse_time_s() < 10.0);
 }
 
 TEST_CASE("Simulation do_simulation random seed", "[simulation]")

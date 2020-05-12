@@ -9,7 +9,7 @@
 class RandomSeed
 {
   public:
-    unsigned int operator()();
+    unsigned int long operator()();
 
   private:
     int const minimum_entropy = 10;

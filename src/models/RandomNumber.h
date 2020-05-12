@@ -10,7 +10,7 @@
 class RandomNumber
 {
   public:
-    explicit RandomNumber(unsigned int seed) : engine{ seed }, distribution{ 0.0, 1.0 } {};
+    explicit RandomNumber(unsigned int long seed) : engine{ seed }, distribution{ 0.0, 1.0 } {};
     double operator()() { return distribution(engine); };
     void seed(unsigned int seed) { engine.seed(seed); };
 

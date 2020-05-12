@@ -39,11 +39,11 @@ TEST_CASE("RandomSeed seed", "[models]")
 {
     RandomSeed rand_seed;
 
-    unsigned int seed1 = rand_seed();
-    unsigned int seed2 = rand_seed();
-    unsigned int seed3 = rand_seed();
-    unsigned int seed4 = rand_seed();
-    unsigned int seed5 = rand_seed();
+    unsigned int long seed1 = rand_seed();
+    unsigned int long seed2 = rand_seed();
+    unsigned int long seed3 = rand_seed();
+    unsigned int long seed4 = rand_seed();
+    unsigned int long seed5 = rand_seed();
 
     CHECK(seed1 != seed2);
     CHECK(seed1 != seed3);
