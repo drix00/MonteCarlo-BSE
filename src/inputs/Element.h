@@ -25,4 +25,8 @@ Element get_cu();
 Element get_ag();
 Element get_au();
 
+double get_atomic_weight_g_mol(const int atomic_number);
+double get_atomic_mass_density_g_cm3(const int atomic_number);
+
+
 #endif//MONTECARLO_BSE_ELEMENT_H

@@ -12,7 +12,7 @@
 #include "models/MeanFreePath.h"
 #include "models/Rutherford.h"
 #include "models/RandomNumber.h"
-#include "results/Statistic.h"
+#include "results/Counter.h"
 
 class Simulation
 {
@@ -26,8 +26,8 @@ class Simulation
     double elapse_time_s();
 
   public:
-    Statistic bse;
-    Statistic te;
+    Counter bse;
+    Counter te;
 
   private:
     Input input;
