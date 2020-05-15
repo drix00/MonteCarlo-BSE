@@ -9,6 +9,12 @@
 #include <sstream>
 #include <chrono>
 
+/**
+ * Seem to have a problem if the function is repeatably called quickly to seed the Simulation class.
+ * Need to investigate and test further.
+ *
+ * @return
+ */
 unsigned int long RandomSeed::operator()()
 {
     std::random_device device;

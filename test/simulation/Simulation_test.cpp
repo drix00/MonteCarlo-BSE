@@ -32,19 +32,23 @@ TEST_CASE("Simulation do_simulation random seed", "[simulation]")
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
-    Input input{ get_c(), initial_energy_eV, number_trajectories };
+    Input input{ get_cu(), initial_energy_eV, number_trajectories };
 
     RandomSeed rand_seed;
-    Simulation simulation1{ input, rand_seed() };
-    Simulation simulation2{ input, rand_seed() };
-    Simulation simulation3{ input, rand_seed() };
-    Simulation simulation4{ input, rand_seed() };
-    Simulation simulation5{ input, rand_seed() };
 
+    Simulation simulation1{ input, rand_seed() };
     simulation1.do_simulation();
+
+    Simulation simulation2{ input, rand_seed() };
     simulation2.do_simulation();
+
+    Simulation simulation3{ input, rand_seed() };
     simulation3.do_simulation();
+
+    Simulation simulation4{ input, rand_seed() };
     simulation4.do_simulation();
+
+    Simulation simulation5{ input, rand_seed() };
     simulation5.do_simulation();
 
     double const tolerance = 0.0001;
