@@ -1,19 +1,19 @@
 //
 // Created by hendrix on 2020-06-07.
 //
+#include "simulate.h"
+
 #include <string>
 #include <vector>
-#include <fstream>
 #include <sstream>
 #include <iomanip>
 #include <chrono>
 #include <ctime>
 #include <algorithm>
+#include <execution>
 
-#include "inputs/Input.h"
 #include "models/RandomSeed.h"
 #include "simulation/Simulation.h"
-#include "inputs.h"
 #include "Data.h"
 
 void run_simulation(Data& datum, RandomSeed rand_seed) {
@@ -86,6 +86,30 @@ void run_simulations_async_simple(std::string name, std::string suffix, std::vec
 void run_simulations_for_each_simple(std::string name, std::string suffix, std::vector<Data> data) {
 //    for_each (std::execution::par, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
     for_each (data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
+
+    write_results_file(name, suffix, data);
+}
+
+void run_simulations_for_each_seq_simple(std::string name, std::string suffix, std::vector<Data> data) {
+    for_each (std::execution::seq, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
+
+    write_results_file(name, suffix, data);
+}
+
+void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data) {
+    for_each (std::execution::unseq, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
+
+    write_results_file(name, suffix, data);
+}
+
+void run_simulations_for_each_par_simple(std::string name, std::string suffix, std::vector<Data> data) {
+    for_each (std::execution::par, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
+
+    write_results_file(name, suffix, data);
+}
+
+void run_simulations_for_each_par_unseq_simple(std::string name, std::string suffix, std::vector<Data> data) {
+    for_each (std::execution::par_unseq, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
 
     write_results_file(name, suffix, data);
 }

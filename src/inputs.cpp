@@ -102,9 +102,9 @@ std::vector<Data> get_inputs_thickness() {
 std::vector<Data> get_inputs_profile_serial_simple() {
     std::vector<Data> data;
 
-    int number_repetitions = 1;
+    int number_repetitions = 10;
     double initial_energy_eV = 10.e3;
-    int number_trajectories = 100'000;
+    int number_trajectories = 10'000;
 
     for(int repetition_id=1; repetition_id<=number_repetitions; ++repetition_id) {
         Element element = get_cu();

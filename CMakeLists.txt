@@ -52,7 +52,6 @@ endif()
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
-
 include(cmake/Conan.cmake)
 run_conan()
 
@@ -71,5 +70,7 @@ if(ENABLE_FUZZING)
   add_subdirectory(fuzz_test)
 endif()
 
+
+find_package (Threads)
 
 add_subdirectory(src)
