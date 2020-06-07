@@ -14,7 +14,7 @@ set(source_files ../src/inputs/Input.cpp ../src/inputs/Element.cpp ../src/inputs
 set(test_source_files inputs/Input_test.cpp inputs/Element_test.cpp models/Rutherford_test.cpp models/EnergyLoss_test.cpp models/MeanFreePath_test.cpp models/DirectionCosine_test.cpp simulation/Simulation_test.cpp models/RandomNumber_test.cpp results/Statistic_test.cpp models/RandomSeed_test.cpp results/Counter_test.cpp utilities/Timer_test.cpp)
 
 add_executable(tests tests.cpp ${test_source_files} ${source_files})
-target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog)
+target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog tbb)
 target_include_directories(tests PRIVATE ../src)
 
 

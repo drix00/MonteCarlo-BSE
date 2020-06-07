@@ -12,7 +12,7 @@ target_include_directories(run_serial_simple PRIVATE ../src)
 target_compile_definitions(run_serial_simple  PRIVATE _CRT_SECURE_NO_WARNINGS)
 
 add_executable(run_async_simple run_async_simple.cpp ${serial_simple_source_files})
-target_link_libraries(run_async_simple PRIVATE project_options project_warnings)
+target_link_libraries(run_async_simple PRIVATE project_options project_warnings Threads::Threads tbb)
 target_include_directories(run_async_simple PRIVATE ../src)
 target_compile_definitions(run_async_simple  PRIVATE _CRT_SECURE_NO_WARNINGS)
 
