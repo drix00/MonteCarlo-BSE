@@ -28,7 +28,7 @@ TEST_CASE("Simulation do_simulation C", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0);
 }
 
-TEST_CASE("Simulation do_simulation random seed", "[simulation]")
+TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
