@@ -37,6 +37,7 @@ void Simulation::do_simulation()
         z += step_nm * direction.cc;
 
         if (z < -input.thickness_nm) {
+            bse.add_value(0.0);
             te.add_value(1.0);
             continue;
         }

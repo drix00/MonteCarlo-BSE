@@ -21,6 +21,11 @@ target_link_libraries(run_for_each_simple PRIVATE project_options project_warnin
 target_include_directories(run_for_each_simple PRIVATE ../src)
 target_compile_definitions(run_for_each_simple  PRIVATE _CRT_SECURE_NO_WARNINGS)
 
+add_executable(run_valgrind run_valgrind.cpp ${serial_simple_source_files})
+target_link_libraries(run_valgrind PRIVATE project_options project_warnings Threads::Threads tbb)
+target_include_directories(run_valgrind PRIVATE ../src)
+target_compile_definitions(run_valgrind  PRIVATE _CRT_SECURE_NO_WARNINGS)
+
 add_executable(profile_serial_simple profile_serial_simple.cpp ${serial_simple_source_files})
 target_link_libraries(profile_serial_simple PRIVATE project_options project_warnings Threads::Threads tbb)
 target_include_directories(profile_serial_simple PRIVATE ../src)

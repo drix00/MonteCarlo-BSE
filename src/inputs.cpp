@@ -114,3 +114,19 @@ std::vector<Data> get_inputs_profile_serial_simple() {
 
     return data;
 }
+
+std::vector<Data> get_inputs_valgrind() {
+    std::vector<Data> data;
+
+    int number_repetitions = 1;
+    double initial_energy_eV = 10.e3;
+    int number_trajectories = 1'000;
+
+    for(int repetition_id=1; repetition_id<=number_repetitions; ++repetition_id) {
+        Element element = get_cu();
+        Input input{ element, initial_energy_eV, number_trajectories, repetition_id };
+        data.emplace_back(input, "");
+    }
+
+    return data;
+}

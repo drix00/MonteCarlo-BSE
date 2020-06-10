@@ -14,5 +14,6 @@ std::vector<Data> get_inputs_atomic_numbers();
 std::vector<Data> get_inputs_densities();
 std::vector<Data> get_inputs_thickness();
 std::vector<Data> get_inputs_profile_serial_simple();
+std::vector<Data> get_inputs_valgrind();
 
 #endif//MONTECARLO_BSE_INPUTS_H
