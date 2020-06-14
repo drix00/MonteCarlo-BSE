@@ -19,7 +19,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif()
 add_executable(tests tests.cpp ${test_source_files} ${source_files})
 target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog)
-if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     target_link_libraries(tests PRIVATE tbb)
 endif()
 
