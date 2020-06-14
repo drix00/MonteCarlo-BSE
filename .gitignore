@@ -33,6 +33,7 @@
 
 # Editor
 .idea
+.vs/
 
 # CMake build
 cmake-build-*/

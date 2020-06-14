@@ -37,7 +37,7 @@ class Simulation
     Rutherford cross_section;
     RandomNumber random_number;
 
-    std::chrono::nanoseconds elapse_time_ns;
+    std::chrono::nanoseconds elapse_time_ns{0};
 
     double const nm2cm = 1.0e-7;
     double const keV2eV = 1.0e3;

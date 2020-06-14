@@ -13,11 +13,21 @@ target_link_libraries(catch_main PRIVATE project_options CONAN_PKG::spdlog)
 set(source_files ../src/inputs/Input.cpp ../src/inputs/Element.cpp ../src/inputs/Element.h ../src/models/Rutherford.cpp ../src/models/Rutherford.h ../src/models/EnergyLoss.cpp ../src/models/EnergyLoss.h ../src/models/MeanFreePath.cpp ../src/models/MeanFreePath.h ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h ../src/models/RandomNumber.cpp ../src/models/RandomNumber.h ../src/results/Statistic.cpp ../src/results/Statistic.h ../src/models/RandomSeed.cpp ../src/models/RandomSeed.h ../src/results/Counter.cpp ../src/results/Counter.h ../src/inputs.cpp ../src/inputs.h ../src/simulate.cpp ../src/simulate.h ../src/Data.cpp ../src/Data.h ../src/utilities/Timer.cpp ../src/utilities/Timer.h)
 set(test_source_files inputs/Input_test.cpp inputs/Element_test.cpp models/Rutherford_test.cpp models/EnergyLoss_test.cpp models/MeanFreePath_test.cpp models/DirectionCosine_test.cpp simulation/Simulation_test.cpp models/RandomNumber_test.cpp results/Statistic_test.cpp models/RandomSeed_test.cpp results/Counter_test.cpp utilities/Timer_test.cpp)
 
-add_compile_options(-fprofile-arcs -ftest-coverage)
-add_link_options(-lgcov --coverage)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_options(-fprofile-arcs -ftest-coverage)
+    add_link_options(-lgcov --coverage)
+endif()
 add_executable(tests tests.cpp ${test_source_files} ${source_files})
-target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog tbb)
+target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(tests PRIVATE tbb)
+endif()
+
 target_include_directories(tests PRIVATE ../src)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_definitions(tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
 
 # automatically discover tests that are defined in catch based test files you
 # can modify the unittests. TEST_PREFIX to whatever you want, or use different
@@ -33,8 +43,10 @@ catch_discover_tests(
 
 # Add a file containing a set of constexpr tests
 add_executable(constexpr_tests constexpr_tests.cpp)
-target_link_libraries(constexpr_tests PRIVATE project_options project_warnings
-        catch_main)
+target_link_libraries(constexpr_tests PRIVATE project_options project_warnings catch_main)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_definitions(constexpr_tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
 
 catch_discover_tests(
         constexpr_tests
@@ -49,12 +61,13 @@ catch_discover_tests(
 # have an executable that we can debug when things go wrong with the constexpr
 # testing
 add_executable(relaxed_constexpr_tests constexpr_tests.cpp)
-target_link_libraries(
-        relaxed_constexpr_tests PRIVATE project_options project_warnings
-        catch_main)
+target_link_libraries(relaxed_constexpr_tests PRIVATE project_options project_warnings catch_main)
 target_compile_definitions(
         relaxed_constexpr_tests PRIVATE
         -DCATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_definitions(relaxed_constexpr_tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
 
 
 catch_discover_tests(
