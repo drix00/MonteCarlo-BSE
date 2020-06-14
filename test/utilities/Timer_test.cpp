@@ -7,7 +7,7 @@
 
 #include "utilities/Timer.h"
 
-TEST_CASE("Timer sleep", "[utilities]")
+TEST_CASE("Timer sleep", "[utilities] [!mayfail]")
 {
     Timer timer;
     std::this_thread::sleep_for (std::chrono::milliseconds (100));
