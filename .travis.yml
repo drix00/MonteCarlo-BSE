@@ -2,8 +2,8 @@ language: cpp
 
 install:
   - pip install --user conan cmake
-  - sudo add-apt-repository ppa:nnstreamer/ppa
-  - sudo apt-get update
+#  - sudo -E add-apt-repository -y "ppa:nnstreamer/ppa"
+#  - sudo apt-get update
 #  - echo "deb http://cz.archive.ubuntu.com/ubuntu eoan main universe" | sudo tee -a  /etc/apt/sources.list
 
 jobs:
@@ -35,6 +35,7 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+            - nnstreamer-ppa
           packages:
             # I couldn't get ${GCC_VER} in here successfully
             - gcc-9
