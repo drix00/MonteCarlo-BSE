@@ -2,6 +2,9 @@ language: cpp
 
 install:
   - pip install --user conan cmake
+  - sudo add-apt-repository ppa:nnstreamer/ppa
+  - sudo apt-get update
+#  - echo "deb http://cz.archive.ubuntu.com/ubuntu eoan main universe" | sudo tee -a  /etc/apt/sources.list
 
 jobs:
   include:
@@ -25,7 +28,7 @@ jobs:
       dist: bionic
       compiler: gcc
       env:
-        - GCC_VER="8"
+        - GCC_VER="9"
         - MATRIX_EVAL="CC=gcc-${GCC_VER} && CXX=g++-${GCC_VER}"
 
       addons:
@@ -34,8 +37,8 @@ jobs:
             - ubuntu-toolchain-r-test
           packages:
             # I couldn't get ${GCC_VER} in here successfully
-            - gcc-8
-            - g++-8
+            - gcc-9
+            - g++-9
             - doxygen
             - libtbb-dev
       after_script:
@@ -48,6 +51,7 @@ jobs:
       addons:
         apt:
           packages:
+            - clang-9
             - doxygen
             - libtbb-dev
 
