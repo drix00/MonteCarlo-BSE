@@ -42,22 +42,22 @@ jobs:
             - doxygen
       after_script:
         - bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-${GCC_VER}
-    - os: linux
-      dist: bionic
-      compiler: clang
-      env:
-        - CLANG_VER="10"
-        - MATRIX_EVAL="CC=clang-${CLANG_VER} && CXX=clang++-${CLANG_VER}"
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-bionic-10
-          packages:
-            - clang-10
-            - llvm-10-dev
-            - libomp-10-dev
-            - doxygen
+#    - os: linux
+#      dist: bionic
+#      compiler: clang
+#      env:
+#        - CLANG_VER="10"
+#        - MATRIX_EVAL="CC=clang-${CLANG_VER} && CXX=clang++-${CLANG_VER}"
+#      addons:
+#        apt:
+#          sources:
+#            - ubuntu-toolchain-r-test
+#            - llvm-toolchain-bionic-10
+#          packages:
+#            - clang-10
+#            - llvm-10-dev
+#            - libomp-10-dev
+#            - doxygen
 
 
 before_script:
