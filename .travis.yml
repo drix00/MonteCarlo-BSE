@@ -46,14 +46,14 @@ jobs:
       dist: bionic
       compiler: clang
       env:
-        - CLANG_VER="9"
+        - CLANG_VER="10"
         - MATRIX_EVAL="CC=clang-${CLANG_VER} && CXX=clang++-${CLANG_VER}"
       addons:
         apt:
           packages:
-            - clang-9
-            - llvm-9-dev
-            - libomp-9-dev
+            - clang-10
+            - llvm-10-dev
+            - libomp-10-dev
             - doxygen
 
 
