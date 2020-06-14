@@ -20,7 +20,7 @@ void run_simulations_serial_simple(std::string name, std::string suffix, std::ve
 void run_simulations_async_simple(std::string name, std::string suffix, std::vector<Data> data);
 void run_simulations_for_each_simple(std::string name, std::string suffix, std::vector<Data> data);
 void run_simulations_for_each_seq_simple(std::string name, std::string suffix, std::vector<Data> data);
-void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data);
+//void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data);
 void run_simulations_for_each_par_simple(std::string name, std::string suffix, std::vector<Data> data);
 void run_simulations_for_each_par_unseq_simple(std::string name, std::string suffix, std::vector<Data> data);
 std::string get_suffix();

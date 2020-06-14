@@ -96,11 +96,11 @@ void run_simulations_for_each_seq_simple(std::string name, std::string suffix, s
     write_results_file(name, suffix, data);
 }
 
-void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data) {
-    for_each (std::execution::unseq, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
-
-    write_results_file(name, suffix, data);
-}
+//void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data) {
+//    for_each (std::execution::unseq, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
+//
+//    write_results_file(name, suffix, data);
+//}
 
 void run_simulations_for_each_par_simple(std::string name, std::string suffix, std::vector<Data> data) {
     for_each (std::execution::par, data.begin(), data.end(), [] (auto& datum) {RandomSeed rand_seed; run_simulation(datum, rand_seed);});
