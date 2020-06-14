@@ -118,7 +118,9 @@ std::string get_suffix(){
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
     std::time_t t_c = std::chrono::system_clock::to_time_t(now);
     std::ostringstream ss;
+#define _CRT_SECURE_NO_WARNINGS
     ss << std::put_time(std::localtime(&t_c), "_%Y%m%d_%H%M%S");
+#undef _CRT_SECURE_NO_WARNINGS
     std::string suffix{ss.str()};
     return suffix;
 }
