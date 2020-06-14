@@ -2,9 +2,9 @@ language: cpp
 
 install:
   - pip install --user conan cmake
-#  - sudo -E add-apt-repository -y "ppa:nnstreamer/ppa"
-#  - sudo apt-get update
-#  - echo "deb http://cz.archive.ubuntu.com/ubuntu eoan main universe" | sudo tee -a  /etc/apt/sources.list
+  - sudo add-apt-repository -y ppa:nnstreamer/ppa
+  - sudo apt-get -q update
+  - sudo apt-get -y install libtbb-dev
 
 jobs:
   include:
@@ -35,26 +35,26 @@ jobs:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - nnstreamer-ppa
           packages:
             # I couldn't get ${GCC_VER} in here successfully
             - gcc-9
             - g++-9
             - doxygen
-            - libtbb-dev
       after_script:
         - bash <(curl -s https://codecov.io/bash) -x /usr/bin/gcov-${GCC_VER}
     - os: linux
       dist: bionic
       compiler: clang
       env:
-        - MATRIX_EVAL="CC=clang && CXX=clang++"
+        - CLANG_VER="9"
+        - MATRIX_EVAL="CC=clang-${CLANG_VER} && CXX=clang++-${CLANG_VER}"
       addons:
         apt:
           packages:
             - clang-9
+            - llvm-9-dev
+            - libomp-9-dev
             - doxygen
-            - libtbb-dev
 
 
 before_script:
