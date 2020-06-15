@@ -31,4 +31,9 @@ Travis CI (Linux): [![Build Status](https://travis-ci.com/drix00/MonteCarlo-BSE.
 * Initial version with serial and simple Monte Carlo code to compute BSE coefficient.
 * Build 2020-05-11, see commit 38682f48529305fc85824fccd8fb98402920ef19.
 
- 
+## Development
+
+### Visual Studio 2019 (Windows)
+
+The best way to use CMake project with Visual Studio 2019 is to use "File > Open > Folder" to open the project folder with the main CMakeLists.txt.
+Use the CMakeSettings.json to add target to the project.

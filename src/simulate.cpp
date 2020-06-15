@@ -35,7 +35,7 @@ void run_simulation(Data& datum, RandomSeed rand_seed) {
     output_file << simulation.te.mean() << ",";
     output_file << simulation.te.variance() << ",";
     output_file << simulation.te.standard_deviation() << ",";
-    output_file << simulation.elapse_time_s() << std::endl;
+    output_file << simulation.elapse_time_s();
     datum.line = output_file.str();
 }
 
