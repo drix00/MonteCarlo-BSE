@@ -8,7 +8,6 @@
 #include <vector>
 #include <fstream>
 
-#include "inputs/Input.h"
 #include "models/RandomSeed.h"
 #include "Data.h"
 #include "utilities/Timer.h"
@@ -30,19 +29,19 @@ void run_simulations_set(std::string name, std::string suffix, std::ofstream& ou
 
     std::string run_name = name + "_number_trajectories_repetitions";
     function(run_name, suffix, get_inputs_number_trajectories_repetitions());
-    output_file << run_name << timer.get_elapse_time_s() << " s\n";
+    output_file << run_name << ": " << timer.get_elapse_time_s() << " s\n";
 
     run_name = name + "_elements_energies";
     function(run_name, suffix, get_inputs_elements_energies());
-    output_file << run_name << timer.get_elapse_time_s() << " s\n";
+    output_file << run_name << ": " << timer.get_elapse_time_s() << " s\n";
 
     run_name = name + "_atomic_numbers";
     function(run_name, suffix, get_inputs_atomic_numbers());
-    output_file << run_name << timer.get_elapse_time_s() << " s\n";
+    output_file << run_name << ": " << timer.get_elapse_time_s() << " s\n";
 
     run_name = name + "_densities";
     function(run_name, suffix, get_inputs_densities());
-    output_file << run_name << timer.get_elapse_time_s() << " s\n";
+    output_file << run_name << ": " << timer.get_elapse_time_s() << " s\n";
 
     run_name = name + "_thickness";
     function(run_name, suffix, get_inputs_thickness());
