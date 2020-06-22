@@ -22,11 +22,29 @@ jobs:
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{runner.workspace}}/build
 
+    - name: Install gcc9
+      shell: bash
+      run: |
+        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+        sudo apt-get -q update
+        sudo apt-get -y install gcc-9
+        sudo apt-get -y install g++-9
+        sudo apt-get -y install doxygen
+        source ~/.profile
+
     - name: Install conan
       shell: bash
       run: |
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install conan
+        source ~/.profile
+
+    - name: Install libtbb
+      shell: bash
+      run: |
+        sudo add-apt-repository -y ppa:nnstreamer/ppa
+        sudo apt-get -q update
+        sudo apt-get -y install libtbb-dev
         source ~/.profile
 
     - name: Configure CMake
@@ -47,7 +65,9 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --build . --config $BUILD_TYPE
+      run: |
+        cmake -D ENABLE_COVERAGE:BOOL=TRUE .
+        cmake --build . --config $BUILD_TYPE
 
     - name: Test
       working-directory: ${{runner.workspace}}/build
