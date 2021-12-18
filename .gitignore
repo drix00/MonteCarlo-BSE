@@ -42,3 +42,6 @@ build/
 
 # Python
 venv/
+
+# Doxygen
+doc/html/
