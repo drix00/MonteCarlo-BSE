@@ -1,12 +1,45 @@
-//
-// Created by Hendrix Demers on 2021-12-14.
-//
-#include <string>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2021
+*/
 
+//   Copyright 2021 Hendrix Demers
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+
+// C system headers
+// C++ system header
+#include <string>
+#include <map>
+// Library headers
+// Precompiled header
+#pragma hdrstop
+// Current declaration header file of this implementation file.
 #include "constants/element.h"
+// Project headers
+// Project private headers
+
+// Global and constant variables/functions.
 
 namespace monte_carlo::constants::element {
 
+/**
+ *
+ * @param atomic_number
+ * @return symbol of the element
+ */
 std::string get_symbol(int atomic_number) {
     const std::map<const int, const std::string> symbols{
         std::pair(1, "H"),
@@ -120,6 +153,11 @@ std::string get_symbol(int atomic_number) {
     return symbols.at(atomic_number);
 }
 
+/**
+ *
+ * @param atomic_number
+ * @return name of the element
+ */
 std::string get_name(int atomic_number) {
     const std::map<const int, const std::string> names{
         std::pair(1, "Hydrogen"),
@@ -234,12 +272,13 @@ std::string get_name(int atomic_number) {
 }
 
 /**
- * Atomic weight in g/mol.
- *
- * @note Using a map, the first element is the atomic number and the second element the atomic weight.
+ * Get the atomic weight (g/mol) from atomic number.
  *
  * From green book: IUPAC-GB3-2012-2ndPrinting-PDFsearchable
  * Wikipedia contributors, "List of chemical elements," Wikipedia, The Free Encyclopedia, https://en.wikipedia.org/w/index.php?title=List_of_chemical_elements&oldid=1033101281 (accessed July 27, 2021).
+ *
+ * @param atomic_number
+ * @return atomic weight in g/mol
  */
 double get_atomic_weight_g_mol(int atomic_number) {
     const std::map<const int, const double> atomic_weights_g_mol
@@ -356,9 +395,10 @@ double get_atomic_weight_g_mol(int atomic_number) {
 }
 
 /**
- * Density in g/cm3.
+ * Get the mass density (g/cm3) from an atomic number.
  *
- * @note Using a map, the first element is the atomic number and the second element the mass density.
+ * @param atomic_number
+ * @return mass density in g/cm3
  */
 double get_atomic_mass_density_g_cm3(int atomic_number) {
     const std::map<int, double> atomic_mass_density_g_cm3
