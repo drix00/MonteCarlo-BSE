@@ -33,7 +33,18 @@ Travis CI (Linux): [![Build Status](https://travis-ci.com/drix00/MonteCarlo-BSE.
 
 ## Development
 
+Need to install:
+
+1. Install Python
+2. Setup venv in the project folder
+3. .\venv\Scripts\activate.ps1
+4. python -m pip install conan
+
+
+### Clion
+
+
 ### Visual Studio 2019 (Windows)
 
-The best way to use CMake project with Visual Studio 2019 is to use "File > Open > Folder" to open the project folder with the main CMakeLists.txt.
+The best way to use the CMake project with Visual Studio 2019 is to use "File > Open > Folder" to open the project folder with the main CMakeLists.txt.
 Use the CMakeSettings.json to add target to the project.

@@ -49,6 +49,8 @@ endif()
 
 # Set up some extra Conan dependencies based on our needs
 # before loading Conan
+# Add conan to the path
+LIST(APPEND CMAKE_PROGRAM_PATH  "venv/Scripts" ...)
 set(CONAN_EXTRA_REQUIRES "")
 set(CONAN_EXTRA_OPTIONS "")
 
