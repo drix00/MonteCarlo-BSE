@@ -1,10 +1,27 @@
-//
-// Created by Hendrix Demers on 2020-05-08.
-//
-#include <catch2/catch.hpp>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
+// C system headers
+// C++ system header
+// Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "inputs/Input.h"
 #include "inputs/Element.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if Input tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("Input are tested", "[inputs]")
 {

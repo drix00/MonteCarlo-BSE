@@ -1,12 +1,28 @@
-//
-// Created by Hendrix Demers on 2020-05-08.
-//
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
+
+// C system headers
+// C++ system header
 #define _USE_MATH_DEFINES
 #include <cmath>
-
+// Library headers
 #include <catch2/catch.hpp>
-
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "models/Rutherford.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if Rutherford tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("Rutherford compute_alpha", "[models]")
 {

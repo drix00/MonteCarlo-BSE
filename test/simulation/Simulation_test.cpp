@@ -1,13 +1,30 @@
-//
-// Created by Hendrix Demers on 2020-05-09.
-//
-#include <catch2/catch.hpp>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
+// C system headers
+// C++ system header
+// Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "simulation/Simulation.h"
 #include "inputs/Input.h"
 #include "inputs/Element.h"
 #include "models/RandomNumber.h"
 #include "models/RandomSeed.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if Simulation tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("Simulation do_simulation C", "[simulation]")
 {

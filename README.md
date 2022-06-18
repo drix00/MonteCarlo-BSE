@@ -1,4 +1,4 @@
-# MonteCarlo-BSE
+# MonteCarlo-BSE                {#mainpage}  
 Monte Carlo simulation of backscattered electron (BSE) in a SEM.
 
 ## Badges
@@ -18,7 +18,7 @@ Travis CI (Linux): [![Build Status](https://travis-ci.com/drix00/MonteCarlo-BSE.
 
 ### Version 0.2.1
 
-* Add Python script to analyse simulations results.
+* Add a Python script to analyse simulations results.
 * Remove space in csv result files.
 
 ### Version 0.2

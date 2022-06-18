@@ -1,14 +1,28 @@
-//
-// Created by Hendrix Demers on 2020-05-09.
-//
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
+
+// C system headers
+// C++ system header
 #define _USE_MATH_DEFINES
 #include <cmath>
-
+// Library headers
 #include <catch2/catch.hpp>
-
-
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "models/DirectionCosine.h"
+// Project private headers
 
+// Global and constant variables/functions.
+
+TEST_CASE("Test if DirectionCosine tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("DirectionCosine compute", "[models]")
 {

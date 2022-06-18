@@ -1,11 +1,27 @@
-//
-// Created by Hendrix Demers on 2020-05-09.
-//
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
+// C system headers
+// C++ system header
+// Library headers
 #include <catch2/catch.hpp>
-
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "models/MeanFreePath.h"
 #include "models/Rutherford.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if MeanFreePath tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("MeanFreePath lambda", "[models]")
 {

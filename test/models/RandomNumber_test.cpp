@@ -1,10 +1,27 @@
-//
-// Created by Hendrix Demers on 2020-05-09.
-//
-#include <catch2/catch.hpp>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
+// C system headers
+// C++ system header
+// Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "models/RandomNumber.h"
 #include "results/Statistic.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if RandomNumber tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("RandomNumber magic seed", "[models]")
 {

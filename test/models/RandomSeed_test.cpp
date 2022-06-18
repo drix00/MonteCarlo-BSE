@@ -1,14 +1,31 @@
-//
-// Created by Hendrix Demers on 2020-05-09.
-//
-#include <catch2/catch.hpp>
-#include <spdlog/spdlog.h>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
+
+// C system headers
+// C++ system header
 #include <random>
 #include <thread>
 #include <sstream>
 #include <chrono>
-
+// Library headers
+#include <catch2/catch.hpp>
+#include <spdlog/spdlog.h>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "models/RandomSeed.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if RandomSeed tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("RandomSeed check log", "[models]")
 {

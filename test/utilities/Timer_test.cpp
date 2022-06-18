@@ -1,11 +1,28 @@
-//
-// Created by hendrix on 2020-06-07.
-//
-#include <catch2/catch.hpp>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
+
+// C system headers
+// C++ system header
 #include <thread>
 #include <chrono>
-
+// Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "utilities/Timer.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if Timer tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("Timer sleep", "[utilities] [!mayfail]")
 {
