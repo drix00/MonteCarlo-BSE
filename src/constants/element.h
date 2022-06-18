@@ -5,10 +5,10 @@
  * @file
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2021
+ * @copyright 2022
  */
 
-//   Copyright 2021 Hendrix Demers
+//   Copyright 2022 Hendrix Demers
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
