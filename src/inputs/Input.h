@@ -1,7 +1,3 @@
-//
-// Created by Hendrix Demers on 2020-05-08.
-//
-
 #ifndef MONTECARLO_BSE_INPUT_H
 #define MONTECARLO_BSE_INPUT_H
 /**

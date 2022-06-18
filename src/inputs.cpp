@@ -27,9 +27,9 @@
 // Precompiled header
 #pragma hdrstop
 // Current declaration header file of this implementation file.
+#include "inputs.h"
 // Project headers
 #include "constants/element.h"
-#include "inputs.h"
 #include "inputs/Input.h"
 #include "inputs/Element.h"
 // Project private headers

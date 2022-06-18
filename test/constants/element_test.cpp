@@ -1,9 +1,26 @@
-//
-// Created by Hendrix Demers on 2021-07-27.
-//
-#include <catch2/catch.hpp>
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
+// C system headers
+// C++ system header
+// Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
+#pragma hdrstop
+// Project headers
 #include "constants/element.h"
+// Project private headers
+
+// Global and constant variables/functions.
+
+TEST_CASE("Test if element tests were find", "[test]")
+{
+   REQUIRE(true);
+}
 
 TEST_CASE("Constants element are tested", "[constants]")
 {
