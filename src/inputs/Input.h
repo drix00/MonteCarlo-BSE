@@ -1,3 +1,7 @@
+//
+// Created by Hendrix Demers on 2020-05-08.
+//
+
 #ifndef MONTECARLO_BSE_INPUT_H
 #define MONTECARLO_BSE_INPUT_H
 /**
@@ -29,9 +33,19 @@
 #include "inputs/Element.h"
 // Project private headers
 
+/**
+ * Basic input for the simulation.
+ */
 class Input
 {
   public:
+    /**
+     *
+     * @param element_
+     * @param initial_energy_eV_
+     * @param number_trajectories_
+     * @param repetition_id_
+     */
     Input(Element element_, double initial_energy_eV_, int number_trajectories_, int repetition_id_=1)
         : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{repetition_id_} {};
 

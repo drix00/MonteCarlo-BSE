@@ -1,11 +1,40 @@
+/**
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2021
+*/
+
+//   Copyright 2021 Hendrix Demers
 //
-// Created by hendrix on 2020-06-07.
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
 //
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+
+// C system headers
+// C++ system header
 #include <vector>
 #include <string>
-
+// Library headers
+// Precompiled header
+#pragma hdrstop
+// Current declaration header file of this implementation file.
+// Project headers
+#include "constants/element.h"
 #include "inputs.h"
 #include "inputs/Input.h"
+#include "inputs/Element.h"
+// Project private headers
+
+// Global and constant variables/functions.
 
 using namespace std::string_literals;
 
@@ -52,7 +81,7 @@ std::vector<Data> get_inputs_atomic_numbers() {
     int number_trajectories{1'000'000};
 
     for (int atomic_number=1; atomic_number<=96; ++atomic_number){
-        Element element{atomic_number, get_atomic_weight_g_mol(atomic_number), get_atomic_mass_density_g_cm3(atomic_number)};
+        Element element{atomic_number, monte_carlo::constants::element::get_atomic_weight_g_mol(atomic_number), monte_carlo::constants::element::get_atomic_mass_density_g_cm3(atomic_number)};
         Input input{ element, initial_energy_eV, number_trajectories };
         data.emplace_back(input, "");
     }

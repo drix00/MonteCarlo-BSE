@@ -28,9 +28,18 @@
 // Project headers
 // Project private headers
 
+/**
+ * Element parameter to use in the simulation.
+ */
 class Element
 {
   public:
+    /**
+     *
+     * @param atomic_number_
+     * @param atomic_weight_g_mol_
+     * @param density_g_cm3_
+     */
     Element(int atomic_number_, double atomic_weight_g_mol_, double density_g_cm3_)
         : atomic_number{ atomic_number_ }, atomic_weight_g_mol{ atomic_weight_g_mol_ }, density_g_cm3{ density_g_cm3_ } {};
 
