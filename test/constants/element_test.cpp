@@ -21,6 +21,7 @@
 
 // C system headers
 // C++ system header
+#include <array>
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
@@ -47,10 +48,9 @@ TEST_CASE("Constants element are tested", "[constants]")
     REQUIRE(monte_carlo::constants::element::get_name(94)== "Plutonium");
 }
 
-
 TEST_CASE("Constants element symbols are tested", "[constants]")
 {
-    const std::string symbols_ref[106] = {"H"  , "He" , "Li" , "Be" , "B"  , "C"  , "N"  , "O"  ,
+    const std::array symbols_ref{"H"  , "He" , "Li" , "Be" , "B"  , "C"  , "N"  , "O"  ,
                                             "F"  , "Ne" , "Na" , "Mg" , "Al" , "Si" , "P"  , "S"  ,
                                             "Cl" , "Ar" , "K"  , "Ca" , "Sc" , "Ti" , "V"  , "Cr" ,
                                             "Mn" , "Fe" , "Co" , "Ni" , "Cu" , "Zn" , "Ga" , "Ge" ,
@@ -66,15 +66,14 @@ TEST_CASE("Constants element symbols are tested", "[constants]")
                                             "Db" , "Sg"
     };
 
-    for (int i=1; i<=106; ++i) {
-        REQUIRE(monte_carlo::constants::element::get_symbol(i) == symbols_ref[i-1]);
+    for (unsigned int i=1; i<=std::size(symbols_ref); ++i) {
+        REQUIRE(monte_carlo::constants::element::get_symbol(i) == symbols_ref.at(i-1));
     }
 }
 
-
 TEST_CASE("Constants element names are tested", "[constants]")
 {
-    const std::string names_ref[106] = {"Hydrogen" ,
+    const std::array names_ref{"Hydrogen" ,
                                              "Helium" ,
                                              "Lithium" ,
                                              "Beryllium" ,
@@ -182,14 +181,14 @@ TEST_CASE("Constants element names are tested", "[constants]")
                                              "Seaborgium"
     };
 
-    for (int i=1; i<=106; ++i) {
-        REQUIRE(monte_carlo::constants::element::get_name(i) == names_ref[i-1]);
+    for (unsigned int i=1; i<=std::size(names_ref); ++i) {
+        REQUIRE(monte_carlo::constants::element::get_name(i) == names_ref.at(i-1));
     }
 }
 
 TEST_CASE("Constants element atomic mass are tested", "[constants]")
 {
-    const double A[106] = {
+    const std::array atomic_weight_g_mol{
         1.00794, 4.002602, 6.941, 9.012182, 10.811, 12.0107,
         14.0067, 15.9994, 18.998403, 20.1797, 22.98976928, 24.305,
         26.9815386, 28.0855, 30.973762, 32.065, 35.453, 39.9480,
@@ -197,28 +196,28 @@ TEST_CASE("Constants element atomic mass are tested", "[constants]")
         54.938045, 55.845, 58.933195, 58.6934, 63.546, 65.409,
         69.723, 72.64, 74.92160, 78.960, 79.904, 83.798,
         85.4678, 87.62, 88.90585, 91.224, 92.90638, 95.94,
-        97, 101.07, 102.90550, 106.42, 107.8682, 112.411,
+        97.0, 101.07, 102.90550, 106.42, 107.8682, 112.411,
         114.818, 118.710, 121.760, 127.60, 126.90447, 131.293,
         132.9054519, 137.327, 138.90547, 140.116, 140.90765, 144.242,
-        145, 150.36, 151.964, 157.25, 158.92535, 162.500,
+        145.0, 150.36, 151.964, 157.25, 158.92535, 162.500,
         164.93032, 167.259, 168.93421, 173.04, 174.967, 178.49,
         180.94788, 183.84, 186.207, 190.23, 192.217, 195.084,
-        196.966569, 200.59, 204.3833, 207.2, 208.98040, 209,
-        210, 222, 223, 226, 227, 232.03806,
-        231.03588, 238.02891, 237, 244, 243, 247,
-        247, 251, 252, 257, 258, 259,
-        266, 267, 268, 269
+        196.966569, 200.59, 204.3833, 207.2, 208.98040, 209.0,
+        210.0, 222.0, 223.0, 226.0, 227.0, 232.03806,
+        231.03588, 238.02891, 237.0, 244.0, 243.0, 247.0,
+        247.0, 251.0, 252.0, 257.0, 258.0, 259.0,
+        266.0, 267.0, 268.0, 269.0
     };
 
-    for (int i=1; i<=106; ++i) {
+    for (unsigned int i=1; i<=std::size(atomic_weight_g_mol); ++i) {
         INFO("The atomic number is " << i);
-        REQUIRE(monte_carlo::constants::element::get_atomic_weight_g_mol(i) == A[i-1]);
+        REQUIRE(monte_carlo::constants::element::get_atomic_weight_g_mol(i) == atomic_weight_g_mol.at(i-1));
     }
 }
 
 TEST_CASE("Constants element atomic mass density are tested", "[constants]")
 {
-    const double Rho[106] = {
+    const std::array rho_g_cm3{
         0.0899, 0.1787, 0.534, 1.85, 2.34, 2.267, 1.2510, 1.4290,
         1.6960, 0.9010, 0.971, 1.7400, 2.7000, 2.3300, 1.8200, 2.0700,
         3.1700, 1.7840, 0.86, 1.55, 3.0, 4.54, 6.11, 7.15,
@@ -234,8 +233,8 @@ TEST_CASE("Constants element atomic mass density are tested", "[constants]")
         14.79, 15.1, 8.84, 9.7, 10.3, 9.9, 15.6, 23.2, 29.3, 35.0
     };
 
-    for (int i=1; i<=106; ++i) {
+    for (unsigned int i=1; i<=std::size(rho_g_cm3); ++i) {
         INFO("The atomic number is " << i);
-        REQUIRE(monte_carlo::constants::element::get_atomic_mass_density_g_cm3(i) == Rho[i-1]);
+        REQUIRE(monte_carlo::constants::element::get_atomic_mass_density_g_cm3(i) == rho_g_cm3.at(i-1));
     }
 }
