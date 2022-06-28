@@ -39,13 +39,21 @@ TEST_CASE("Test if Input tests were find", "[test]")
 
 TEST_CASE("Input are tested", "[inputs]")
 {
-    Input input{ get_au(), 10.0e3, 10000 };
+    const auto initial_energy_eV{10.0e3};
+    const auto number_trajectories{10000};
+    const auto thickness_nm{1.0e9};
 
-    REQUIRE(input.element.atomic_number == 79);
-    REQUIRE(input.element.atomic_weight_g_mol == 196.97);
-    REQUIRE(input.element.density_g_cm3 == 19.3);
+    Input input{ get_au(), initial_energy_eV, number_trajectories };
 
-    REQUIRE(input.initial_energy_eV == 10000.0);
-    REQUIRE(input.number_trajectories == 10000);
-    REQUIRE(input.thickness_nm == 1.0e9);
+    REQUIRE(input.initial_energy_eV == initial_energy_eV);
+    REQUIRE(input.number_trajectories == number_trajectories);
+    REQUIRE(input.thickness_nm == thickness_nm);
+
+    const auto atomic_number{79};
+    const auto atomic_weight_g_mol{196.97};
+    const auto density_g_cm3{19.3};
+
+    REQUIRE(input.element.atomic_number == atomic_number);
+    REQUIRE(input.element.atomic_weight_g_mol == atomic_weight_g_mol);
+    REQUIRE(input.element.density_g_cm3 == density_g_cm3);
 }

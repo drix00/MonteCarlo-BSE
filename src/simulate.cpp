@@ -42,8 +42,6 @@
 
 // Global and constant variables/functions.
 
-
-
 void run_simulation(Data& datum, RandomSeed rand_seed) {
 
     Simulation simulation{ datum.input, rand_seed() };

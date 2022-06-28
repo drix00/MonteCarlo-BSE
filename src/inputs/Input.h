@@ -36,14 +36,15 @@ class Input
 {
   public:
     /**
+     * Basic input for the simulation.
      *
-     * @param element_
-     * @param initial_energy_eV_
-     * @param number_trajectories_
-     * @param repetition_id_
+     * @param[in] element_
+     * @param[in] initial_energy_eV_
+     * @param[in] number_trajectories_
+     * @param[in] repetition_id_
      */
-    Input(Element element_, double initial_energy_eV_, int number_trajectories_, int repetition_id_=1)
-        : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{repetition_id_} {};
+    Input(Element element_, double initial_energy_eV_, int number_trajectories_, int repetition_id_ = 1)
+        : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{ repetition_id_ } {};
 
   public:
     Element element;
@@ -53,4 +54,4 @@ class Input
     int repetition_id;
 };
 
-#endif//MONTECARLO_BSE_INPUT_H
+#endif// MONTECARLO_BSE_INPUT_H
