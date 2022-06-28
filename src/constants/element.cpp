@@ -34,9 +34,9 @@
 
 namespace monte_carlo::constants::element {
 
-std::string get_symbol(int atomic_number)
+std::string get_symbol(unsigned int atomic_number)
 {
-    static const std::map<const int, const std::string> symbols{
+    static const std::map<const unsigned int, const std::string> symbols{
         std::pair(1, "H"),
         std::pair(2, "He"),
         std::pair(3, "Li"),
@@ -148,9 +148,9 @@ std::string get_symbol(int atomic_number)
     return symbols.at(atomic_number);
 }
 
-std::string get_name(int atomic_number)
+std::string get_name(unsigned int atomic_number)
 {
-    static const std::map<const int, const std::string> names{
+    static const std::map<const unsigned int, const std::string> names{
         std::pair(1, "Hydrogen"),
         std::pair(2, "Helium"),
         std::pair(3, "Lithium"),
@@ -262,9 +262,9 @@ std::string get_name(int atomic_number)
     return names.at(atomic_number);
 }
 
-double get_atomic_weight_g_mol(int atomic_number)
+double get_atomic_weight_g_mol(unsigned int atomic_number)
 {
-    static const std::map<const int, const double> atomic_weights_g_mol{
+    static const std::map<const unsigned int, const double> atomic_weights_g_mol{
         { 1, 1.00794 },
         { 2, 4.002602 },
         { 3, 6.941 },
@@ -376,9 +376,9 @@ double get_atomic_weight_g_mol(int atomic_number)
     return atomic_weights_g_mol.at(atomic_number);
 }
 
-double get_atomic_mass_density_g_cm3(int atomic_number)
+double get_atomic_mass_density_g_cm3(unsigned int atomic_number)
 {
-    static const std::map<int, double> atomic_mass_density_g_cm3{
+    static const std::map<unsigned int, double> atomic_mass_density_g_cm3{
         { 1, 0.0899 },
         { 2, 0.1787 },
         { 3, 0.534 },

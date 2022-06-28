@@ -79,7 +79,7 @@ std::vector<Data> get_inputs_atomic_numbers() {
     double initial_energy_eV{15.e3};
     int number_trajectories{1'000'000};
 
-    for (int atomic_number=1; atomic_number<=96; ++atomic_number){
+    for (unsigned int atomic_number=1; atomic_number<=96; ++atomic_number){
         Element element{atomic_number, monte_carlo::constants::element::get_atomic_weight_g_mol(atomic_number), monte_carlo::constants::element::get_atomic_mass_density_g_cm3(atomic_number)};
         Input input{ element, initial_energy_eV, number_trajectories };
         data.emplace_back(input, "");

@@ -41,11 +41,11 @@ class Element
      * @param[in] atomic_weight_g_mol_
      * @param[in] density_g_cm3_
      */
-    Element(int atomic_number_, double atomic_weight_g_mol_, double density_g_cm3_)
+    Element(unsigned int atomic_number_, double atomic_weight_g_mol_, double density_g_cm3_)
         : atomic_number{ atomic_number_ }, atomic_weight_g_mol{ atomic_weight_g_mol_ }, density_g_cm3{ density_g_cm3_ } {};
 
   public:
-    int atomic_number;
+    unsigned int atomic_number;
     double atomic_weight_g_mol;
     double density_g_cm3;
 };

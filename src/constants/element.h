@@ -41,7 +41,7 @@ namespace monte_carlo::constants::element {
  * @param[in] atomic_number
  * @return symbol of the element
  */
-std::string get_symbol(int atomic_number);
+std::string get_symbol(unsigned int atomic_number);
 /**
  * Get the element name from an atomic number.
  *
@@ -51,7 +51,7 @@ std::string get_symbol(int atomic_number);
  * @param[in] atomic_number
  * @return name of the element
  */
-std::string get_name(int atomic_number);
+std::string get_name(unsigned int atomic_number);
 /**
  * Get the atomic weight (g/mol) from an atomic number.
  *
@@ -61,7 +61,7 @@ std::string get_name(int atomic_number);
  * @param[in] atomic_number
  * @return atomic weight in g/mol
  */
-double get_atomic_weight_g_mol(int atomic_number);
+double get_atomic_weight_g_mol(unsigned int atomic_number);
 /**
  * Get the mass density (g/cm3) from an atomic number.
  *
@@ -71,7 +71,7 @@ double get_atomic_weight_g_mol(int atomic_number);
  * @param[in] atomic_number
  * @return mass density in g/cm3
  */
-double get_atomic_mass_density_g_cm3(int atomic_number);
+double get_atomic_mass_density_g_cm3(unsigned int atomic_number);
 
 }// namespace monte_carlo::constants::element
 
