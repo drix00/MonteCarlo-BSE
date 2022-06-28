@@ -25,7 +25,6 @@
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "results/Counter.h"
 // Project private headers

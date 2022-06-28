@@ -25,7 +25,6 @@
 #include <cassert>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 #include "MeanFreePath.h"
 // Project headers

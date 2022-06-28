@@ -24,7 +24,6 @@
 #include <cmath>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 #include "DirectionCosine.h"
 // Project headers

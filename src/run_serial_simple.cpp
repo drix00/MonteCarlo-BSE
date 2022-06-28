@@ -25,7 +25,6 @@
 #include <fstream>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 // Project headers
 #include "simulate.h"

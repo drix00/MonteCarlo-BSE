@@ -25,7 +25,6 @@
 #include <map>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 #include "constants/element.h"
 // Project headers

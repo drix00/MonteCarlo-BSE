@@ -25,7 +25,6 @@
 #include <cmath>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 #include "Rutherford.h"
 // Project headers

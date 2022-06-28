@@ -29,7 +29,6 @@
 #include <catch2/catch.hpp>
 #include <spdlog/spdlog.h>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "models/RandomSeed.h"
 // Project private headers

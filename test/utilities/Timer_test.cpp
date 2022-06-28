@@ -26,7 +26,6 @@
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "utilities/Timer.h"
 // Project private headers

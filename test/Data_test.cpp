@@ -24,7 +24,6 @@
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "Data.h"
 // Project private headers

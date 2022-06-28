@@ -24,7 +24,6 @@
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "models/MeanFreePath.h"
 #include "models/Rutherford.h"

@@ -24,7 +24,6 @@
 #include <string>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 // Project headers
 #include "inputs.h"

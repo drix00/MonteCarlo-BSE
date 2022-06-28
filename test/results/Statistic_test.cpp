@@ -24,7 +24,6 @@
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
-#pragma hdrstop
 // Project headers
 #include "results/Statistic.h"
 #include "models/RandomNumber.h"

@@ -24,7 +24,6 @@
 #include <chrono>
 // Library headers
 // Precompiled header
-#pragma hdrstop
 // Current declaration header file of this implementation file.
 #include "Simulation.h"
 // Project headers
