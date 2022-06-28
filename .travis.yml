@@ -25,7 +25,7 @@ jobs:
 #        - PATH="${HOME}/Library/Python/2.7/bin:${PATH}"
 #        - MATRIX_EVAL=""
     - os: linux
-      dist: bionic
+      dist: focal
       compiler: gcc
       env:
         - GCC_VER="9"
@@ -68,6 +68,3 @@ script:
   - cmake -D ENABLE_COVERAGE:BOOL=TRUE .
   - cmake --build . -- -j2
   - ctest -j2
-
-
-
