@@ -5,7 +5,7 @@ Monte Carlo simulation of backscattered electron (BSE) in a SEM.
 
 AppVeyor (Windows): [![Build status](https://ci.appveyor.com/api/projects/status/95ald9y73323fgr7?svg=true)](https://ci.appveyor.com/project/drix00/montecarlo-bse)
 
-Travis CI (Linux): [![Build Status](https://travis-ci.com/drix00/MonteCarlo-BSE.svg?branch=master)](https://travis-ci.com/drix00/MonteCarlo-BSE)
+Travis CI (Linux): [![Build Status](https://app.travis-ci.com/drix00/MonteCarlo-BSE.svg?branch=master)](https://app.travis-ci.com/github/drix00/MonteCarlo-BSE)
 
 ## Changelog
 
