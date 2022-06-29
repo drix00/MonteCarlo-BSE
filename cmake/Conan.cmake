@@ -12,6 +12,7 @@ include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_add_remote(NAME bincrafters URL
                  https://api.bintray.com/conan/bincrafters/public-conan)
 
+set(CONAN_DISABLE_CHECK_COMPILER TRUE)
 conan_cmake_run(
   REQUIRES
   ${CONAN_EXTRA_REQUIRES}

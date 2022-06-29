@@ -74,6 +74,6 @@ if(ENABLE_FUZZING)
 endif()
 
 
-find_package (Threads)
+find_package(Threads)
 
 add_subdirectory(src)

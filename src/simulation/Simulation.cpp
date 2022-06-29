@@ -36,14 +36,15 @@ void Simulation::do_simulation()
 {
     std::chrono::steady_clock::time_point start_time{ std::chrono::steady_clock::now() };
 
-    double minimum_energy_eV = 50.0;
+    const double minimum_energy_eV = 50.0;
+    const double max_lateral_distance_nm = 1.0e9;
 
     for (int trajectory_id = 0; trajectory_id < input.number_trajectories; ++trajectory_id) {
         DirectionCosine direction = DirectionCosine{ 0.0, 0.0, -1.0 };
         double energy_eV = input.initial_energy_eV;
-        double x = 0.0;
-        double y = 0.0;
-        double z = 0.0;
+        double x_nm = 0.0;
+        double y_nm = 0.0;
+        double z_nm = 0.0;
 
         double sigma_nm2 = cross_section.compute_sigma_nm2(energy_eV);
         double mfp_nm = mean_free_path.compute_nm(sigma_nm2);
@@ -56,13 +57,21 @@ void Simulation::do_simulation()
         double delta_energy_eV = step_nm * nm2cm * energy_loss.compute_keV_g_cm2(energy_eV) * input.element.density_g_cm3 * keV2eV;
         energy_eV += delta_energy_eV;
 
-        x += step_nm * direction.ca;
-        y += step_nm * direction.cb;
-        z += step_nm * direction.cc;
+        x_nm += step_nm * direction.ca;
+        y_nm += step_nm * direction.cb;
+        z_nm += step_nm * direction.cc;
 
-        if (z < -input.thickness_nm) {
+        if (z_nm < -input.thickness_nm) {
             bse.add_value(0.0);
             te.add_value(1.0);
+            continue;
+        }
+
+        if (x_nm < -max_lateral_distance_nm || x_nm > max_lateral_distance_nm) {
+            continue;
+        }
+
+        if (y_nm < -max_lateral_distance_nm || y_nm > max_lateral_distance_nm) {
             continue;
         }
 
@@ -78,23 +87,32 @@ void Simulation::do_simulation()
             delta_energy_eV = step_nm * nm2cm * energy_loss.compute_keV_g_cm2(energy_eV) * input.element.density_g_cm3 * keV2eV;
             energy_eV += delta_energy_eV;
 
-            x += step_nm * direction.ca;
-            y += step_nm * direction.cb;
-            z += step_nm * direction.cc;
+            x_nm += step_nm * direction.ca;
+            y_nm += step_nm * direction.cb;
+            z_nm += step_nm * direction.cc;
 
-            if (z > 0.0) {
+            if (z_nm > 0.0) {
                 bse.add_value(1.0);
                 te.add_value(0.0);
                 break;
             }
 
-            if (z < -input.thickness_nm) {
+            if (z_nm < -input.thickness_nm) {
                 bse.add_value(0.0);
                 te.add_value(1.0);
                 break;
             }
+
+            if (x_nm < -max_lateral_distance_nm || x_nm > max_lateral_distance_nm) {
+                break;
+            }
+
+            if (y_nm < -max_lateral_distance_nm || y_nm > max_lateral_distance_nm) {
+                break;
+            }
         }
-        if (z <= 0.0 && z >= -input.thickness_nm) {
+
+        if (z_nm <= 0.0 && z_nm >= -input.thickness_nm) {
             bse.add_value(0.0);
             te.add_value(0.0);
         }
