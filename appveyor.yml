@@ -10,20 +10,11 @@ install:
     - cmd: conan --version
 
 build_script:
-<<<<<<< HEAD
     - cmd: mkdir build
     - cmd: cd build
     - cmd: set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
     - cmd: cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
     - cmd: cmake --build . --config "Release"
-=======
-- cmd: >-
-    mkdir build
-    cd build
-    set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
-    cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
-    cmake --build . --config "Release"
->>>>>>> master
 
 test_script:
 - cmd: ctest -C Debug
