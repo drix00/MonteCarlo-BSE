@@ -1,18 +1,20 @@
 image:
   - Visual Studio 2019
 clone_folder: c:\projects\source
+
+install:
+    - cmd: echo "Downloading conan..."
+    - cmd: set PATH=%PATH%;%PYTHON%/Scripts/
+    - cmd: pip.exe install conan
+    - cmd: conan user # Create the conan data directory
+    - cmd: conan --version
+
 build_script:
 - cmd: >-
     mkdir build
-
     cd build
-
-    pip install --user conan
-
     set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\Python\Scripts
-
     cmake c:\projects\source -G "Visual Studio 16 2019" -DCMAKE_BUILD_TYPE:STRING=Release
-
     cmake --build . --config "Release"
 
 test_script:
