@@ -31,7 +31,7 @@
 class Counter
 {
   public:
-    void add_value(double value_);
+    void add_value(double value);
     int counts() const { return number_x; };
     double min() const { return min_x; };
     double max() const { return max_x; };

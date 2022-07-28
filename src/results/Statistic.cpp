@@ -32,17 +32,17 @@
 
 // Global and constant variables/functions.
 
-void Statistic::add_value(double value_)
+void Statistic::add_value(double value)
 {
     ++number_x;
 
-    sum_x += value_;
-    sum_xx += value_ * value_;
-    sum_xxx += value_ * value_ * value_;
-    sum_xxxx += value_ * value_ * value_ * value_;
+    sum_x += value;
+    sum_xx += value * value;
+    sum_xxx += value * value * value;
+    sum_xxxx += value * value * value * value;
 
-    min_x = std::min(min_x, value_);
-    max_x = std::max(max_x, value_);
+    min_x = std::min(min_x, value);
+    max_x = std::max(max_x, value);
 }
 
 double Statistic::mean() const

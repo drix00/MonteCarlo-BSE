@@ -32,15 +32,15 @@
 
 // Global and constant variables/functions.
 
-void Counter::add_value(double value_)
+void Counter::add_value(double value)
 {
     ++number_x;
 
-    sum_x += value_;
-    sum_xx += value_ * value_;
+    sum_x += value;
+    sum_xx += value * value;
 
-    min_x = std::min(min_x, value_);
-    max_x = std::max(max_x, value_);
+    min_x = std::min(min_x, value);
+    max_x = std::max(max_x, value);
 }
 
 double Counter::mean() const
