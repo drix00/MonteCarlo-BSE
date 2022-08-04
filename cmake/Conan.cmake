@@ -9,15 +9,14 @@ endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_add_remote(NAME bincrafters URL
-                 https://api.bintray.com/conan/bincrafters/public-conan)
+conan_add_remote(NAME bincrafters URL https://api.bintray.com/conan/bincrafters/public-conan)
 
 set(CONAN_DISABLE_CHECK_COMPILER TRUE)
 conan_cmake_run(
   REQUIRES
   ${CONAN_EXTRA_REQUIRES}
-  catch2/2.11.0
-  spdlog/1.5.0
+  catch2/2.13.9
+  spdlog/1.10.0
   OPTIONS
   ${CONAN_EXTRA_OPTIONS}
   BASIC_SETUP
