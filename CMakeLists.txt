@@ -8,6 +8,7 @@ message(${PROJECT_VERSION})
 message(${CMAKE_PROJECT_VERSION})
 message(${MonteCarlo-BSE_VERSION})
 
+
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
 target_compile_features(project_options INTERFACE cxx_std_17)
@@ -77,10 +78,11 @@ if(ENABLE_FUZZING)
   add_subdirectory(fuzz_test)
 endif()
 
+
 # Find git
 find_package(Git REQUIRED)
 execute_process(
-        COMMAND ${GIT_EXECUTABLE} rev-list -1 HEAD ProjectVersionDetails.cmake
+        COMMAND ${GIT_EXECUTABLE} rev-list -1 HEAD -- ./cmake/ProjectVersionDetails.cmake
         RESULT_VARIABLE result
         OUTPUT_VARIABLE lastChangeHash
         OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -99,6 +101,7 @@ if(result)
 endif()
 string(REGEX REPLACE "[\n\r]+" ";" hashList "${hashList}")
 list(LENGTH hashList MonteCarlo-BSE_COMMITS_SINCE_VERSION_CHANGE)
+
 
 find_package(Threads)
 

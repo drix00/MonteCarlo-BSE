@@ -98,6 +98,7 @@ int main(int argc, char *argv[]) {
     spdlog::info( "MC-BSE version minor: {}", get_version_minor());
     spdlog::info( "MC-BSE version patch: {}", get_version_patch());
     spdlog::info( "MC-BSE version tweak: {}", get_version_tweak());
+    spdlog::info( "MC-BSE commits since last version change: {}", get_commits_since_version_change());
 
     spdlog::info( "MC-BSE run successfully");
     return EXIT_SUCCESS;
