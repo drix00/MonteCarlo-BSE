@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 
-# Set the project name to your project name, my project isn't very descriptive
-project(MonteCarlo-BSE CXX)
+# Set the project name, version and programming language.
+include(cmake/ProjectVersionDetails.cmake)
+project(MonteCarlo-BSE LANGUAGES CXX VERSION ${MonteCarlo-BSE_VER})
 include(cmake/StandardProjectSettings.cmake)
+message(${PROJECT_VERSION})
+message(${CMAKE_PROJECT_VERSION})
+message(${MonteCarlo-BSE_VERSION})
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
@@ -73,6 +77,28 @@ if(ENABLE_FUZZING)
   add_subdirectory(fuzz_test)
 endif()
 
+# Find git
+find_package(Git REQUIRED)
+execute_process(
+        COMMAND ${GIT_EXECUTABLE} rev-list -1 HEAD ProjectVersionDetails.cmake
+        RESULT_VARIABLE result
+        OUTPUT_VARIABLE lastChangeHash
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if(result)
+  message(FATAL_ERROR "Failed to get hash of last change: ${result}")
+endif()
+execute_process(
+        COMMAND ${GIT_EXECUTABLE} rev-list ${lastChangeHash}..HEAD
+        RESULT_VARIABLE result
+        OUTPUT_VARIABLE hashList
+        OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+if(result)
+  message(FATAL_ERROR "Failed to get list of git hashes: ${result}")
+endif()
+string(REGEX REPLACE "[\n\r]+" ";" hashList "${hashList}")
+list(LENGTH hashList MonteCarlo-BSE_COMMITS_SINCE_VERSION_CHANGE)
 
 find_package(Threads)
 

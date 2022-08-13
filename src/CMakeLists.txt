@@ -1,8 +1,13 @@
 # Simulate serial an simple code.
 set(mcbse_source_files ../src/constants/element.cpp ../src/inputs/Input.cpp ../src/inputs/Element.cpp ../src/inputs/Element.h ../src/models/Rutherford.cpp ../src/models/Rutherford.h ../src/models/EnergyLoss.cpp ../src/models/EnergyLoss.h ../src/models/MeanFreePath.cpp ../src/models/MeanFreePath.h ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h ../src/models/RandomNumber.cpp ../src/models/RandomNumber.h ../src/results/Statistic.cpp ../src/results/Statistic.h ../src/models/RandomSeed.cpp ../src/models/RandomSeed.h ../src/results/Counter.cpp ../src/results/Counter.h ../src/inputs.cpp ../src/inputs.h ../src/simulate.cpp ../src/simulate.h ../src/Data.cpp ../src/Data.h ../src/utilities/Timer.cpp ../src/utilities/Timer.h)
 
-add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files})
-target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog)
+configure_file(version.cpp.in version.cpp @ONLY)
+add_library(MonteCarlo-BSE_version STATIC ${CMAKE_CURRENT_BINARY_DIR}/version.cpp)
+target_include_directories(MonteCarlo-BSE_version PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files} version.h)
+target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog
+        MonteCarlo-BSE_version)
 if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     target_compile_definitions(mcbse_console  PRIVATE _CRT_SECURE_NO_WARNINGS)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
