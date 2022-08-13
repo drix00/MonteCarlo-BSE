@@ -55,8 +55,3 @@ unsigned int get_version_tweak()
 {
     return @MonteCarlo-BSE_VERSION_TWEAK@ +0;
 }
-
-unsigned int get_commits_since_version_change()
-{
-    return @MonteCarlo-BSE_COMMITS_SINCE_VERSION_CHANGE@;
-}

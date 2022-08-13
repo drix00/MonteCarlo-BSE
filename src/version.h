@@ -39,6 +39,5 @@ unsigned int get_version_major();
 unsigned int get_version_minor();
 unsigned int get_version_patch();
 unsigned int get_version_tweak();
-unsigned int get_commits_since_version_change();
 
 #endif// MONTECARLO_BSE_VERSION_H
