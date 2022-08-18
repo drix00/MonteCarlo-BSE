@@ -1,16 +1,9 @@
-//
-// Created by drix on 2022-08-13.
-//
-
-#ifndef MONTECARLO_BSE_VERSION_H
-#define MONTECARLO_BSE_VERSION_H
-
 /**
- * @file
- *
- * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
- */
+* @file
+*
+* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+* @copyright 2022
+*/
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -26,18 +19,28 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
-// Forwards declarations
 // C system headers
 // C++ system header
-#include <string>
 // Library headers
+#include <catch2/catch.hpp>
+// Precompiled header
 // Project headers
+#include "utilities/version.h"
 // Project private headers
 
-std::string get_version();
-unsigned int get_version_major();
-unsigned int get_version_minor();
-unsigned int get_version_patch();
-unsigned int get_version_tweak();
+// Global and constant variables/functions.
 
-#endif// MONTECARLO_BSE_VERSION_H
+TEST_CASE("Test if version tests were find", "[version]")
+{
+   REQUIRE(true);
+}
+
+TEST_CASE("Test current version number is correct", "[version]")
+{
+    REQUIRE("0.3.0.1" == get_version_str());
+
+    REQUIRE(0U == get_version_major());
+    REQUIRE(3U == get_version_minor());
+    REQUIRE(0U == get_version_patch());
+    REQUIRE(1U == get_version_tweak());
+}

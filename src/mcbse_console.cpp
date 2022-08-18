@@ -30,7 +30,8 @@
 // Precompiled header
 // Current declaration header file of this implementation file.
 // Project headers
-#include "version.h"
+#include "utilities/version.h"
+#include "utilities/ProgramVersion.h"
 // Project private headers
 
 // Global and constant variables/functions.
@@ -93,11 +94,14 @@ int main(int argc, char *argv[]) {
         spdlog::error( "Un caught exception in main function of MC-BSE. Program terminated");
         return EXIT_FAILURE;
     }
-    spdlog::info( "MC-BSE version: {}", get_version());
+    spdlog::info( "MC-BSE version: {}", get_version_str());
     spdlog::info( "MC-BSE version major: {}", get_version_major());
     spdlog::info( "MC-BSE version minor: {}", get_version_minor());
     spdlog::info( "MC-BSE version patch: {}", get_version_patch());
     spdlog::info( "MC-BSE version tweak: {}", get_version_tweak());
+
+    spdlog::info("Program build: {}", mcbse::version::CURRENT_PROGRAM_VERSION.get_build_date_time_string());
+    spdlog::info("Program compiler build: {}", mcbse::version::CURRENT_PROGRAM_VERSION.get_compiler_build_parameters_string());
 
     spdlog::info( "MC-BSE run successfully");
     return EXIT_SUCCESS;

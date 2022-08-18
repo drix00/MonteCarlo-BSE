@@ -1,3 +1,6 @@
+#ifndef MONTECARLO_BSE_VERSION_H
+#define MONTECARLO_BSE_VERSION_H
+
 /**
  * @file
  *
@@ -19,39 +22,18 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+// Forwards declarations
 // C system headers
 // C++ system header
 #include <string>
 // Library headers
-// Precompiled header
-// Current declaration header file of this implementation file.
-#include "version.h"
 // Project headers
 // Project private headers
 
-// Global and constant variables/functions.
+std::string get_version_str();
+unsigned int get_version_major();
+unsigned int get_version_minor();
+unsigned int get_version_patch();
+unsigned int get_version_tweak();
 
-std::string get_version()
-{
-    return "@MonteCarlo-BSE_VERSION@";
-}
-
-unsigned int get_version_major()
-{
-    return @MonteCarlo-BSE_VERSION_MAJOR@;
-}
-
-unsigned int get_version_minor()
-{
-    return @MonteCarlo-BSE_VERSION_MINOR@ +0;
-}
-
-unsigned int get_version_patch()
-{
-    return @MonteCarlo-BSE_VERSION_PATCH@ +0;
-}
-
-unsigned int get_version_tweak()
-{
-    return @MonteCarlo-BSE_VERSION_TWEAK@ +0;
-}
+#endif// MONTECARLO_BSE_VERSION_H
