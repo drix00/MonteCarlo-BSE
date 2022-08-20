@@ -14,6 +14,7 @@ set(mcbse_source_files ${mcbse_source_files} ../src/models/Rutherford.cpp ../src
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Counter.cpp ../src/results/Counter.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Statistic.cpp ../src/results/Statistic.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/utilities/logger.cpp ../src/utilities/logger.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/ProgramVersion.cpp ../src/utilities/ProgramVersion.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/Timer.cpp ../src/utilities/Timer.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/version.h)
