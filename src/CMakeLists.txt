@@ -27,26 +27,12 @@ list(LENGTH mcbse_source_files len)
 message("MCBSE source files length = ${len}")
 
 add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files} utilities/version.h)
+target_include_directories(mcbse_console PRIVATE ../src)
 target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog
         MonteCarlo-BSE_version)
-if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    target_compile_definitions(mcbse_console  PRIVATE _CRT_SECURE_NO_WARNINGS)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    target_link_libraries(mcbse_console PRIVATE tbb)
-endif()
-target_include_directories(mcbse_console PRIVATE ../src)
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_definitions(mcbse_console  PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
-if(MSVC)
-    if(CPU_INSTRUCTION_SET MATCHES "arm64" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        # Exceptions are not enabled by default for ARM targets and clang-cl, enable them
-        target_compile_options(mcbse_console PRIVATE /EHsc)
-    endif()
-endif()
 
 add_subdirectory(runner)
-# Simulate serial an simple code.
+
 if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     message("")
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")

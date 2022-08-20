@@ -5,7 +5,6 @@ else ()
     include(${CONAN_CATCH2_ROOT}/lib/cmake/Catch2/Catch.cmake)
 endif ()
 
-
 add_library(catch_main STATIC catch_main.cpp)
 target_link_libraries(catch_main PUBLIC CONAN_PKG::catch2)
 target_link_libraries(catch_main PRIVATE project_options CONAN_PKG::spdlog MonteCarlo-BSE_version)
@@ -39,19 +38,10 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     add_compile_options(-fprofile-arcs -ftest-coverage)
     add_link_options(-lgcov --coverage)
 endif()
+
 add_executable(tests ${test_source_files} ${mcbse_source_files})
-target_link_libraries(tests PRIVATE project_warnings project_options catch_main CONAN_PKG::spdlog)
-if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    target_compile_definitions(tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    target_link_libraries(tests PRIVATE tbb)
-endif()
-
 target_include_directories(tests PRIVATE ../src)
-
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_definitions(tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
+target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog)
 
 # automatically discover tests that are defined in catch based test files you
 # can modify the unittests. TEST_PREFIX to whatever you want, or use different
@@ -68,9 +58,6 @@ catch_discover_tests(
 # Add a file containing a set of constexpr tests
 add_executable(constexpr_tests constexpr_tests.cpp)
 target_link_libraries(constexpr_tests PRIVATE project_options project_warnings catch_main)
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_definitions(constexpr_tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
 
 catch_discover_tests(
         constexpr_tests
@@ -86,13 +73,7 @@ catch_discover_tests(
 # testing
 add_executable(relaxed_constexpr_tests constexpr_tests.cpp)
 target_link_libraries(relaxed_constexpr_tests PRIVATE project_options project_warnings catch_main)
-target_compile_definitions(
-        relaxed_constexpr_tests PRIVATE
-        -DCATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_definitions(relaxed_constexpr_tests  PRIVATE _CRT_SECURE_NO_WARNINGS)
-endif()
-
+target_compile_definitions(relaxed_constexpr_tests PRIVATE -DCATCH_CONFIG_RUNTIME_STATIC_REQUIRE)
 
 catch_discover_tests(
         relaxed_constexpr_tests
