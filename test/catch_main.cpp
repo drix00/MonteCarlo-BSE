@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 {
     // global setup...
 
-    auto file_logger = spdlog::basic_logger_mt("basic_logger", "logs/basic.log");
+    auto file_logger = spdlog::basic_logger_mt("tests_logger", "logs/tests.log");
     spdlog::set_default_logger(file_logger);
 
     int result = Catch::Session().run(argc, argv);
@@ -51,6 +51,5 @@ int main(int argc, char *argv[])
 
 TEST_CASE("Test if catch2 test framework is working", "[test_catch2]")
 {
-//    REQUIRE(false);
     REQUIRE(true);
 }
