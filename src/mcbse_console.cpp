@@ -94,6 +94,7 @@ int main(int argc, char *argv[]) {
         spdlog::error( "Un caught exception in main function of MC-BSE. Program terminated");
         return EXIT_FAILURE;
     }
+    spdlog::info( "Program name: {}", get_project_name());
     spdlog::info( "MC-BSE version: {}", get_version_str());
     spdlog::info( "MC-BSE version major: {}", get_version_major());
     spdlog::info( "MC-BSE version minor: {}", get_version_minor());
