@@ -31,6 +31,11 @@
 
 // Global and constant variables/functions.
 
+std::string get_project_name()
+{
+    return "@PROJECT_NAME@";
+}
+
 std::string get_version_str()
 {
     return "@MonteCarlo-BSE_VERSION@";

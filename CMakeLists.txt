@@ -4,10 +4,9 @@ cmake_minimum_required(VERSION 3.15)
 include(cmake/ProjectVersionDetails.cmake)
 project(MonteCarlo-BSE LANGUAGES CXX VERSION ${MonteCarlo-BSE_VER})
 include(cmake/StandardProjectSettings.cmake)
-message(${PROJECT_VERSION})
-message(${CMAKE_PROJECT_VERSION})
-message(${MonteCarlo-BSE_VERSION})
-
+message("Project version: ${PROJECT_VERSION}")
+message("CMake project version: ${CMAKE_PROJECT_VERSION}")
+message("Monte Carlo BSE version${MonteCarlo-BSE_VERSION}")
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
@@ -63,6 +62,11 @@ set(CONAN_EXTRA_OPTIONS "")
 include(cmake/Conan.cmake)
 run_conan()
 
+find_package(Threads)
+
+# Add source folder before test folder.
+add_subdirectory(src)
+
 if(ENABLE_TESTING)
   enable_testing()
   message(
@@ -77,8 +81,3 @@ if(ENABLE_FUZZING)
   )
   add_subdirectory(fuzz_test)
 endif()
-
-
-find_package(Threads)
-
-add_subdirectory(src)

@@ -30,6 +30,7 @@
 // Project headers
 // Project private headers
 
+std::string get_project_name();
 std::string get_version_str();
 unsigned int get_version_major();
 unsigned int get_version_minor();

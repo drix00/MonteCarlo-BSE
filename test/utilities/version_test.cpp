@@ -44,3 +44,8 @@ TEST_CASE("Test current version number is correct", "[version]")
     REQUIRE(0U == get_version_patch());
     REQUIRE(1U == get_version_tweak());
 }
+
+TEST_CASE("Test if project name is correct", "[version]")
+{
+    REQUIRE("MonteCarlo-BSE" == get_project_name());
+}
