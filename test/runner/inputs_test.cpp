@@ -25,7 +25,7 @@
 #include <catch2/catch.hpp>
 // Precompiled header
 // Project headers
-#include "inputs.h"
+#include "runner/inputs.h"
 // Project private headers
 
 // Global and constant variables/functions.

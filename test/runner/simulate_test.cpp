@@ -25,12 +25,12 @@
 #include <catch2/catch.hpp>
 // Precompiled header
 // Project headers
-#include "Data.h"
+#include "runner/simulate.h"
 // Project private headers
 
 // Global and constant variables/functions.
 
-TEST_CASE("Test if Data tests were find", "[test]")
+TEST_CASE("Test if simulate tests were find", "[test]")
 {
    REQUIRE(true);
 }

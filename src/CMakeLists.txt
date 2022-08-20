@@ -18,9 +18,9 @@ set(mcbse_source_files ${mcbse_source_files} ../src/utilities/ProgramVersion.cpp
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/Timer.cpp ../src/utilities/Timer.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/version.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/VersionInfo.cpp ../src/utilities/VersionInfo.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/Data.cpp ../src/Data.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/inputs.cpp ../src/inputs.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/simulate.cpp ../src/simulate.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/Data.cpp ../src/runner/Data.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/inputs.cpp ../src/runner/inputs.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/simulate.cpp ../src/runner/simulate.h)
 set(mcbse_source_files ${mcbse_source_files} PARENT_SCOPE)
 
 list(LENGTH mcbse_source_files len)
