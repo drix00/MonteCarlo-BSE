@@ -64,6 +64,11 @@ run_conan()
 
 find_package(Threads)
 
+#find_package(catch2 REQUIRED)
+#find_package(spdlog)
+#find_package(cli11)
+include_directories(${CLI11_DIR}/include)
+
 if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_compile_definitions(project_options  INTERFACE _CRT_SECURE_NO_WARNINGS)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")

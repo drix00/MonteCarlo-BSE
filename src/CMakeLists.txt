@@ -11,6 +11,8 @@ set(mcbse_source_files ${mcbse_source_files} ../src/models/MeanFreePath.cpp ../s
 set(mcbse_source_files ${mcbse_source_files} ../src/models/RandomNumber.cpp ../src/models/RandomNumber.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/RandomSeed.cpp ../src/models/RandomSeed.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/Rutherford.cpp ../src/models/Rutherford.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/options/program_options.cpp ../src/options/program_options.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/options/program_options_parser.cpp ../src/options/program_options_parser.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Counter.cpp ../src/results/Counter.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Statistic.cpp ../src/results/Statistic.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h)
@@ -27,9 +29,11 @@ set(mcbse_source_files ${mcbse_source_files} PARENT_SCOPE)
 list(LENGTH mcbse_source_files len)
 message("MCBSE source files length = ${len}")
 
-add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files} utilities/version.h)
+add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files})
 target_include_directories(mcbse_console PRIVATE ../src)
+
 target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog
+        CONAN_PKG::cli11
         MonteCarlo-BSE_version)
 
 add_subdirectory(runner)

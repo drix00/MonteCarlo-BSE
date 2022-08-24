@@ -22,12 +22,16 @@
 // C system headers
 // C++ system header
 #include <cstdlib>
+#include <iostream>
 // Library headers
 #include "spdlog/spdlog.h"
 // Precompiled header
 // Current declaration header file of this implementation file.
 // Project headers
 #include "utilities/logger.h"
+#include "utilities/version.h"
+#include "options/program_options_parser.h"
+#include "options/program_options.h"
 // Project private headers
 
 // Global and constant variables/functions.
@@ -36,7 +40,6 @@
  * MC-BSE console main.
  *
  * \todo Add timing feature for each major part of the program.
- * \todo Add command line feature.
  * \todo Add progress bar.
  *
  * @param[in] argc Non-negative value representing the number of arguments passed to the program from the environment
@@ -53,6 +56,19 @@ int main(int argc, char *argv[]) {
 
         log_program_arguments(argc, argv);
         log_program_information();
+
+        ProgramOptions program_options = parse_command_line(argc, argv);
+
+        if (program_options.exit_value != EXIT_SUCCESS)
+        {
+            return program_options.exit_value;
+        }
+
+        if (program_options.display_version)
+        {
+            std::cout << "Monte Carlo BSE version: " << get_version_str() << std::endl;
+            return EXIT_SUCCESS;
+        }
 
         spdlog::info( "MC-BSE run successfully");
     }

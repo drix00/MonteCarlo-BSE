@@ -103,6 +103,17 @@ inline const VersionInfo VERSION_0_2_1{ 0, 2, 1 };
  * Add run valgrind.
  * Add profiling run.
  */
+inline const VersionInfo VERSION_0_3_0_0{ 0, 3, 0, 0 };
+
+/**
+ * Version of MonteCarlo-BSE.
+ *
+ * Add MC-BSE console program.
+ * Implement program and file version feature.
+ * Add logging with spdlog.
+ * Add command line feature.
+ *
+ */
 inline const VersionInfo VERSION_0_3_0_1{ 0, 3, 0, 1 };
 
 /**

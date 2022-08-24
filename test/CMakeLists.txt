@@ -18,6 +18,8 @@ set(test_source_files ${test_source_files} models/MeanFreePath_test.cpp)
 set(test_source_files ${test_source_files} models/RandomNumber_test.cpp)
 set(test_source_files ${test_source_files} models/RandomSeed_test.cpp)
 set(test_source_files ${test_source_files} models/Rutherford_test.cpp)
+set(test_source_files ${test_source_files} options/program_options_test.cpp)
+set(test_source_files ${test_source_files} options/program_options_parser_test.cpp)
 set(test_source_files ${test_source_files} results/Counter_test.cpp)
 set(test_source_files ${test_source_files} results/Statistic_test.cpp)
 set(test_source_files ${test_source_files} simulation/Simulation_test.cpp)
@@ -41,8 +43,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif()
 
 add_executable(tests ${test_source_files} ${mcbse_source_files})
-target_include_directories(tests PRIVATE ../src)
-target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog)
+target_include_directories(tests PRIVATE ../src )
+target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog CONAN_PKG::cli11)
 
 # automatically discover tests that are defined in catch based test files you
 # can modify the unittests. TEST_PREFIX to whatever you want, or use different
