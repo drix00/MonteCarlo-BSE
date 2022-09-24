@@ -30,7 +30,7 @@ list(LENGTH mcbse_source_files len)
 message("MCBSE source files length = ${len}")
 
 add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files})
-target_include_directories(mcbse_console PRIVATE ../src CONAN_PKG::spdlog CONAN_PKG::cli11)
+target_include_directories(mcbse_console PRIVATE ../src)
 
 target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog
         CONAN_PKG::cli11

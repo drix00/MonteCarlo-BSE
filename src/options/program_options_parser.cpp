@@ -24,9 +24,13 @@
 #include <string>
 #include <map>
 // Library headers
+#if __has_include("CLI/CLI.hpp")
+#include "CLI/CLI.hpp"
+#else
 #include "CLI/App.hpp"
 #include "CLI/Formatter.hpp"
 #include "CLI/Config.hpp"
+#endif
 #include "spdlog/spdlog.h"
 #include "spdlog/common.h"
 // Precompiled header
