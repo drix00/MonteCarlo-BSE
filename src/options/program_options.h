@@ -28,6 +28,7 @@
 #include <cstdlib>
 #include <string>
 // Library headers
+#include <spdlog/common.h>
 // Project headers
 // Project private headers
 
@@ -40,6 +41,10 @@ class ProgramOptions
     bool overwrite{false};
     int number_threads{0};
     int exit_value{EXIT_SUCCESS};
+    bool console_logger{true};
+    spdlog::level::level_enum console_logger_level{spdlog::level::warn};
+    bool file_logger{true};
+    spdlog::level::level_enum file_logger_level{spdlog::level::debug};
 };
 
 

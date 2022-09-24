@@ -26,6 +26,7 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/sinks/rotating_file_sink.h"
 // Precompiled header
 // Current declaration header file of this implementation file.
 // Project headers
@@ -40,27 +41,34 @@ void create_logger(const bool console_logger=true, const bool file_logger=true) 
     {
         std::vector<spdlog::sink_ptr> sinks;
 
+        // Bug? max width for message (%v) is 64.
+        const std::string log_pattern{"[%Y-%m-%d] [%H:%M:%S %z] [%n] [%^%=9l%$] [process %6P, thread %6t] : %-64v [%g:%!:%#]"};
+        auto error_file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("logs/mcbse_console_errors.log", false);
+        error_file_sink->set_level(spdlog::level::warn);
+        error_file_sink->set_pattern(log_pattern);
+        sinks.push_back(error_file_sink);
+
         if (console_logger) {
             auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
             console_sink->set_level(spdlog::level::warn);
-            console_sink->set_pattern("[mcbse_console] [%^%l%$] : %v");
+            console_sink->set_pattern("[%n] [%^%=9l%$] : %v");
             sinks.push_back(console_sink);
         }
 
         if (file_logger) {
-            auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("logs/mcbse_console.log", true);
+            auto max_size = 1048576 * 500;
+            auto max_files = 100;
+            auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("logs/mcbse_console.log", max_size, max_files, false);
             file_sink->set_level(spdlog::level::trace);
-            file_sink->set_pattern("[%Y-%m-%d] [%H:%M:%S %z] [mcbse_console] [%^%l%$] [thread %t] : %v");
+            file_sink->set_pattern(log_pattern);
             sinks.push_back(file_sink);
         }
 
-        spdlog::logger logger("mcbse_console", sinks.begin(), sinks.end());
-        logger.set_level(spdlog::level::debug);
-        logger.info("MC-BSE logging is started");
+        auto mcbse_logger = std::make_shared<spdlog::logger>("mcbse_console", sinks.begin(), sinks.end());
+        mcbse_logger->set_level(spdlog::level::trace);
 
-        // Set mcbse_console logger as default logger
-        spdlog::set_default_logger(std::make_shared<spdlog::logger>("mcbse_console", begin(sinks), end(sinks)));
-
+        // Set mcbse_console mcbse_logger as default mcbse_logger
+        spdlog::set_default_logger(mcbse_logger);
     }
     catch (const spdlog::spdlog_ex& ex)
     {
@@ -88,5 +96,4 @@ void log_program_information()
 
     spdlog::info("Program build: {}", mcbse::version::CURRENT_PROGRAM_VERSION.get_build_date_time_string());
     spdlog::info("Program compiler build: {}", mcbse::version::CURRENT_PROGRAM_VERSION.get_compiler_build_parameters_string());
-
 }

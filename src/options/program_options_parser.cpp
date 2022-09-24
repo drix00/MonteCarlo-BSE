@@ -22,11 +22,13 @@
 // C system headers
 // C++ system header
 #include <string>
+#include <map>
 // Library headers
 #include "CLI/App.hpp"
 #include "CLI/Formatter.hpp"
 #include "CLI/Config.hpp"
 #include "spdlog/spdlog.h"
+#include "spdlog/common.h"
 // Precompiled header
 // Current declaration header file of this implementation file.
 #include "options/program_options_parser.h"
@@ -41,14 +43,42 @@ ProgramOptions parse_command_line(int argc, char *argv[])
 
     std::string input_file_name{};
     auto *input_file_option = app.add_option("input_file", input_file_name, "Input file name");
+
     std::string output_file_name{};
     app.add_option("-o,--output", output_file_name, "Output file name")->needs(input_file_option);
+
     bool version{false};
     app.add_flag("-v,--version", version, "Print the version")->excludes(input_file_option);
+
     bool overwrite{false};
     app.add_flag("--overwrite,!--no-overwrite", overwrite, "Overwrite the output file")->needs(input_file_option);
+
     int number_threads{0};
     app.add_option("-t,--threads", number_threads, "Number of threads to use during the simulation")->needs(input_file_option);
+
+    bool console_logger{true};
+    app.add_flag("--console_logger,!--no-console_logger", console_logger, "Activate the console logger");
+
+    std::map<std::string, spdlog::level::level_enum> map_levels{
+        {"off", spdlog::level::off},
+        {"critical", spdlog::level::critical},
+        {"error", spdlog::level::err},
+        {"warning", spdlog::level::warn},
+        {"info", spdlog::level::info},
+        {"debug", spdlog::level::debug},
+        {"trace", spdlog::level::trace}
+    };
+
+    spdlog::level::level_enum console_logger_level{spdlog::level::warn};
+    app.add_option("--console_logger_level,", console_logger_level, "Console logger level")
+        ->transform(CLI::CheckedTransformer(map_levels, CLI::ignore_case));
+
+    bool file_logger{true};
+    app.add_flag("--file_logger,!--no-file_logger", file_logger, "Activate the file logger");
+
+    spdlog::level::level_enum file_logger_level{spdlog::level::debug};
+    app.add_option("--file_logger_level,", file_logger_level, "File logger level")
+        ->transform(CLI::CheckedTransformer(map_levels, CLI::ignore_case));
 
     ProgramOptions program_options;
 
@@ -64,6 +94,10 @@ ProgramOptions parse_command_line(int argc, char *argv[])
     program_options.display_version = version;
     program_options.overwrite = overwrite;
     program_options.number_threads = number_threads;
+    program_options.console_logger = console_logger;
+    program_options.console_logger_level = console_logger_level;
+    program_options.file_logger = file_logger;
+    program_options.file_logger_level = file_logger_level;
 
     return program_options;
 }

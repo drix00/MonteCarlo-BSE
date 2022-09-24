@@ -36,6 +36,19 @@
 
 // Global and constant variables/functions.
 
+int mcbse_exit(const int exit_value=EXIT_SUCCESS)
+{
+    if (exit_value == EXIT_SUCCESS) {
+        SPDLOG_INFO("MC-BSE run successfully: {}", exit_value);
+    }
+    else{
+        SPDLOG_INFO("MC-BSE has error: {}", exit_value);
+    }
+
+    spdlog::info("========================================================================================================================");
+    return exit_value;
+}
+
 /**
  * MC-BSE console main.
  *
@@ -54,28 +67,29 @@ int main(int argc, char *argv[]) {
     try {
         create_logger();
 
+        ProgramOptions program_options = parse_command_line(argc, argv);
+
+        create_logger(program_options.console_logger, program_options.file_logger);
+
+        SPDLOG_INFO("MC-BSE logging is started");
         log_program_arguments(argc, argv);
         log_program_information();
 
-        ProgramOptions program_options = parse_command_line(argc, argv);
-
         if (program_options.exit_value != EXIT_SUCCESS)
         {
-            return program_options.exit_value;
+            return mcbse_exit(program_options.exit_value);
         }
 
         if (program_options.display_version)
         {
             std::cout << "Monte Carlo BSE version: " << get_version_str() << std::endl;
-            return EXIT_SUCCESS;
+            return mcbse_exit(EXIT_SUCCESS);
         }
-
-        spdlog::info( "MC-BSE run successfully");
     }
     catch (...) {
-        spdlog::error( "Uncaught exception in main function of MC-BSE. Program terminated");
-        return EXIT_FAILURE;
+        SPDLOG_ERROR( "Uncaught exception in main function of MC-BSE. Program terminated");
+        return mcbse_exit(EXIT_FAILURE);
     }
 
-    return EXIT_SUCCESS;
+    return mcbse_exit(EXIT_SUCCESS);
 }
