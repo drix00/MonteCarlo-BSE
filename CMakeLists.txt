@@ -57,7 +57,7 @@ endif()
 # Add conan to the path
 LIST(APPEND CMAKE_PROGRAM_PATH  "venv/Scripts" ...)
 set(CONAN_EXTRA_REQUIRES "")
-set(CONAN_EXTRA_OPTIONS "")
+set(CONAN_EXTRA_OPTIONS "CLI11_SINGLE_FILE=OFF")
 
 include(cmake/Conan.cmake)
 run_conan()

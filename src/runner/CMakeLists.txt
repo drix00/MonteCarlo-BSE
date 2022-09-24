@@ -11,7 +11,7 @@ message("Runner source files length = ${len}")
 function(runner_program program_name)
     add_executable(${program_name} ${program_name}.cpp ${runner_source_files})
     target_include_directories(${program_name} PRIVATE ../../src CONAN_PKG::spdlog CONAN_PKG::cli11)
-    target_link_libraries(${program_name} PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog
+    target_link_libraries(${program_name} PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog CONAN_PKG::cli11
             MonteCarlo-BSE_version)
 endfunction()
 
