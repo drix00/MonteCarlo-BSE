@@ -42,7 +42,7 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     add_link_options(-lgcov --coverage)
 endif()
 
-add_executable(tests ${test_source_files} ${mcbse_source_files})
+add_executable(tests ${test_source_files} ${mcbse_source_files} constexpr_tests.cpp)
 target_include_directories(tests PRIVATE ../src )
 target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog CONAN_PKG::cli11)
 
