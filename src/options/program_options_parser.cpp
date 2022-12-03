@@ -36,12 +36,13 @@
 // Precompiled header
 // Current declaration header file of this implementation file.
 #include "options/program_options_parser.h"
+#include "constants/logger.h"
 // Project headers
 // Project private headers
 
 // Global and constant variables/functions.
 
-ProgramOptions parse_command_line(int argc, char *argv[])
+ProgramOptions parse_command_line(const int argc, const char *const *argv)
 {
     CLI::App app{"Monte Carlo BSE simulator"};
 
@@ -63,26 +64,16 @@ ProgramOptions parse_command_line(int argc, char *argv[])
     bool console_logger{true};
     app.add_flag("--console_logger,!--no-console_logger", console_logger, "Activate the console logger");
 
-    std::map<std::string, spdlog::level::level_enum> map_levels{
-        {"off", spdlog::level::off},
-        {"critical", spdlog::level::critical},
-        {"error", spdlog::level::err},
-        {"warning", spdlog::level::warn},
-        {"info", spdlog::level::info},
-        {"debug", spdlog::level::debug},
-        {"trace", spdlog::level::trace}
-    };
-
     spdlog::level::level_enum console_logger_level{spdlog::level::warn};
     app.add_option("--console_logger_level,", console_logger_level, "Console logger level")
-        ->transform(CLI::CheckedTransformer(map_levels, CLI::ignore_case));
+        ->transform(CLI::CheckedTransformer(monte_carlo::constants::logger::map_levels, CLI::ignore_case));
 
     bool file_logger{true};
     app.add_flag("--file_logger,!--no-file_logger", file_logger, "Activate the file logger");
 
     spdlog::level::level_enum file_logger_level{spdlog::level::debug};
     app.add_option("--file_logger_level,", file_logger_level, "File logger level")
-        ->transform(CLI::CheckedTransformer(map_levels, CLI::ignore_case));
+        ->transform(CLI::CheckedTransformer(monte_carlo::constants::logger::map_levels, CLI::ignore_case));
 
     ProgramOptions program_options;
 

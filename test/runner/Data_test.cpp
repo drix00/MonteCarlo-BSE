@@ -26,6 +26,7 @@
 // Precompiled header
 // Project headers
 #include "runner/Data.h"
+#include "inputs/Input.h"
 // Project private headers
 
 // Global and constant variables/functions.
@@ -33,4 +34,22 @@
 TEST_CASE("Test if Data tests were find", "[test]")
 {
    REQUIRE(true);
+}
+
+TEST_CASE("Test Data constructor", "[test]")
+{
+   const auto initial_energy_eV{10.0e3};
+   const auto number_trajectories{10000};
+   const auto thickness_nm{1.0e9};
+
+   Input input{ get_au(), initial_energy_eV, number_trajectories };
+   std::string line{"this is a line"};
+
+   Data data{input, line};
+
+   REQUIRE(data.input.initial_energy_eV == initial_energy_eV);
+   REQUIRE(data.input.number_trajectories == number_trajectories);
+   REQUIRE(data.input.thickness_nm == thickness_nm);
+
+   REQUIRE(data.line == line);
 }

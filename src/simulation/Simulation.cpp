@@ -36,9 +36,6 @@ void Simulation::do_simulation()
 {
     std::chrono::steady_clock::time_point start_time{ std::chrono::steady_clock::now() };
 
-    const double minimum_energy_eV = 50.0;
-    const double max_lateral_distance_nm = 1.0e9;
-
     for (int trajectory_id = 0; trajectory_id < input.number_trajectories; ++trajectory_id) {
         DirectionCosine direction = DirectionCosine{ 0.0, 0.0, -1.0 };
         double energy_eV = input.initial_energy_eV;
@@ -129,4 +126,14 @@ double Simulation::elapse_time_s()
     double fraction = static_cast<double>(elapse_time_ns.count()) - static_cast<double>(elapse_time_s) * 1.0e9;
     double time_s = static_cast<double>(elapse_time_s) + fraction * 1.0e-9;
     return time_s;
+}
+
+void Simulation::set_minimum_energy_eV(const double new_minimum_energy_eV)
+{
+    minimum_energy_eV = new_minimum_energy_eV;
+}
+
+void Simulation::set_max_lateral_distance_nm(const double new_max_lateral_distance_nm)
+{
+    max_lateral_distance_nm = new_max_lateral_distance_nm;
 }

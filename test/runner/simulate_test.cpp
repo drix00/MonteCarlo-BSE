@@ -34,3 +34,11 @@ TEST_CASE("Test if simulate tests were find", "[test]")
 {
    REQUIRE(true);
 }
+
+TEST_CASE("Test get_suffix", "[test]")
+{
+   std::string suffix = get_suffix();
+
+   REQUIRE(suffix != "");
+   REQUIRE(suffix.size() == 16);
+}

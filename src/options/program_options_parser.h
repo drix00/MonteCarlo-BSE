@@ -30,6 +30,6 @@
 #include "options/program_options.h"
 // Project private headers
 
-ProgramOptions parse_command_line(int argc, char *argv[]);
+ProgramOptions parse_command_line(const int argc, const char *const *argv);
 
 #endif// MONTECARLO_BSE_PROGRAM_OPTIONS_PARSER_H

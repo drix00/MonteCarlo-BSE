@@ -34,3 +34,52 @@ TEST_CASE("Test if inputs tests were find", "[test]")
 {
    REQUIRE(true);
 }
+
+TEST_CASE("Test get_inputs_number_trajectories_repetitions", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_number_trajectories_repetitions();
+
+   REQUIRE(data_list.size() == 60);
+}
+
+TEST_CASE("Test get_inputs_elements_energies", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_elements_energies();
+
+   REQUIRE(data_list.size() == 91);
+}
+
+TEST_CASE("Test get_inputs_atomic_numbers", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_atomic_numbers();
+
+   REQUIRE(data_list.size() == 96);
+}
+
+TEST_CASE("Test get_inputs_densities", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_densities();
+
+   REQUIRE(data_list.size() == 210);
+}
+
+TEST_CASE("Test get_inputs_thickness", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_thickness();
+
+   REQUIRE(data_list.size() == 154);
+}
+
+TEST_CASE("Test get_inputs_profile_serial_simple", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_profile_serial_simple();
+
+   REQUIRE(data_list.size() == 10);
+}
+
+TEST_CASE("Test get_inputs_valgrind", "[test]")
+{
+   std::vector<Data> data_list = get_inputs_valgrind();
+
+   REQUIRE(data_list.size() == 1);
+}

@@ -3,6 +3,7 @@ add_library(MonteCarlo-BSE_version STATIC ${CMAKE_CURRENT_BINARY_DIR}/utilities/
 target_include_directories(MonteCarlo-BSE_version PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(mcbse_source_files ../src/constants/element.cpp ../src/constants/element.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/constants/logger.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/inputs/Input.cpp ../src/inputs/Input.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/inputs/Element.cpp ../src/inputs/Element.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h)

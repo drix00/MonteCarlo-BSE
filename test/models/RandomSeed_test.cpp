@@ -134,3 +134,13 @@ TEST_CASE("RandomSeed seed", "[models]")
 
     CHECK(seed9 != seed10);
 }
+
+TEST_CASE("RandomSeed minimum_entropy", "[models]")
+{
+    RandomSeed rand_seed{ 50 };
+
+    unsigned int long seed1 = rand_seed();
+    unsigned int long seed2 = rand_seed();
+
+    CHECK(seed1 != seed2);
+}

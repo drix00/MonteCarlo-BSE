@@ -1,9 +1,9 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -21,10 +21,16 @@
 
 // C system headers
 // C++ system header
+#include <sstream>
+#include <string>
+
 // Library headers
 #include <catch2/catch.hpp>
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/ostream_sink.h"
 // Precompiled header
 // Project headers
+#include "utilities/logger.h"
 
 // Project private headers
 
@@ -32,5 +38,56 @@
 
 TEST_CASE("Test if logger tests were find", "[logger]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
+}
+
+TEST_CASE("create_logger", "[logger]")
+{
+    create_logger(false, false);
+
+    create_logger(true, true);
+
+    REQUIRE(true);
+}
+
+TEST_CASE("log_program_arguments", "[logger]")
+{
+    std::ostringstream _oss;
+    auto ostream_logger = spdlog::get("catch2_logger");
+    if (!ostream_logger) {
+        auto ostream_sink = std::make_shared<spdlog::sinks::ostream_sink_st>(_oss);
+        ostream_logger = std::make_shared<spdlog::logger>("gtest_logger", ostream_sink);
+        ostream_logger->set_pattern("%v");
+        ostream_logger->set_level(spdlog::level::debug);
+    }
+    spdlog::set_default_logger(ostream_logger);
+
+    int argc = 1;
+    const char *argv[] = { "test23" };
+    log_program_arguments(argc, argv);
+
+    std::string test = _oss.str();
+    auto result = test.find("0");
+
+    REQUIRE(result != std::string::npos);
+}
+
+TEST_CASE("log_program_information", "[logger]")
+{
+    std::ostringstream _oss;
+    auto ostream_logger = spdlog::get("catch2_logger");
+    if (!ostream_logger) {
+        auto ostream_sink = std::make_shared<spdlog::sinks::ostream_sink_st>(_oss);
+        ostream_logger = std::make_shared<spdlog::logger>("gtest_logger", ostream_sink);
+        ostream_logger->set_pattern("%v");
+        ostream_logger->set_level(spdlog::level::debug);
+    }
+    spdlog::set_default_logger(ostream_logger);
+
+    log_program_information();
+
+    std::string test = _oss.str();
+    auto result = test.find("MonteCarlo-BSE");
+
+    REQUIRE(result != std::string::npos);
 }

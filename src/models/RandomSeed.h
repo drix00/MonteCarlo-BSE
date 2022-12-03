@@ -31,10 +31,11 @@
 class RandomSeed
 {
   public:
+    RandomSeed(int new_minimum_entropy = 10): minimum_entropy{new_minimum_entropy} {};
     unsigned int long operator()();
 
   private:
-    int const minimum_entropy = 10;
+    int minimum_entropy;
 };
 
 #endif//MONTECARLO_BSE_RANDOMSEED_H

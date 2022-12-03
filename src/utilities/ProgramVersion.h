@@ -56,6 +56,16 @@ class ProgramVersion
     [[nodiscard]] std::string get_build_date_time_string() const;
     [[nodiscard]] std::string get_compiler_build_parameters_string() const;
 
+    void set_company_name(const std::string new_value);
+    void set_file_description(const std::string new_value);
+    void set_file_version(const std::string new_value);
+    void set_internal_name(const std::string new_value);
+    void set_legal_copyright(const std::string new_value);
+    void set_original_file_name(const std::string new_value);
+    void set_product_name(const std::string new_value);
+    void set_product_version(const std::string new_value);
+    void set_version(const VersionInfo new_value);
+
     bool operator==(const ProgramVersion &rhs) const;
     bool operator!=(const ProgramVersion &rhs) const;
     bool operator<(const ProgramVersion &rhs) const;
@@ -70,11 +80,11 @@ class ProgramVersion
 
     std::string company_name;
     std::string file_description;
-    std::string file_version;
     std::string internal_name;
     std::string legal_copyright;
     std::string original_file_name;
     std::string product_name;
+    std::string file_version;
     std::string product_version;
 
     VersionInfo version;

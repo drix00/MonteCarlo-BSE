@@ -46,6 +46,9 @@ class Simulation
     void do_simulation();
     double elapse_time_s();
 
+    void set_minimum_energy_eV(const double new_minimum_energy_eV);
+    void set_max_lateral_distance_nm(const double new_max_lateral_distance_nm);
+
   public:
     Counter bse;
     Counter te;
@@ -62,6 +65,9 @@ class Simulation
 
     double const nm2cm = 1.0e-7;
     double const keV2eV = 1.0e3;
+
+    double minimum_energy_eV{50.0};
+    double max_lateral_distance_nm{1.0e9};
 };
 
 #endif//MONTECARLO_BSE_SIMULATION_H

@@ -35,10 +35,58 @@ TEST_CASE("Test if Element tests were find", "[test]")
    REQUIRE(true);
 }
 
-TEST_CASE("Element are tested", "[inputs]")
+TEST_CASE("get_c are tested", "[inputs]")
+{
+   Element element = get_c();
+   REQUIRE(element.atomic_number == 6);
+   REQUIRE(element.atomic_weight_g_mol == 12.011);
+   REQUIRE(element.density_g_cm3 == 2.62);
+}
+
+TEST_CASE("get_al are tested", "[inputs]")
+{
+   Element element = get_al();
+   REQUIRE(element.atomic_number == 13);
+   REQUIRE(element.atomic_weight_g_mol == 26.98);
+   REQUIRE(element.density_g_cm3 == 2.7);
+}
+
+TEST_CASE("get_si are tested", "[inputs]")
+{
+   Element element = get_si();
+   REQUIRE(element.atomic_number == 14);
+   REQUIRE(element.atomic_weight_g_mol == 28.09);
+   REQUIRE(element.density_g_cm3 == 2.33);
+}
+
+TEST_CASE("get_fe are tested", "[inputs]")
+{
+   Element element = get_fe();
+   REQUIRE(element.atomic_number == 26);
+   REQUIRE(element.atomic_weight_g_mol == 55.85);
+   REQUIRE(element.density_g_cm3 == 7.86);
+}
+
+TEST_CASE("get_cu are tested", "[inputs]")
+{
+   Element element = get_cu();
+   REQUIRE(element.atomic_number == 29);
+   REQUIRE(element.atomic_weight_g_mol == 63.55);
+   REQUIRE(element.density_g_cm3 == 8.96);
+}
+
+TEST_CASE("get_ag are tested", "[inputs]")
 {
     Element element = get_ag();
     REQUIRE(element.atomic_number == 47);
     REQUIRE(element.atomic_weight_g_mol == 107.87);
     REQUIRE(element.density_g_cm3 == 10.5);
+}
+
+TEST_CASE("get_au are tested", "[inputs]")
+{
+    Element element = get_au();
+    REQUIRE(element.atomic_number == 79);
+    REQUIRE(element.atomic_weight_g_mol == 196.97);
+    REQUIRE(element.density_g_cm3 == 19.3);
 }

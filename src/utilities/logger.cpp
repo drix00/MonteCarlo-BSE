@@ -29,6 +29,7 @@
 #include "spdlog/sinks/rotating_file_sink.h"
 // Precompiled header
 // Current declaration header file of this implementation file.
+#include "utilities/logger.h"
 // Project headers
 #include "utilities/version.h"
 #include "utilities/ProgramVersion.h"
@@ -36,7 +37,7 @@
 
 // Global and constant variables/functions.
 
-void create_logger(const bool console_logger=true, const bool file_logger=true) {
+void create_logger(const bool console_logger, const bool file_logger) {
     try
     {
         std::vector<spdlog::sink_ptr> sinks;
@@ -76,7 +77,7 @@ void create_logger(const bool console_logger=true, const bool file_logger=true) 
     }
 }
 
-void log_program_arguments(int argc, char *argv[])
+void log_program_arguments(const int argc, const char *const *argv)
 {
     spdlog::info("argc == {}", argc);
 

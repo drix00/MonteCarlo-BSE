@@ -42,7 +42,7 @@ void create_logger(const bool console_logger=true, const bool file_logger=true);
  * @param argc number of arguments
  * @param argv  array of arguments
  */
-void log_program_arguments(int argc, char *argv[]);
+void log_program_arguments(const int argc, const char *const *argv);
 
 /**
  * Log various program information.

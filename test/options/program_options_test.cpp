@@ -21,10 +21,13 @@
 
 // C system headers
 // C++ system header
+#include <cstdlib>
 // Library headers
 #include <catch2/catch.hpp>
+#include <spdlog/common.h>
 // Precompiled header
 // Project headers
+#include "options/program_options.h"
 // Project private headers
 
 // Global and constant variables/functions.
@@ -32,4 +35,20 @@
 TEST_CASE("Test if ProgramOptions tests were find", "[options]")
 {
    REQUIRE(true);
+}
+
+TEST_CASE("ProgramOptions default constructor", "[options]")
+{
+   ProgramOptions po;
+
+   REQUIRE(po.input_file_name == "");
+   REQUIRE(po.output_file_name == "");
+   REQUIRE(po.display_version == false);
+   REQUIRE(po.overwrite == false);
+   REQUIRE(po.number_threads == 0);
+   REQUIRE(po.exit_value == EXIT_SUCCESS);
+   REQUIRE(po.console_logger == true);
+   REQUIRE(po.console_logger_level == spdlog::level::warn);
+   REQUIRE(po.file_logger == true);
+   REQUIRE(po.file_logger_level == spdlog::level::debug);
 }

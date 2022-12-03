@@ -71,7 +71,7 @@ TEST_CASE("Test ProgramVersion set_default", "[version]")
 {
     ProgramVersion program_version{VersionInfo{1U, 2U, 3U, 4U}};
     REQUIRE("McGill University" == program_version.get_company_name());
-    REQUIRE("Monte Carlo X-Ray simulation." == program_version.get_file_description());
+    REQUIRE("Monte Carlo BSE." == program_version.get_file_description());
     REQUIRE("1.2.3.4" == program_version.get_file_version());
     REQUIRE("MCBSE.exe" == program_version.get_internal_name());
     REQUIRE("Copyright (C) 2022" == program_version.get_legal_copyright());
@@ -99,41 +99,101 @@ TEST_CASE("Test ProgramVersion get_compiler_build_parameters_string", "[version]
 
 TEST_CASE("Test ProgramVersion comparison operators", "[version]")
 {
-    const ProgramVersion program_version1{VersionInfo{1U, 2U, 3U, 4U}};
+    ProgramVersion program_version1{VersionInfo{1U, 2U, 3U, 4U}};
 
-    const ProgramVersion program_version2{VersionInfo{1U, 2U, 3U, 4U}};
-    const ProgramVersion program_version3{VersionInfo{5U, 2U, 3U, 4U}};
-    const ProgramVersion program_version4{VersionInfo{1U, 5U, 3U, 4U}};
-    const ProgramVersion program_version5{VersionInfo{1U, 2U, 6U, 4U}};
-    const ProgramVersion program_version6{VersionInfo{1U, 2U, 3U, 7U}};
+    ProgramVersion program_version2{VersionInfo{1U, 2U, 3U, 4U}};
+
+    ProgramVersion program_version3{VersionInfo{5U, 2U, 3U, 4U}};
+    program_version3.set_company_name("true");
+
+    ProgramVersion program_version4{VersionInfo{1U, 5U, 3U, 4U}};
+    program_version4.set_file_description("true");
+
+    ProgramVersion program_version5{VersionInfo{1U, 2U, 6U, 4U}};
+    program_version5.set_internal_name("true");
+
+    ProgramVersion program_version6{VersionInfo{1U, 2U, 3U, 7U}};
+    program_version6.set_legal_copyright("true");
+
+    ProgramVersion program_version7{VersionInfo{1U, 2U, 6U, 4U}};
+    program_version7.set_original_file_name("true");
+
+    ProgramVersion program_version8{VersionInfo{1U, 2U, 3U, 7U}};
+    program_version8.set_product_name("true");
+
 
     REQUIRE(program_version1 == program_version2);
     REQUIRE(program_version1 != program_version3);
     REQUIRE(program_version1 != program_version4);
     REQUIRE(program_version1 != program_version5);
     REQUIRE(program_version1 != program_version6);
+    REQUIRE(program_version1 != program_version7);
+    REQUIRE(program_version1 != program_version8);
 
     REQUIRE((program_version1 < program_version2) == false);
     REQUIRE((program_version1 < program_version3) == true);
     REQUIRE((program_version1 < program_version4) == true);
     REQUIRE((program_version1 < program_version5) == true);
     REQUIRE((program_version1 < program_version6) == true);
+    REQUIRE((program_version1 < program_version7) == true);
+    REQUIRE((program_version1 < program_version8) == true);
 
     REQUIRE((program_version1 > program_version2) == false);
     REQUIRE((program_version1 > program_version3) == false);
     REQUIRE((program_version1 > program_version4) == false);
     REQUIRE((program_version1 > program_version5) == false);
     REQUIRE((program_version1 > program_version6) == false);
+    REQUIRE((program_version1 > program_version7) == false);
+    REQUIRE((program_version1 > program_version8) == false);
 
     REQUIRE((program_version1 <= program_version2) == true);
     REQUIRE((program_version1 <= program_version3) == true);
     REQUIRE((program_version1 <= program_version4) == true);
     REQUIRE((program_version1 <= program_version5) == true);
     REQUIRE((program_version1 <= program_version6) == true);
+    REQUIRE((program_version1 <= program_version7) == true);
+    REQUIRE((program_version1 <= program_version8) == true);
 
     REQUIRE((program_version1 >= program_version2) == true);
     REQUIRE((program_version1 >= program_version3) == false);
     REQUIRE((program_version1 >= program_version4) == false);
     REQUIRE((program_version1 >= program_version5) == false);
     REQUIRE((program_version1 >= program_version6) == false);
+    REQUIRE((program_version1 >= program_version7) == false);
+    REQUIRE((program_version1 >= program_version8) == false);
+
+    program_version1 = program_version2;
+    program_version1.set_file_version("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_internal_name("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_legal_copyright("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_original_file_name("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_product_name("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_product_version("false");
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
+
+    program_version1 = program_version2;
+    program_version1.set_version(VersionInfo{1U, 2U, 3U, 7U});
+    REQUIRE((program_version1 < program_version2) == false);
+    REQUIRE((program_version2 < program_version1) == true);
 }

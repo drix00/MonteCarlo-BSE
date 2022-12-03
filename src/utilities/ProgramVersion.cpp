@@ -45,7 +45,7 @@ ProgramVersion::ProgramVersion(VersionInfo new_version) noexcept
 void ProgramVersion::set_default()
 {
     company_name = "McGill University";
-    file_description = "Monte Carlo X-Ray simulation.";
+    file_description = "Monte Carlo BSE.";
     file_version = version.to_string();
     internal_name = "MCBSE.exe";
     legal_copyright = "Copyright (C) 2022";
@@ -102,6 +102,51 @@ VersionInfo ProgramVersion::get_version() const
 std::string ProgramVersion::get_build_date_time_string() const
 {
     return build_date_time;
+}
+
+void ProgramVersion::set_company_name(const std::string new_value)
+{
+    company_name = new_value;
+}
+
+void ProgramVersion::set_file_description(const std::string new_value)
+{
+    file_description = new_value;
+}
+
+void ProgramVersion::set_file_version(const std::string new_value)
+{
+    file_version = new_value;
+}
+
+void ProgramVersion::set_internal_name(const std::string new_value)
+{
+    internal_name = new_value;
+}
+
+void ProgramVersion::set_legal_copyright(const std::string new_value)
+{
+    legal_copyright = new_value;
+}
+
+void ProgramVersion::set_original_file_name(const std::string new_value)
+{
+    original_file_name = new_value;
+}
+
+void ProgramVersion::set_product_name(const std::string new_value)
+{
+    product_name = new_value;
+}
+
+void ProgramVersion::set_product_version(const std::string new_value)
+{
+    product_version = new_value;
+}
+
+void ProgramVersion::set_version(const VersionInfo new_value)
+{
+    version = new_value;
 }
 
 std::string ProgramVersion::generate_build_date_time_string()
@@ -325,12 +370,7 @@ bool ProgramVersion::operator<(const ProgramVersion &rhs) const
     if (rhs.version < version) {
         return false;
     }
-    if (build_date_time < rhs.build_date_time) {
-        return true;
-    }
-    if (rhs.build_date_time < build_date_time) {
-        return false;
-    }
+
     return compiler_build_parameters < rhs.compiler_build_parameters;
 }
 

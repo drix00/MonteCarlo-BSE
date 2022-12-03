@@ -1,9 +1,12 @@
+#ifndef MONTECARLO_BSE_LOGGER_H
+#define MONTECARLO_BSE_LOGGER_H
+
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -19,13 +22,28 @@
 //   See the License for the specific language governing permissions and
 //   limitations under the License.
 
+// Forwards declarations
 // C system headers
 // C++ system header
+#include <string>
+#include <map>
 // Library headers
-// Precompiled header
-// Current declaration header file of this implementation file.
-#include "runner/Data.h"
+#include "spdlog/common.h"
 // Project headers
 // Project private headers
 
-// Global and constant variables/functions.
+namespace monte_carlo::constants::logger {
+
+const std::map<std::string, spdlog::level::level_enum> map_levels{
+    { "off", spdlog::level::off },
+    { "critical", spdlog::level::critical },
+    { "error", spdlog::level::err },
+    { "warning", spdlog::level::warn },
+    { "info", spdlog::level::info },
+    { "debug", spdlog::level::debug },
+    { "trace", spdlog::level::trace }
+};
+
+}// namespace monte_carlo::constants::logger
+
+#endif// MONTECARLO_BSE_LOGGER_H
