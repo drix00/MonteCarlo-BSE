@@ -73,6 +73,8 @@ if(CMAKE_CXX_SIMULATE_ID STREQUAL "MSVC" AND CMAKE_CXX_COMPILER_ID STREQUAL "Cla
   target_compile_definitions(project_options  INTERFACE _CRT_SECURE_NO_WARNINGS)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
   target_link_libraries(project_options INTERFACE tbb)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  target_link_libraries(project_options INTERFACE stdc++)
 endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
   target_compile_definitions(project_options  INTERFACE _CRT_SECURE_NO_WARNINGS)
