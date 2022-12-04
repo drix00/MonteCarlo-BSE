@@ -6,7 +6,7 @@ project(MonteCarlo-BSE LANGUAGES CXX VERSION ${MonteCarlo-BSE_VER})
 include(cmake/StandardProjectSettings.cmake)
 message("Project version: ${PROJECT_VERSION}")
 message("CMake project version: ${CMAKE_PROJECT_VERSION}")
-message("Monte Carlo BSE version${MonteCarlo-BSE_VERSION}")
+message("Monte Carlo BSE version: ${MonteCarlo-BSE_VERSION}")
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)

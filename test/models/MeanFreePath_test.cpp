@@ -52,9 +52,12 @@ TEST_CASE("MeanFreePath step", "[models]")
     Rutherford model_cs{ 6 };
 
     double lambda_nm = model.compute_nm(model_cs.compute_sigma_nm2(10000.0));
-    //    REQUIRE(model.step_nm(lambda_nm, 1.0) == Approx(80.0).epsilon(0.01));
+
     REQUIRE(model.step_nm(lambda_nm, 0.999) == Approx(99.3596198521).epsilon(0.01));
     REQUIRE(model.step_nm(lambda_nm, 0.5) == Approx(9.9700753111).epsilon(0.01));
     REQUIRE(model.step_nm(lambda_nm, 0.01) == Approx(0.1445618018).epsilon(0.01));
     REQUIRE(model.step_nm(lambda_nm, 0.0) == Approx(0.0).epsilon(0.01));
+
+    REQUIRE(model.step_nm(lambda_nm, 1.0) == Approx(198.7192397038).epsilon(0.01));
+    REQUIRE(model.step_nm(lambda_nm, -1.0) == Approx(-0.0).epsilon(0.01));
 }

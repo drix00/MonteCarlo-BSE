@@ -73,3 +73,13 @@ TEST_CASE("RandomNumber statistic 1M", "[models]")
     CHECK(stats.skewness() == Approx(-0.0028158571).margin(0.0001));
     CHECK(stats.kurtosis() == Approx(0.0).margin(0.0001));
 }
+
+TEST_CASE("RandomNumber set seed", "[models]")
+{
+    RandomNumber random_number{ 0 };
+
+    CHECK(random_number() == Approx(0.1597933634).margin(0.0001));
+
+    random_number.seed(RandomNumber::magic_seed);
+    CHECK(random_number() == Approx(0.755155533).margin(0.0001));
+}
