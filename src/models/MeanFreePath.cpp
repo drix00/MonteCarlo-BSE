@@ -42,9 +42,13 @@ double MeanFreePath::compute_nm(double sigma_nm2) const
 
 double MeanFreePath::step_nm(double mfp_nm, double random_number) const
 {
-    assert(random_number >= 0.0);
-    assert(random_number < 1.0);
+    if (random_number < 0.0) {
+        random_number = 0.0;
+    }
+    else if (random_number >= 1.0) {
+        random_number = 0.999999;
+    }
 
-    double value = -1.0 * mfp_nm * std::log(1.0 - random_number);
+    const double value = -1.0 * mfp_nm * std::log(1.0 - random_number);
     return value;
 }
