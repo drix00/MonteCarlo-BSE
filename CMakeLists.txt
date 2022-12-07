@@ -64,6 +64,7 @@ run_conan()
 
 find_package(Threads)
 
+#find_package(h5pp REQUIRED)
 #find_package(catch2 REQUIRED)
 #find_package(spdlog)
 #find_package(cli11)

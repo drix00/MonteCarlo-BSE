@@ -33,6 +33,7 @@ set(test_source_files ${test_source_files} runner/Data_test.cpp)
 set(test_source_files ${test_source_files} runner/inputs_test.cpp)
 set(test_source_files ${test_source_files} mcbse_console_test.cpp)
 set(test_source_files ${test_source_files} runner/simulate_test.cpp)
+set(test_source_files ${test_source_files} h5pp_test.cpp)
 
 list(LENGTH test_source_files len)
 message("MCBSE test source files length = ${len}")
@@ -44,7 +45,7 @@ endif()
 
 add_executable(tests ${test_source_files} ${mcbse_source_files} constexpr_tests.cpp)
 target_include_directories(tests PRIVATE ../src)
-target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog CONAN_PKG::cli11)
+target_link_libraries(tests PRIVATE project_options project_warnings catch_main CONAN_PKG::spdlog CONAN_PKG::cli11 CONAN_PKG::h5pp)
 
 # automatically discover tests that are defined in catch based test files you
 # can modify the unittests. TEST_PREFIX to whatever you want, or use different
