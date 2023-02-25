@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if Timer tests were find.
+ */
 TEST_CASE("Test if Timer tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Timer sleep.
+ */
 TEST_CASE("Timer sleep", "[utilities] [!mayfail]")
 {
     const double elapse_time1_ref_s{0.1};

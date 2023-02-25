@@ -35,11 +35,17 @@
 // Global and constant variables/functions.
 namespace fs = std::filesystem;
 
+/**
+ * Test if h5pp tests were find.
+ */
 TEST_CASE("Test if h5pp tests were find", "[h5pp_test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test write /read a vector.
+ */
 TEST_CASE("Test write /read a vector", "[h5pp_test]")
 {
     const fs::path file_path = fs::temp_directory_path() / "vector.h5";
@@ -62,6 +68,9 @@ TEST_CASE("Test write /read a vector", "[h5pp_test]")
     REQUIRE(vector_values == vector_ref);
 }
 
+/**
+ * Test write /read a int.
+ */
 TEST_CASE("Test write /read a int", "[h5pp_test]")
 {
     const fs::path file_path = fs::temp_directory_path() / "int.h5";
@@ -83,6 +92,9 @@ TEST_CASE("Test write /read a int", "[h5pp_test]")
     REQUIRE(read_int_alt == write_int);
 }
 
+/**
+ * Test write /read a string.
+ */
 TEST_CASE("Test write /read a string", "[h5pp_test]")
 {
     const fs::path file_path = fs::temp_directory_path() / "string.h5";
@@ -104,6 +116,9 @@ TEST_CASE("Test write /read a string", "[h5pp_test]")
     REQUIRE(read_str_alt == write_str);
 }
 
+/**
+ * Test write /read an attribute.
+ */
 TEST_CASE("Test write /read an attribute", "[h5pp_test]")
 {
     const fs::path file_path = fs::temp_directory_path() / "attribute.h5";

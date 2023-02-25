@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if element tests were find.
+ */
 TEST_CASE("Test if element tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Constants element are tested.
+ */
 TEST_CASE("Constants element are tested", "[constants]")
 {
     REQUIRE(mcbse::constants::element::get_symbol(1) == "H");
@@ -49,6 +55,9 @@ TEST_CASE("Constants element are tested", "[constants]")
     REQUIRE(mcbse::constants::element::get_name(94) == "Plutonium");
 }
 
+/**
+ * Constants element symbols are tested.
+ */
 TEST_CASE("Constants element symbols are tested", "[constants]")
 {
     const std::array symbols_ref{ "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P",
@@ -63,6 +72,9 @@ TEST_CASE("Constants element symbols are tested", "[constants]")
     }
 }
 
+/**
+ * Constants element names are tested.
+ */
 TEST_CASE("Constants element names are tested", "[constants]")
 {
     const std::array names_ref{ "Hydrogen",
@@ -177,6 +189,9 @@ TEST_CASE("Constants element names are tested", "[constants]")
     }
 }
 
+/**
+ * Constants element atomic mass are tested.
+ */
 TEST_CASE("Constants element atomic mass are tested", "[constants]")
 {
     const std::array atomic_weight_g_mol{
@@ -189,6 +204,9 @@ TEST_CASE("Constants element atomic mass are tested", "[constants]")
     }
 }
 
+/**
+ * Constants element atomic mass density are tested.
+ */
 TEST_CASE("Constants element atomic mass density are tested", "[constants]")
 {
     const std::array rho_g_cm3{

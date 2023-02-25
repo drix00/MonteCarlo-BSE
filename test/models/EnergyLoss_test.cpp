@@ -31,13 +31,22 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The absolute value by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double tolerance{0.01};
 
+/**
+ * Test if EnergyLoss tests were find.
+ */
 TEST_CASE("Test if EnergyLoss tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * EnergyLoss compute_mean_ionisation_potential_eV.
+ */
 TEST_CASE("EnergyLoss compute_mean_ionisation_potential_eV", "[models]")
 {
     const EnergyLoss model{ 13, 26.98 };
@@ -45,6 +54,9 @@ TEST_CASE("EnergyLoss compute_mean_ionisation_potential_eV", "[models]")
     REQUIRE(model.compute_mean_ionisation_potential_eV() == Approx(162.8140881753).margin(tolerance)); // NOLINT
 }
 
+/**
+ * EnergyLoss compute_bethe1933.
+ */
 TEST_CASE("EnergyLoss compute_bethe1933", "[models]")
 {
     const EnergyLoss model{ 13, 26.98 };
@@ -56,6 +68,9 @@ TEST_CASE("EnergyLoss compute_bethe1933", "[models]")
     REQUIRE(model.compute_bethe1930(100000.0) == Approx(-2486.5309212311).margin(tolerance)); // NOLINT
 }
 
+/**
+ * EnergyLoss compute_joy_luo1989.
+ */
 TEST_CASE("EnergyLoss compute_joy_luo1989", "[models]")
 {
     const EnergyLoss model{ 13, 26.98 };
@@ -70,6 +85,9 @@ TEST_CASE("EnergyLoss compute_joy_luo1989", "[models]")
     REQUIRE(model.compute_joy_luo1989(100000.0) == Approx(-2487.0540175087).margin(tolerance)); // NOLINT
 }
 
+/**
+ * EnergyLoss compute_keV_g_cm2.
+ */
 TEST_CASE("EnergyLoss compute_keV_g_cm2", "[models]")
 {
     const EnergyLoss model{ 13, 26.98 };

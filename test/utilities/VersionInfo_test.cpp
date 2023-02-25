@@ -33,11 +33,17 @@
 // Global and constant variables/functions.
 using namespace mcbse::version;
 
+/**
+ * Test if VersionInfo tests were find.
+ */
 TEST_CASE("Test if VersionInfo tests were find", "[version]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test VersionInfo constructor and getter methods.
+ */
 TEST_CASE("test VersionInfo constructor and getter methods", "[version]")
 {
     const VersionInfo version{ 1U, 2U, 3U, 4U };
@@ -48,6 +54,9 @@ TEST_CASE("test VersionInfo constructor and getter methods", "[version]")
     REQUIRE(4U == version.get_version_tweak());
 }
 
+/**
+ * Test VersionInfo to and from string.
+ */
 TEST_CASE("test VersionInfo to and from string", "[version]")
 {
     VersionInfo version{ 1U, 2U, 3U, 4U };
@@ -61,6 +70,9 @@ TEST_CASE("test VersionInfo to and from string", "[version]")
     REQUIRE(version == VersionInfo{ 5, 6, 7, 8 });
 }
 
+/**
+ * Test to_string.
+ */
 TEST_CASE("test to_string", "[version]")
 {
     const VersionInfo version{ 1U, 2U, 3U, 4U };
@@ -68,6 +80,9 @@ TEST_CASE("test to_string", "[version]")
     REQUIRE(version_str_ref == version.to_string());
 }
 
+/**
+ * Test from_string.
+ */
 TEST_CASE("test from_string", "[version]")
 {
     VersionInfo version{ 1U, 2U, 3U, 4U };
@@ -81,6 +96,9 @@ TEST_CASE("test from_string", "[version]")
     REQUIRE(8U == version.get_version_tweak());
 }
 
+/**
+ * Test assignment.
+ */
 TEST_CASE("test assignment", "[version]")
 {
     const VersionInfo version_ref{ 1U, 2U, 3U, 4U };
@@ -107,6 +125,9 @@ TEST_CASE("test assignment", "[version]")
     REQUIRE(8U == version.get_version_tweak());
 }
 
+/**
+ * Test comparisons.
+ */
 TEST_CASE("test comparisons", "[version]")
 {
     REQUIRE(true == (VERSION_0_3_0_1 == VERSION_0_3_0_1));
@@ -117,6 +138,9 @@ TEST_CASE("test comparisons", "[version]")
     REQUIRE(true == (VERSION_0_3_0_1 <= VERSION_0_3_0_1));
 }
 
+/**
+ * Test VersionInfo comparison operators.
+ */
 TEST_CASE("Test VersionInfo comparison operators", "[version]")
 {
     const VersionInfo version1{ 1U, 2U, 3U, 4U };
@@ -158,6 +182,9 @@ TEST_CASE("Test VersionInfo comparison operators", "[version]")
     REQUIRE((version1 >= version6) == false);
 }
 
+/**
+ * Test has_feature.
+ */
 TEST_CASE("test has_feature", "[version]")
 {
     VersionInfo version{ VERSION_0_3_0_1 };
@@ -173,6 +200,9 @@ TEST_CASE("test has_feature", "[version]")
     REQUIRE(true == CURRENT_VERSION.has_feature("bse")); // NOLINT
 }
 
+/**
+ * Test has_feature geometry box.
+ */
 TEST_CASE("test has_feature geometry box", "[version]")
 {
     VersionInfo version{ VERSION_0_3_0_1 };
@@ -188,6 +218,9 @@ TEST_CASE("test has_feature geometry box", "[version]")
     REQUIRE(true == CURRENT_VERSION.has_feature("box")); // NOLINT
 }
 
+/**
+ * Test is_at_least.
+ */
 TEST_CASE("test is_at_least", "[version]")
 {
     const VersionInfo version{ 2, 2, 2, 2 };
@@ -252,9 +285,11 @@ TEST_CASE("test is_at_least", "[version]")
 }
 
 /**
+ * Test current version.
+ *
  * \note This test need to be updated when the current version is changed.
  */
-TEST_CASE("test current version", "[version]")
+TEST_CASE("Test current version", "[version]")
 {
     REQUIRE(CURRENT_VERSION != VERSION_0_1_0);
     REQUIRE(CURRENT_VERSION != VERSION_0_2_0);
@@ -277,6 +312,9 @@ TEST_CASE("test current version", "[version]")
     REQUIRE(CURRENT_VERSION.get_version_tweak() == version.get_version_tweak());
 }
 
+/**
+ * Test VERSION_0_1_0 constant.
+ */
 TEST_CASE("test VERSION_0_1_0 constant", "[version]")
 {
     const VersionInfo version{ 0U, 1U, 0U, 0U };
@@ -291,6 +329,9 @@ TEST_CASE("test VERSION_0_1_0 constant", "[version]")
     REQUIRE(0U == VERSION_0_1_0.get_version_tweak());
 }
 
+/**
+ * Test VERSION_0_2_0 constant.
+ */
 TEST_CASE("test VERSION_0_2_0 constant", "[version]")
 {
     const VersionInfo version{ 0U, 2U, 0U, 0U };
@@ -305,6 +346,9 @@ TEST_CASE("test VERSION_0_2_0 constant", "[version]")
     REQUIRE(0U == VERSION_0_2_0.get_version_tweak());
 }
 
+/**
+ * Test VERSION_0_2_1 constant.
+ */
 TEST_CASE("test VERSION_0_2_1 constant", "[version]")
 {
     const VersionInfo version{ 0U, 2U, 1U, 0U };
@@ -319,6 +363,9 @@ TEST_CASE("test VERSION_0_2_1 constant", "[version]")
     REQUIRE(0U == VERSION_0_2_1.get_version_tweak());
 }
 
+/**
+ * Test VERSION_0_3_0_0 constant.
+ */
 TEST_CASE("test VERSION_0_3_0_0 constant", "[version]")
 {
     const VersionInfo version{ 0U, 3U, 0U, 0U };

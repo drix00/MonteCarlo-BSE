@@ -32,13 +32,22 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The absolute value by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double tolerance{0.0001};
 
+/**
+ * Test if Counter tests were find.
+ */
 TEST_CASE("Test if Counter tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Counter variance.
+ */
 TEST_CASE("Counter variance", "[results]")
 {
     Counter counter;
@@ -57,6 +66,9 @@ TEST_CASE("Counter variance", "[results]")
     CHECK(counter.standard_deviation() == Approx(0.632455532).margin(tolerance)); // NOLINT
 }
 
+/**
+ * Test Counter bse.
+ */
 TEST_CASE("Counter bse", "[results]")
 {
     Counter counter;

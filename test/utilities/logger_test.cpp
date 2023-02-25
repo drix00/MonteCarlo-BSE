@@ -37,11 +37,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if logger tests were find.
+ */
 TEST_CASE("Test if logger tests were find", "[logger]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test create_logger.
+ */
 TEST_CASE("create_logger", "[logger]")
 {
     create_logger(false, false);
@@ -51,6 +57,9 @@ TEST_CASE("create_logger", "[logger]")
     REQUIRE(true);
 }
 
+/**
+ * Test log_program_arguments.
+ */
 TEST_CASE("log_program_arguments", "[logger]")
 {
     std::ostringstream _oss;
@@ -73,6 +82,9 @@ TEST_CASE("log_program_arguments", "[logger]")
     REQUIRE(result != std::string::npos);
 }
 
+/**
+ * Test log_program_information.
+ */
 TEST_CASE("log_program_information", "[logger]")
 {
     std::ostringstream _oss;

@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if inputs tests were find.
+ */
 TEST_CASE("Test if inputs tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test get_inputs_number_trajectories_repetitions.
+ */
 TEST_CASE("Test get_inputs_number_trajectories_repetitions", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_number_trajectories_repetitions();
@@ -45,6 +51,9 @@ TEST_CASE("Test get_inputs_number_trajectories_repetitions", "[test]")
     REQUIRE(data_list.size() == 60);
 }
 
+/**
+ * Test get_inputs_elements_energies.
+ */
 TEST_CASE("Test get_inputs_elements_energies", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_elements_energies();
@@ -52,6 +61,9 @@ TEST_CASE("Test get_inputs_elements_energies", "[test]")
     REQUIRE(data_list.size() == 91);
 }
 
+/**
+ * Test get_inputs_atomic_numbers.
+ */
 TEST_CASE("Test get_inputs_atomic_numbers", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_atomic_numbers();
@@ -59,6 +71,9 @@ TEST_CASE("Test get_inputs_atomic_numbers", "[test]")
     REQUIRE(data_list.size() == 96);
 }
 
+/**
+ * Test get_inputs_densities.
+ */
 TEST_CASE("Test get_inputs_densities", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_densities();
@@ -66,6 +81,9 @@ TEST_CASE("Test get_inputs_densities", "[test]")
     REQUIRE(data_list.size() == 210);
 }
 
+/**
+ * Test get_inputs_thickness.
+ */
 TEST_CASE("Test get_inputs_thickness", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_thickness();
@@ -73,6 +91,9 @@ TEST_CASE("Test get_inputs_thickness", "[test]")
     REQUIRE(data_list.size() == 154);
 }
 
+/**
+ * Test get_inputs_profile_serial_simple.
+ */
 TEST_CASE("Test get_inputs_profile_serial_simple", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_profile_serial_simple();
@@ -80,6 +101,9 @@ TEST_CASE("Test get_inputs_profile_serial_simple", "[test]")
     REQUIRE(data_list.size() == 10);
 }
 
+/**
+ * Test get_inputs_valgrind.
+ */
 TEST_CASE("Test get_inputs_valgrind", "[test]")
 {
     const std::vector<Data> data_list = get_inputs_valgrind();

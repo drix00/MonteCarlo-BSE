@@ -33,12 +33,18 @@
 // Global and constant variables/functions.
 using namespace mcbse::version;
 
+/**
+ * Test if ProgramVersion tests were find.
+ */
 TEST_CASE("Test if ProgramVersion tests were find", "[version]")
 {
     REQUIRE(true);
 }
 
-TEST_CASE(" ProgramVersion test_complete_build_version", "[version]")
+/**
+ * Test ProgramVersion test_complete_build_version.
+ */
+TEST_CASE("ProgramVersion test_complete_build_version", "[version]")
 {
     const VersionInfo version(1U, 2U, 3U, 4U);
 
@@ -58,6 +64,9 @@ TEST_CASE(" ProgramVersion test_complete_build_version", "[version]")
     REQUIRE(true);
 }
 
+/**
+ * Test Check current program version constant CURRENT_PROGRAM_VERSION.
+ */
 TEST_CASE("Check current program version constant CURRENT_PROGRAM_VERSION", "[version]")
 {
     REQUIRE(CURRENT_VERSION == CURRENT_PROGRAM_VERSION.get_version());
@@ -69,6 +78,9 @@ TEST_CASE("Check current program version constant CURRENT_PROGRAM_VERSION", "[ve
     REQUIRE(1U == CURRENT_PROGRAM_VERSION.get_version().get_version_tweak());
 }
 
+/**
+ * Test ProgramVersion default values.
+ */
 TEST_CASE("Test ProgramVersion default values", "[version]")
 {
     const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
@@ -83,6 +95,9 @@ TEST_CASE("Test ProgramVersion default values", "[version]")
     REQUIRE(VersionInfo{ 1U, 2U, 3U, 4U } == program_version.get_version());
 }
 
+/**
+ * Test ProgramVersion get_build_date_time_string.
+ */
 TEST_CASE("Test ProgramVersion get_build_date_time_string", "[version]")
 {
     const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
@@ -91,6 +106,9 @@ TEST_CASE("Test ProgramVersion get_build_date_time_string", "[version]")
     REQUIRE(build_date_time.empty() == false);
 }
 
+/**
+ * Test ProgramVersion get_compiler_build_parameters_string.
+ */
 TEST_CASE("Test ProgramVersion get_compiler_build_parameters_string", "[version]")
 {
     const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
@@ -99,6 +117,9 @@ TEST_CASE("Test ProgramVersion get_compiler_build_parameters_string", "[version]
     REQUIRE(compiler_build_parameters.empty() == false);
 }
 
+/**
+ * Test ProgramVersion comparison operators.
+ */
 TEST_CASE("Test ProgramVersion comparison operators", "[version]")
 {
     ProgramVersion program_version1{ VersionInfo{ 1U, 2U, 3U, 4U } };
@@ -122,7 +143,6 @@ TEST_CASE("Test ProgramVersion comparison operators", "[version]")
 
     ProgramVersion program_version8{ VersionInfo{ 1U, 2U, 3U, 7U } }; // NOLINT
     program_version8.set_product_name("true");
-
 
     REQUIRE(program_version1 == program_version2);
     REQUIRE(program_version1 != program_version3);

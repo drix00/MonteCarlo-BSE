@@ -31,6 +31,9 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if mcbse_console tests were find.
+ */
 TEST_CASE("Test if mcbse_console tests were find", "[test]")
 {
     REQUIRE(true);

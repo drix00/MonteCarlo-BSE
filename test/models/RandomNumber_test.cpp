@@ -32,13 +32,22 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The absolute value by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double tolerance{0.0001};
 
+/**
+ * Test if RandomNumber tests were find.
+ */
 TEST_CASE("Test if RandomNumber tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test RandomNumber magic seed.
+ */
 TEST_CASE("RandomNumber magic seed", "[models]")
 {
     RandomNumber random_number{ RandomNumber::magic_seed };
@@ -55,6 +64,9 @@ TEST_CASE("RandomNumber magic seed", "[models]")
     CHECK(random_number() == Approx(0.3902708814).margin(tolerance)); // NOLINT
 }
 
+/**
+ * Test RandomNumber statistic 1M.
+ */
 TEST_CASE("RandomNumber statistic 1M", "[models]")
 {
     RandomNumber random_number{ RandomNumber::magic_seed };
@@ -77,6 +89,9 @@ TEST_CASE("RandomNumber statistic 1M", "[models]")
     CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance));
 }
 
+/**
+ * Test RandomNumber set seed.
+ */
 TEST_CASE("RandomNumber set seed", "[models]")
 {
     RandomNumber random_number{ 0 };

@@ -36,11 +36,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if Simulation tests were find.
+ */
 TEST_CASE("Test if Simulation tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Simulation do_simulation C.
+ */
 TEST_CASE("Simulation do_simulation C", "[simulation]")
 {
     int const number_trajectories = 1000;
@@ -60,6 +66,9 @@ TEST_CASE("Simulation do_simulation C", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
 }
 
+/**
+ * Test Simulation do_simulation random seed.
+ */
 TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
 {
     int const number_trajectories = 1000;
@@ -99,6 +108,9 @@ TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
     CHECK(simulation4.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance));
 }
 
+/**
+ * Test Simulation do_simulation C thin film.
+ */
 TEST_CASE("Simulation do_simulation C thin film", "[simulation]")
 {
     int const number_trajectories = 1000;
@@ -119,6 +131,9 @@ TEST_CASE("Simulation do_simulation C thin film", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
 }
 
+/**
+ * Test Simulation do_simulation C thin film with 25 eV.
+ */
 TEST_CASE("Simulation do_simulation C thin film with 25 eV", "[simulation]")
 {
     int const number_trajectories = 1000;
@@ -140,6 +155,9 @@ TEST_CASE("Simulation do_simulation C thin film with 25 eV", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
 }
 
+/**
+ * Test Simulation do_simulation C very thin film.
+ */
 TEST_CASE("Simulation do_simulation C very thin film", "[simulation]")
 {
     int const number_trajectories = 1000;
@@ -160,6 +178,9 @@ TEST_CASE("Simulation do_simulation C very thin film", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
 }
 
+/**
+ * Test Simulation do_simulation C very small width.
+ */
 TEST_CASE("Simulation do_simulation C very small width", "[simulation]")
 {
     int const number_trajectories = 1000;
@@ -182,6 +203,9 @@ TEST_CASE("Simulation do_simulation C very small width", "[simulation]")
     REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
 }
 
+/**
+ * Test Simulation do_simulation C no width.
+ */
 TEST_CASE("Simulation do_simulation C no width", "[simulation]")
 {
     int const number_trajectories = 1000;

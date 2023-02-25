@@ -33,13 +33,22 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The coefficient by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double epsilon{0.01};
 
+/**
+ * Test if Rutherford tests were find.
+ */
 TEST_CASE("Test if Rutherford tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Rutherford compute_alpha.
+ */
 TEST_CASE("Rutherford compute_alpha", "[models]")
 {
     const Rutherford model{ 13 };
@@ -49,6 +58,9 @@ TEST_CASE("Rutherford compute_alpha", "[models]")
     REQUIRE(model.compute_alpha(100000.0) == Approx(0.0001895924).epsilon(epsilon)); // NOLINT
 }
 
+/**
+ * Test Rutherford compute_sigma_nm2.
+ */
 TEST_CASE("Rutherford compute_sigma_nm2", "[models]")
 {
     const Rutherford model{ 13 };
@@ -58,6 +70,9 @@ TEST_CASE("Rutherford compute_sigma_nm2", "[models]")
     REQUIRE(model.compute_sigma_nm2(100000.0) == Approx(0.0001724173).epsilon(epsilon)); // NOLINT
 }
 
+/**
+ * Test Rutherford compute_scattering_angle_rad.
+ */
 TEST_CASE("Rutherford compute_scattering_angle_rad", "[models]")
 {
     const Rutherford model{ 13 };
@@ -69,6 +84,9 @@ TEST_CASE("Rutherford compute_scattering_angle_rad", "[models]")
     REQUIRE(model.compute_scattering_angle_rad(10000.0, 1.0) == Approx(M_PI).epsilon(epsilon)); // NOLINT
 }
 
+/**
+ * Test Rutherford compute_azimuthal_angle_rad.
+ */
 TEST_CASE("Rutherford compute_azimuthal_angle_rad", "[models]")
 {
     const Rutherford model{ 13 };

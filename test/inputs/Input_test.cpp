@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if Input tests were find.
+ */
 TEST_CASE("Test if Input tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Input are tested.
+ */
 TEST_CASE("Input are tested", "[inputs]")
 {
     const auto initial_energy_eV{ 10.0e3 };

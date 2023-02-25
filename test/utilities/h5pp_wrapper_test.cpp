@@ -32,6 +32,9 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if h5pp_wrapper tests were find.
+ */
 TEST_CASE("Test if h5pp_wrapper tests were find", "[h5pp_wrapper_test]")
 {
     REQUIRE(true);

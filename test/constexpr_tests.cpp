@@ -31,6 +31,9 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if constexpr tests were find.
+ */
 TEST_CASE("Test if constexpr tests were find", "[test]")
 {
     REQUIRE(true);
@@ -39,14 +42,17 @@ TEST_CASE("Test if constexpr tests were find", "[test]")
 /**
  * Factorial constexpr function for testing.
  *
- * @param number non-negative integer \f$n\f$
- * @return factorial \f$n!\f$
+ * @param[in] number non-negative integer \f$n\f$
+ * @return factorial \f$n!\f$.
  */
 constexpr unsigned int Factorial(unsigned int number)
 {
     return number > 1 ? Factorial(number - 1) * number : 1;
 }
 
+/**
+ * Factorials are computed with constexpr.
+ */
 TEST_CASE("Factorials are computed with constexpr", "[factorial]")
 {
     STATIC_REQUIRE(Factorial(0) == 1);
@@ -56,6 +62,9 @@ TEST_CASE("Factorials are computed with constexpr", "[factorial]")
     STATIC_REQUIRE(Factorial(10) == 3628800);
 }
 
+/**
+ * Factorials are computed without constexpr.
+ */
 TEST_CASE("Factorials are computed without constexpr", "[factorial]")
 {
     REQUIRE(Factorial(0) == 1);

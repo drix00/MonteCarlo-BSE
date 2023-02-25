@@ -34,11 +34,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if Data tests were find.
+ */
 TEST_CASE("Test if Data tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Data constructor.
+ */
 TEST_CASE("Test Data constructor", "[test]")
 {
     const auto initial_energy_eV{ 10.0e3 };

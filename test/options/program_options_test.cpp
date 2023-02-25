@@ -34,11 +34,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if ProgramOptions tests were find.
+ */
 TEST_CASE("Test if ProgramOptions tests were find", "[options]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test ProgramOptions default constructor.
+ */
 TEST_CASE("ProgramOptions default constructor", "[options]")
 {
     const ProgramOptions program_options;

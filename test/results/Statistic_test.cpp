@@ -32,14 +32,26 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The absolute value by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double tolerance{0.0001};
+/**
+ * A smaller absolute value by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double smaller_tolerance{1.0e-6};
 
+/**
+ * Test if Statistic tests were find.
+ */
 TEST_CASE("Test if Statistic tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test Statistic random counts.
+ */
 TEST_CASE("Statistic random counts", "[results]")
 {
     RandomNumber random_number{ RandomNumber::magic_seed };
@@ -62,6 +74,9 @@ TEST_CASE("Statistic random counts", "[results]")
     CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance)); // NOLINT
 }
 
+/**
+ * Test Statistic skewness.
+ */
 TEST_CASE("Statistic skewness", "[results]")
 {
     Statistic stats;
@@ -83,6 +98,9 @@ TEST_CASE("Statistic skewness", "[results]")
     CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance));
 }
 
+/**
+ * Test Statistic variance.
+ */
 TEST_CASE("Statistic variance", "[results]")
 {
     Statistic stats;

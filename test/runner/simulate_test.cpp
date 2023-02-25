@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if simulate tests were find.
+ */
 TEST_CASE("Test if simulate tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test get_suffix.
+ */
 TEST_CASE("Test get_suffix", "[test]")
 {
     const std::string suffix = get_suffix();

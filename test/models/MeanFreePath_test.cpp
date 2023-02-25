@@ -32,13 +32,22 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * The coefficient by which a result can differ from Approx's value before it is rejected.
+ */
 constexpr double epsilon{0.01};
 
+/**
+ * Test if MeanFreePath tests were find.
+ */
 TEST_CASE("Test if MeanFreePath tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test MeanFreePath lambda value.
+ */
 TEST_CASE("MeanFreePath lambda", "[models]")
 {
     const MeanFreePath model{ 12.011, 2.62 };
@@ -49,6 +58,9 @@ TEST_CASE("MeanFreePath lambda", "[models]")
     REQUIRE(model.compute_nm(model_cs.compute_sigma_nm2(100000.0)) == Approx(123.4571899308).epsilon(epsilon)); // NOLINT
 }
 
+/**
+ * Test MeanFreePath step method.
+ */
 TEST_CASE("MeanFreePath step", "[models]")
 {
     const MeanFreePath model{ 12.011, 2.62 };

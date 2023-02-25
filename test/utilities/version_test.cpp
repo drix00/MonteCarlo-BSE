@@ -34,11 +34,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if version tests were find.
+ */
 TEST_CASE("Test if version tests were find", "[version]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test current version number is correct.
+ */
 TEST_CASE("Test current version number is correct", "[version]")
 {
     REQUIRE("0.3.0.1" == get_version_str());
@@ -49,6 +55,9 @@ TEST_CASE("Test current version number is correct", "[version]")
     REQUIRE(1U == get_version_tweak());
 }
 
+/**
+ * Test if project name is correct.
+ */
 TEST_CASE("Test if project name is correct", "[version]")
 {
     REQUIRE("MonteCarlo-BSE" == get_project_name());

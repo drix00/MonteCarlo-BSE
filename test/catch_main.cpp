@@ -39,9 +39,9 @@
 /**
  * Main function for running the MonteCarlo-BSE project tests.
  *
- * @param argc number of arguments
- * @param argv arguments list
- * @return results of running the tests
+ * @param[in] argc number of arguments
+ * @param[in] argv arguments list
+ * @return results of running the tests.
  */
 int main(int argc, char *argv[])
 {
@@ -57,6 +57,9 @@ int main(int argc, char *argv[])
     return result;
 }
 
+/**
+ * Test if catch2 test framework is working.
+ */
 TEST_CASE("Test if catch2 test framework is working", "[test_catch2]")
 {
     REQUIRE(true);

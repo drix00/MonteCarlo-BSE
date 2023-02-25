@@ -32,11 +32,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if Element tests were find.
+ */
 TEST_CASE("Test if Element tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * get_c are tested.
+ */
 TEST_CASE("get_c are tested", "[inputs]")
 {
     const Element element = get_c();
@@ -45,6 +51,9 @@ TEST_CASE("get_c are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 2.62); // NOLINT
 }
 
+/**
+ * get_al are tested.
+ */
 TEST_CASE("get_al are tested", "[inputs]")
 {
     const Element element = get_al();
@@ -53,6 +62,9 @@ TEST_CASE("get_al are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 2.7); // NOLINT
 }
 
+/**
+ * get_si are tested.
+ */
 TEST_CASE("get_si are tested", "[inputs]")
 {
     const Element element = get_si();
@@ -61,6 +73,9 @@ TEST_CASE("get_si are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 2.33); // NOLINT
 }
 
+/**
+ * get_fe are tested.
+ */
 TEST_CASE("get_fe are tested", "[inputs]")
 {
     const Element element = get_fe();
@@ -69,6 +84,9 @@ TEST_CASE("get_fe are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 7.86); // NOLINT
 }
 
+/**
+ * get_cu are tested.
+ */
 TEST_CASE("get_cu are tested", "[inputs]")
 {
     const Element element = get_cu();
@@ -77,6 +95,9 @@ TEST_CASE("get_cu are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 8.96); // NOLINT
 }
 
+/**
+ * get_ag are tested.
+ */
 TEST_CASE("get_ag are tested", "[inputs]")
 {
     const Element element = get_ag();
@@ -85,6 +106,9 @@ TEST_CASE("get_ag are tested", "[inputs]")
     REQUIRE(element.density_g_cm3 == 10.5); // NOLINT
 }
 
+/**
+ * get_au are tested.
+ */
 TEST_CASE("get_au are tested", "[inputs]")
 {
     const Element element = get_au();

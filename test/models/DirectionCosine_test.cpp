@@ -34,11 +34,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if DirectionCosine tests were find.
+ */
 TEST_CASE("Test if DirectionCosine tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * DirectionCosine compute.
+ */
 TEST_CASE("DirectionCosine compute", "[models]")
 {
     const double tolerance = 1.0e-6;

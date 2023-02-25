@@ -33,11 +33,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if ProgramOptionsParser tests were find.
+ */
 TEST_CASE("Test if ProgramOptionsParser tests were find", "[options]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test parse_command_line no option.
+ */
 TEST_CASE("Test parse_command_line no option", "[options]")
 {
     const int argc = 1;
@@ -57,6 +63,9 @@ TEST_CASE("Test parse_command_line no option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line input filename.
+ */
 TEST_CASE("Test parse_command_line input filename", "[options]")
 {
     const int argc = 2;
@@ -75,6 +84,9 @@ TEST_CASE("Test parse_command_line input filename", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line output filename wo input file.
+ */
 TEST_CASE("Test parse_command_line output filename wo input file", "[options]")
 {
     const int argc = 3;
@@ -93,6 +105,9 @@ TEST_CASE("Test parse_command_line output filename wo input file", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line output filename together short.
+ */
 TEST_CASE("Test parse_command_line output filename together short", "[options]")
 {
     const int argc = 3;
@@ -111,6 +126,9 @@ TEST_CASE("Test parse_command_line output filename together short", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line output filename seperated short.
+ */
 TEST_CASE("Test parse_command_line output filename seperated short", "[options]")
 {
 
@@ -130,6 +148,9 @@ TEST_CASE("Test parse_command_line output filename seperated short", "[options]"
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line output filename seperated long.
+ */
 TEST_CASE("Test parse_command_line output filename seperated long", "[options]")
 {
 
@@ -149,6 +170,9 @@ TEST_CASE("Test parse_command_line output filename seperated long", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line output filename with =.
+ */
 TEST_CASE("Test parse_command_line output filename with =", "[options]")
 {
     const int argc = 3;
@@ -167,6 +191,9 @@ TEST_CASE("Test parse_command_line output filename with =", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line version option short.
+ */
 TEST_CASE("Test parse_command_line version option short", "[options]")
 {
     const int argc = 2;
@@ -185,6 +212,9 @@ TEST_CASE("Test parse_command_line version option short", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line version option long.
+ */
 TEST_CASE("Test parse_command_line version option long", "[options]")
 {
     const int argc = 2;
@@ -203,6 +233,9 @@ TEST_CASE("Test parse_command_line version option long", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line version option long with input file.
+ */
 TEST_CASE("Test parse_command_line version option long with input file", "[options]")
 {
     const int argc = 3;
@@ -221,6 +254,9 @@ TEST_CASE("Test parse_command_line version option long with input file", "[optio
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line overwrite option.
+ */
 TEST_CASE("Test parse_command_line overwrite option", "[options]")
 {
     const int argc = 2;
@@ -239,6 +275,9 @@ TEST_CASE("Test parse_command_line overwrite option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line no overwrite option.
+ */
 TEST_CASE("Test parse_command_line no overwrite option", "[options]")
 {
     const int argc = 2;
@@ -257,6 +296,9 @@ TEST_CASE("Test parse_command_line no overwrite option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line overwrite option with input file.
+ */
 TEST_CASE("Test parse_command_line overwrite option with input file", "[options]")
 {
     const int argc = 3;
@@ -275,6 +317,9 @@ TEST_CASE("Test parse_command_line overwrite option with input file", "[options]
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line threads option short no number.
+ */
 TEST_CASE("Test parse_command_line threads option short no number", "[options]")
 {
     const int argc = 2;
@@ -293,6 +338,9 @@ TEST_CASE("Test parse_command_line threads option short no number", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line threads option long no number.
+ */
 TEST_CASE("Test parse_command_line threads option long no number", "[options]")
 {
     const int argc = 2;
@@ -311,6 +359,9 @@ TEST_CASE("Test parse_command_line threads option long no number", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line threads option short with number.
+ */
 TEST_CASE("Test parse_command_line threads option short with number", "[options]")
 {
     const int argc = 3;
@@ -329,6 +380,9 @@ TEST_CASE("Test parse_command_line threads option short with number", "[options]
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line threads option long with number.
+ */
 TEST_CASE("Test parse_command_line threads option long with number", "[options]")
 {
     const int argc = 3;
@@ -347,6 +401,9 @@ TEST_CASE("Test parse_command_line threads option long with number", "[options]"
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line threads option long with input file.
+ */
 TEST_CASE("Test parse_command_line threads option long with input file", "[options]")
 {
     const int argc = 4;
@@ -365,6 +422,9 @@ TEST_CASE("Test parse_command_line threads option long with input file", "[optio
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger option.
+ */
 TEST_CASE("Test parse_command_line console_logger option", "[options]")
 {
     const int argc = 2;
@@ -383,6 +443,9 @@ TEST_CASE("Test parse_command_line console_logger option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line no console_logger option.
+ */
 TEST_CASE("Test parse_command_line no console_logger option", "[options]")
 {
     const int argc = 2;
@@ -401,6 +464,9 @@ TEST_CASE("Test parse_command_line no console_logger option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger option with input file.
+ */
 TEST_CASE("Test parse_command_line console_logger option with input file", "[options]")
 {
     const int argc = 3;
@@ -419,6 +485,9 @@ TEST_CASE("Test parse_command_line console_logger option with input file", "[opt
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option off.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option off", "[options]")
 {
     const int argc = 3;
@@ -437,6 +506,9 @@ TEST_CASE("Test parse_command_line console_logger_level option off", "[options]"
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option critical.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option critical", "[options]")
 {
     const int argc = 3;
@@ -455,6 +527,9 @@ TEST_CASE("Test parse_command_line console_logger_level option critical", "[opti
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option error.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option error", "[options]")
 {
     const int argc = 3;
@@ -473,6 +548,9 @@ TEST_CASE("Test parse_command_line console_logger_level option error", "[options
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option warning.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option warning", "[options]")
 {
     const int argc = 3;
@@ -491,6 +569,9 @@ TEST_CASE("Test parse_command_line console_logger_level option warning", "[optio
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option info.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option info", "[options]")
 {
     const int argc = 3;
@@ -509,6 +590,9 @@ TEST_CASE("Test parse_command_line console_logger_level option info", "[options]
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option debug.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option debug", "[options]")
 {
     const int argc = 3;
@@ -527,6 +611,9 @@ TEST_CASE("Test parse_command_line console_logger_level option debug", "[options
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line console_logger_level option trace.
+ */
 TEST_CASE("Test parse_command_line console_logger_level option trace", "[options]")
 {
     const int argc = 3;
@@ -545,6 +632,9 @@ TEST_CASE("Test parse_command_line console_logger_level option trace", "[options
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line file_logger option.
+ */
 TEST_CASE("Test parse_command_line file_logger option", "[options]")
 {
     const int argc = 2;
@@ -563,6 +653,9 @@ TEST_CASE("Test parse_command_line file_logger option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line no file_logger option.
+ */
 TEST_CASE("Test parse_command_line no file_logger option", "[options]")
 {
     const int argc = 2;
@@ -581,6 +674,9 @@ TEST_CASE("Test parse_command_line no file_logger option", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line file_logger option with input file.
+ */
 TEST_CASE("Test parse_command_line file_logger option with input file", "[options]")
 {
     const int argc = 3;
@@ -599,6 +695,9 @@ TEST_CASE("Test parse_command_line file_logger option with input file", "[option
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line file_logger_level option off.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option off", "[options]")
 {
     const int argc = 3;
@@ -617,6 +716,9 @@ TEST_CASE("Test parse_command_line file_logger_level option off", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::off);
 }
 
+/**
+ * Test parse_command_line file_logger_level option critical.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option critical", "[options]")
 {
     const int argc = 3;
@@ -635,6 +737,9 @@ TEST_CASE("Test parse_command_line file_logger_level option critical", "[options
     REQUIRE(program_options.file_logger_level == spdlog::level::critical);
 }
 
+/**
+ * Test parse_command_line file_logger_level option error.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option error", "[options]")
 {
     const int argc = 3;
@@ -653,6 +758,9 @@ TEST_CASE("Test parse_command_line file_logger_level option error", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::err);
 }
 
+/**
+ * Test parse_command_line file_logger_level option warning.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option warning", "[options]")
 {
     const int argc = 3;
@@ -671,6 +779,9 @@ TEST_CASE("Test parse_command_line file_logger_level option warning", "[options]
     REQUIRE(program_options.file_logger_level == spdlog::level::warn);
 }
 
+/**
+ * Test parse_command_line file_logger_level option info.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option info", "[options]")
 {
     const int argc = 3;
@@ -689,6 +800,9 @@ TEST_CASE("Test parse_command_line file_logger_level option info", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::info);
 }
 
+/**
+ * Test parse_command_line file_logger_level option debug.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option debug", "[options]")
 {
     const int argc = 3;
@@ -707,6 +821,9 @@ TEST_CASE("Test parse_command_line file_logger_level option debug", "[options]")
     REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }
 
+/**
+ * Test parse_command_line file_logger_level option trace.
+ */
 TEST_CASE("Test parse_command_line file_logger_level option trace", "[options]")
 {
     const int argc = 3;

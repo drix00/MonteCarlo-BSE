@@ -36,11 +36,17 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Test if RandomSeed tests were find.
+ */
 TEST_CASE("Test if RandomSeed tests were find", "[test]")
 {
     REQUIRE(true);
 }
 
+/**
+ * Test RandomSeed check log.
+ */
 TEST_CASE("RandomSeed check log", "[models]")
 {
     std::random_device device;
@@ -65,7 +71,9 @@ TEST_CASE("RandomSeed check log", "[models]")
     CHECK(true);
 }
 
-
+/**
+ * Test RandomSeed seed.
+ */
 TEST_CASE("RandomSeed seed", "[models]")
 {
     RandomSeed rand_seed;
@@ -136,6 +144,9 @@ TEST_CASE("RandomSeed seed", "[models]")
     CHECK(seed9 != seed10);
 }
 
+/**
+ * Test RandomSeed minimum_entropy.
+ */
 TEST_CASE("RandomSeed minimum_entropy", "[models]")
 {
     const int seed{50};
