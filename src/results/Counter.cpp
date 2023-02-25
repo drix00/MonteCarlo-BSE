@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief A counter to compute statistic of a results without storing all values.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -45,18 +47,18 @@ void Counter::add_value(double value)
 
 double Counter::mean() const
 {
-    double value = sum_x / number_x;
+    const double value = sum_x / number_x;
     return value;
 }
 
 double Counter::variance() const
 {
-    double value = (sum_xx / number_x - mean() * mean()) / number_x;
+    const double value = (sum_xx / number_x - mean() * mean()) / number_x;
     return value;
 }
 
 double Counter::standard_deviation() const
 {
-    double value = std::sqrt(variance());
+    const double value = std::sqrt(variance());
     return value;
 }

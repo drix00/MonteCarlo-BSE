@@ -1,11 +1,13 @@
 /**
-* @file
-* Create the main for running the MonteCarlo-BSE Project tests.
-* Also used to test if the catch2 test framework is working.
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Create the main for running the MonteCarlo-BSE project tests.
+ *
+ * Also used to test if the catch2 test framework is working.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -24,7 +26,9 @@
 // C system headers
 // C++ system header
 // Library headers
-//#define CATCH_CONFIG_MAIN // This tells the catch header to generate a main
+#include <spdlog/spdlog.h>
+#include "spdlog/sinks/basic_file_sink.h"
+// #define CATCH_CONFIG_MAIN // This tells the catch header to generate a main
 #define CATCH_CONFIG_RUNNER
 #include <catch2/catch.hpp>
 // Project headers
@@ -32,9 +36,13 @@
 
 // Global and constant variables/functions.
 
-#include <spdlog/spdlog.h>
-#include "spdlog/sinks/basic_file_sink.h"
-
+/**
+ * Main function for running the MonteCarlo-BSE project tests.
+ *
+ * @param argc number of arguments
+ * @param argv arguments list
+ * @return results of running the tests
+ */
 int main(int argc, char *argv[])
 {
     // global setup...
@@ -42,7 +50,7 @@ int main(int argc, char *argv[])
     auto file_logger = spdlog::basic_logger_mt("tests_logger", "logs/tests.log");
     spdlog::set_default_logger(file_logger);
 
-    int result = Catch::Session().run(argc, argv);
+    const int result = Catch::Session().run(argc, argv);
 
     // global clean-up...
 

@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for Input.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -33,26 +35,26 @@
 
 TEST_CASE("Test if Input tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Input are tested", "[inputs]")
 {
-    const auto initial_energy_eV{10.0e3};
-    const auto number_trajectories{10000};
-    const auto thickness_nm{1.0e9};
+    const auto initial_energy_eV{ 10.0e3 };
+    const auto number_trajectories{ 10000 };
+    const auto thickness_nm{ 1.0e9 };
 
-    Input input{ get_au(), initial_energy_eV, number_trajectories };
+    const Input input{ get_au(), initial_energy_eV, number_trajectories };
 
-    REQUIRE(input.initial_energy_eV == initial_energy_eV);
-    REQUIRE(input.number_trajectories == number_trajectories);
-    REQUIRE(input.thickness_nm == thickness_nm);
+    REQUIRE(input.initial_energy_eV == initial_energy_eV); // NOLINT
+    REQUIRE(input.number_trajectories == number_trajectories); // NOLINT
+    REQUIRE(input.thickness_nm == thickness_nm); // NOLINT
 
-    const auto atomic_number{79};
-    const auto atomic_weight_g_mol{196.97};
-    const auto density_g_cm3{19.3};
+    const auto atomic_number{ 79 };
+    const auto atomic_weight_g_mol{ 196.97 };
+    const auto density_g_cm3{ 19.3 };
 
-    REQUIRE(input.element.atomic_number == atomic_number);
-    REQUIRE(input.element.atomic_weight_g_mol == atomic_weight_g_mol);
-    REQUIRE(input.element.density_g_cm3 == density_g_cm3);
+    REQUIRE(input.element.atomic_number == atomic_number); // NOLINT
+    REQUIRE(input.element.atomic_weight_g_mol == atomic_weight_g_mol); // NOLINT
+    REQUIRE(input.element.density_g_cm3 == density_g_cm3); // NOLINT
 }

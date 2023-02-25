@@ -1,5 +1,6 @@
 #ifndef MONTECARLO_BSE_SIMULATE_H
 #define MONTECARLO_BSE_SIMULATE_H
+
 /**
  * @file
  *
@@ -35,24 +36,107 @@
 #include "inputs.h"
 // Project private headers
 
-void run_simulation(Data& datum, RandomSeed rand_seed);
-void write_results_file(std::string name, std::string suffix, std::vector<std::string> lines);
-void run_simulations_serial_simple(std::string name, std::string suffix, std::vector<Data> data);
-void run_simulations_async_simple(std::string name, std::string suffix, std::vector<Data> data);
-void run_simulations_for_each_simple(std::string name, std::string suffix, std::vector<Data> data);
-void run_simulations_for_each_seq_simple(std::string name, std::string suffix, std::vector<Data> data);
 /**
+ * Run a single simulation from the input parameters and write a result file.
+ *
+ * @param[in,out] datum
+ * @param[in] rand_seed
+ */
+void run_simulation(Data& datum, RandomSeed rand_seed);
+
+/**
+ * Write the simulation results in a csv file.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
+void write_results_file(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run a simple serial simulation.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
+void run_simulations_serial_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run an async simulation.
+ *
+ * @todo Check if it is correct as not async method is used in this function.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
+void run_simulations_async_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run multiple simulations using for each in default mode.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
+void run_simulations_for_each_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run multiple simulations using for each in sequential mode.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
+void run_simulations_for_each_seq_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run multiple simulations using for each in unsequential mode.
+ *
  * Not implemented as std::execution::unseq is a C++20 feature.
  *
- * @param[in] name
- * @param[in] suffix
- * @param[in,out] data
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
  */
 void run_simulations_for_each_unseq_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run multiple simulations using for each in parallel mode.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
 void run_simulations_for_each_par_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Run multiple simulations using for each in parallel and unsequential mode.
+ *
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[in,out] data simulation results
+ */
 void run_simulations_for_each_par_unseq_simple(std::string name, std::string suffix, std::vector<Data> data);
+
+/**
+ * Generate a date and time suffix for when the simulation is run.
+ *
+ * @return date and time suffix.
+ */
 std::string get_suffix();
 
+/**
+ * Template function to run a simulation set, i.e. an experimental set of simulation.
+ *
+ * @tparam Function runner of the simulation
+ * @param[in] name basename of the file
+ * @param[in] suffix simulation suffix
+ * @param[out] output_file
+ * @param[in] timer
+ * @param[in] function runner of the simulation
+ */
 template<class Function>
 void run_simulations_set(std::string name, std::string suffix, std::ofstream& output_file, Timer& timer, Function function) {
 

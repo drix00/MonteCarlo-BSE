@@ -1,6 +1,8 @@
 /**
  * @file
  *
+ * @brief Utility to get the program version from CMake project file.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */

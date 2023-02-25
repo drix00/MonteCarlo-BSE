@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Model to compute the mean free path and distance between teo elastic collisions.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -31,12 +33,18 @@
 // Project private headers
 
 // Global and constant variables/functions.
+/**
+ * @brief Maximum value for random number less than one.
+ *
+ * If random value is one, we get log(0) error.
+ */
+constexpr double maximum_random_number_value{0.999999};
 
 double MeanFreePath::compute_nm(double sigma_nm2) const
 {
-    double sigma_cm2 = sigma_nm2 * nm2cm * nm2cm;
-    double value_cm = atomic_weight_g_mol / (avogadro_number_1_mol * density_g_cm3 * sigma_cm2);
-    double value_nm = value_cm * cm2nm;
+    const double sigma_cm2 = sigma_nm2 * nm2cm * nm2cm;
+    const double value_cm = atomic_weight_g_mol / (avogadro_number_1_mol * density_g_cm3 * sigma_cm2);
+    const double value_nm = value_cm * cm2nm;
     return value_nm;
 }
 
@@ -46,7 +54,7 @@ double MeanFreePath::step_nm(double mfp_nm, double random_number) const
         random_number = 0.0;
     }
     else if (random_number >= 1.0) {
-        random_number = 0.999999;
+        random_number = maximum_random_number_value;
     }
 
     const double value = -1.0 * mfp_nm * std::log(1.0 - random_number);

@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_RANDOM_NUMBER_H
 #define MONTECARLO_BSE_RANDOM_NUMBER_H
+
 /**
  * @file
+ *
+ * @brief Random number generator model.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -29,14 +32,36 @@
 #include <random>
 // Project private headers
 
+/**
+ * @brief Random number generator model.
+ */
 class RandomNumber
 {
   public:
+    /**
+     * Constructor of the random number generator from a seed.
+     *
+     * @param[in] seed
+     */
     explicit RandomNumber(unsigned int long seed) : engine{ seed }, distribution{ 0.0, 1.0 } {};
+
+    /**
+     * Compute a random number using the generator.
+     *
+     * @return a random number.
+     */
     double operator()() { return distribution(engine); };
+
+    /**
+     * Set the seed for the random number generator.
+     *
+     * @param[in] seed
+     */
     void seed(unsigned int seed) { engine.seed(seed); };
 
-  public:
+    /**
+     * Magic number seed used testing and debugging.
+     */
     static unsigned int const magic_seed = 42;
 
   private:

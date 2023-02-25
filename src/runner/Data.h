@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_DATA_H
 #define MONTECARLO_BSE_DATA_H
+
 /**
  * @file
+ *
+ * @brief Data used by the simulation runner.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -30,11 +33,28 @@
 #include "inputs/Input.h"
 // Project private headers
 
+/**
+ * @brief Data (input and results) used by the simulation runner.
+ */
 class Data
 {
   public:
+    /**
+     * Constructor.
+     *
+     * @param[in] input_ input parameters for the simulation
+     * @param[in] line_ simulation results
+     */
     Data(const Input input_, const std::string line_): input{input_}, line{line_} {}
+
+    /**
+     * The input parameters for the simulation.
+     */
     Input input;
+
+    /**
+     * The simulation results.
+     */
     std::string line;
 };
 

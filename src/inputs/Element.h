@@ -1,5 +1,6 @@
 #ifndef MONTECARLO_BSE_ELEMENT_H
 #define MONTECARLO_BSE_ELEMENT_H
+
 /**
  * @file
  *
@@ -44,18 +45,69 @@ class Element
     Element(unsigned int atomic_number_, double atomic_weight_g_mol_, double density_g_cm3_)
         : atomic_number{ atomic_number_ }, atomic_weight_g_mol{ atomic_weight_g_mol_ }, density_g_cm3{ density_g_cm3_ } {};
 
-  public:
+    /**
+     * Element atomic number.
+     */
     unsigned int atomic_number;
+
+    /**
+     * Element atomic weight in \f$g / mol\f$.
+     */
     double atomic_weight_g_mol;
+
+    /**
+     * Element density in \f$g / cm^{3}\f$.
+     */
     double density_g_cm3;
 };
 
+/**
+ * Generate element properties for C.
+ *
+ * @return Element C.
+ */
 Element get_c();
+
+/**
+ * Generate element properties for Al.
+ *
+ * @return Element Al.
+ */
 Element get_al();
+
+/**
+ * Generate element properties for Si.
+ *
+ * @return Element Si.
+ */
 Element get_si();
+
+/**
+ * Generate element properties for Fe.
+ *
+ * @return Element Fe.
+ */
 Element get_fe();
+
+/**
+ * Generate element properties for Cu.
+ *
+ * @return Element Cu.
+ */
 Element get_cu();
+
+/**
+ * Generate element properties for Ag.
+ *
+ * @return Element Ag.
+ */
 Element get_ag();
+
+/**
+ * Generate element properties for Au.
+ *
+ * @return Element Au.
+ */
 Element get_au();
 
 #endif//MONTECARLO_BSE_ELEMENT_H

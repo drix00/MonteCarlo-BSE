@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for mcbse_console.cpp file.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -31,5 +33,5 @@
 
 TEST_CASE("Test if mcbse_console tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }

@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for runner/inputs.cpp and runner/inputs.h.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -21,6 +23,7 @@
 
 // C system headers
 // C++ system header
+#include <vector>
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
@@ -32,54 +35,54 @@
 
 TEST_CASE("Test if inputs tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Test get_inputs_number_trajectories_repetitions", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_number_trajectories_repetitions();
+    const std::vector<Data> data_list = get_inputs_number_trajectories_repetitions();
 
-   REQUIRE(data_list.size() == 60);
+    REQUIRE(data_list.size() == 60);
 }
 
 TEST_CASE("Test get_inputs_elements_energies", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_elements_energies();
+    const std::vector<Data> data_list = get_inputs_elements_energies();
 
-   REQUIRE(data_list.size() == 91);
+    REQUIRE(data_list.size() == 91);
 }
 
 TEST_CASE("Test get_inputs_atomic_numbers", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_atomic_numbers();
+    const std::vector<Data> data_list = get_inputs_atomic_numbers();
 
-   REQUIRE(data_list.size() == 96);
+    REQUIRE(data_list.size() == 96);
 }
 
 TEST_CASE("Test get_inputs_densities", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_densities();
+    const std::vector<Data> data_list = get_inputs_densities();
 
-   REQUIRE(data_list.size() == 210);
+    REQUIRE(data_list.size() == 210);
 }
 
 TEST_CASE("Test get_inputs_thickness", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_thickness();
+    const std::vector<Data> data_list = get_inputs_thickness();
 
-   REQUIRE(data_list.size() == 154);
+    REQUIRE(data_list.size() == 154);
 }
 
 TEST_CASE("Test get_inputs_profile_serial_simple", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_profile_serial_simple();
+    const std::vector<Data> data_list = get_inputs_profile_serial_simple();
 
-   REQUIRE(data_list.size() == 10);
+    REQUIRE(data_list.size() == 10);
 }
 
 TEST_CASE("Test get_inputs_valgrind", "[test]")
 {
-   std::vector<Data> data_list = get_inputs_valgrind();
+    const std::vector<Data> data_list = get_inputs_valgrind();
 
-   REQUIRE(data_list.size() == 1);
+    REQUIRE(data_list.size() == 1);
 }

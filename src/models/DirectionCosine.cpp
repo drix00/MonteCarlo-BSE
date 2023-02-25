@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Model to compute the direction cosine.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -31,6 +33,9 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Small value to represent zero without floating number divide by zero.
+ */
 double const epsilon = 0.000001;
 
 void DirectionCosine::compute(double theta_rad, double phi_rad)
@@ -40,26 +45,26 @@ void DirectionCosine::compute(double theta_rad, double phi_rad)
 
 void DirectionCosine::compute_joy1995(double theta_rad, double phi_rad)
 {
-    double cos_theta = std::cos(theta_rad);
-    double sin_theta = std::sin(theta_rad);
+    const double cos_theta = std::cos(theta_rad);
+    const double sin_theta = std::sin(theta_rad);
 
-    double cos_phi = std::cos(phi_rad);
-    double sin_phi = std::sin(phi_rad);
+    const double cos_phi = std::cos(phi_rad);
+    const double sin_phi = std::sin(phi_rad);
 
-    double cx = ca;
-    double cy = cb;
+    const double cx = ca;
+    const double cy = cb;
     double cz = cc;
     if (cz == 0.0) {
         cz = epsilon;
     }
 
-    double AN = -cx / cz;
-    double AM = 1.0 / std::sqrt(1.0 + AN * AN);
+    const double AN = -cx / cz;
+    const double AM = 1.0 / std::sqrt(1.0 + AN * AN);
 
-    double V1 = AM * sin_theta;
-    double V2 = AN * AM * sin_theta;
-    double V3 = cos_phi;
-    double V4 = sin_phi;
+    const double V1 = AM * sin_theta;
+    const double V2 = AN * AM * sin_theta;
+    const double V3 = cos_phi;
+    const double V4 = sin_phi;
 
     ca = cx * cos_theta + V1 * V3 + cy * V2 * V4;
     cb = cy * cos_theta + V4 * (cz * V1 - cx * V2);

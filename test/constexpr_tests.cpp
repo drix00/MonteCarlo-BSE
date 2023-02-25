@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Example how to test constexpr code.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -31,22 +33,27 @@
 
 TEST_CASE("Test if constexpr tests were find", "[test]")
 {
-//   REQUIRE(false);
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
+/**
+ * Factorial constexpr function for testing.
+ *
+ * @param number non-negative integer \f$n\f$
+ * @return factorial \f$n!\f$
+ */
 constexpr unsigned int Factorial(unsigned int number)
 {
-  return number > 1 ? Factorial(number - 1) * number : 1;
+    return number > 1 ? Factorial(number - 1) * number : 1;
 }
 
 TEST_CASE("Factorials are computed with constexpr", "[factorial]")
 {
-  STATIC_REQUIRE(Factorial(0) == 1);
-  STATIC_REQUIRE(Factorial(1) == 1);
-  STATIC_REQUIRE(Factorial(2) == 2);
-  STATIC_REQUIRE(Factorial(3) == 6);
-  STATIC_REQUIRE(Factorial(10) == 3628800);
+    STATIC_REQUIRE(Factorial(0) == 1);
+    STATIC_REQUIRE(Factorial(1) == 1);
+    STATIC_REQUIRE(Factorial(2) == 2);
+    STATIC_REQUIRE(Factorial(3) == 6);
+    STATIC_REQUIRE(Factorial(10) == 3628800);
 }
 
 TEST_CASE("Factorials are computed without constexpr", "[factorial]")

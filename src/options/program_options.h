@@ -4,6 +4,8 @@
 /**
  * @file
  *
+ * @brief Options of the programs.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -32,20 +34,61 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief Options of the programs.
+ */
 class ProgramOptions
 {
   public:
+    /**
+     * Program option input file name.
+     */
     std::string input_file_name{};
+
+    /**
+     * Program option output file name.
+     */
     std::string output_file_name{};
+
+    /**
+     * Program option display version.
+     */
     bool display_version{false};
+
+    /**
+     * Program option overwrite flag.
+     */
     bool overwrite{false};
+
+    /**
+     * Program option number of thread to use during the simulation.
+     */
     int number_threads{0};
+
+    /**
+     * Program option exit value of the simulation.
+     */
     int exit_value{EXIT_SUCCESS};
+
+    /**
+     * Program option use console logger.
+     */
     bool console_logger{true};
+
+    /**
+     * Program option logging level of the console logger.
+     */
     spdlog::level::level_enum console_logger_level{spdlog::level::warn};
+
+    /**
+     * Program option use file logger.
+     */
     bool file_logger{true};
+
+    /**
+     * Program option logging level of the file logger.
+     */
     spdlog::level::level_enum file_logger_level{spdlog::level::debug};
 };
-
 
 #endif// MONTECARLO_BSE_PROGRAM_OPTIONS_H

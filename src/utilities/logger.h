@@ -4,6 +4,8 @@
 /**
  * @file
  *
+ * @brief Utilities for the logging information.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -32,15 +34,15 @@
 /**
  * Create a logger for the program.
  *
- * @param console_logger flag to create a console logger
- * @param file_logger flag to create a file logger
+ * @param[in] console_logger flag to create a console logger
+ * @param[in] file_logger flag to create a file logger
  */
 void create_logger(const bool console_logger=true, const bool file_logger=true);
 
 /**
  * Log the program arguments.
- * @param argc number of arguments
- * @param argv  array of arguments
+ * @param[in] argc number of arguments
+ * @param[in] argv  array of arguments
  */
 void log_program_arguments(const int argc, const char *const *argv);
 

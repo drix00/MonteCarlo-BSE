@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for RandomNumber.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -30,26 +32,27 @@
 // Project private headers
 
 // Global and constant variables/functions.
+constexpr double tolerance{0.0001};
 
 TEST_CASE("Test if RandomNumber tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("RandomNumber magic seed", "[models]")
 {
     RandomNumber random_number{ RandomNumber::magic_seed };
 
-    CHECK(random_number() == Approx(0.755155533).margin(0.0001));
-    CHECK(random_number() == Approx(0.6390313939).margin(0.0001));
-    CHECK(random_number() == Approx(0.7521452007).margin(0.0001));
-    CHECK(random_number() == Approx(0.1362726836).margin(0.0001));
-    CHECK(random_number() == Approx(0.9032689664).margin(0.0001));
-    CHECK(random_number() == Approx(0.0940683118).margin(0.0001));
-    CHECK(random_number() == Approx(0.5745703041).margin(0.0001));
-    CHECK(random_number() == Approx(0.3728876995).margin(0.0001));
-    CHECK(random_number() == Approx(0.2738741017).margin(0.0001));
-    CHECK(random_number() == Approx(0.3902708814).margin(0.0001));
+    CHECK(random_number() == Approx(0.755155533).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.6390313939).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.7521452007).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.1362726836).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.9032689664).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.0940683118).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.5745703041).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.3728876995).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.2738741017).margin(tolerance)); // NOLINT
+    CHECK(random_number() == Approx(0.3902708814).margin(tolerance)); // NOLINT
 }
 
 TEST_CASE("RandomNumber statistic 1M", "[models]")
@@ -59,27 +62,27 @@ TEST_CASE("RandomNumber statistic 1M", "[models]")
     Statistic stats;
     int const number_values = 1000000;
 
-    for (int i = 0; i < number_values; ++i) {
+    for (int i = 0; i < number_values; ++i) { // NOLINT
         stats.add_value(random_number());
     }
 
     CHECK(stats.counts() == number_values);
-    CHECK(stats.min() == Approx(0.0000008088).margin(0.0001));
-    CHECK(stats.max() == Approx(0.9999985263).margin(0.0001));
-    CHECK(stats.mean() == Approx(0.5004564637).margin(0.0001));
-    CHECK(stats.variance() == Approx(0.0832747386).margin(0.0001));
-    CHECK(stats.standard_deviation() == Approx(0.2885736278).margin(0.0001));
-    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(0.0001));
-    CHECK(stats.skewness() == Approx(-0.0028158571).margin(0.0001));
-    CHECK(stats.kurtosis() == Approx(0.0).margin(0.0001));
+    CHECK(stats.min() == Approx(0.0000008088).margin(tolerance)); // NOLINT
+    CHECK(stats.max() == Approx(0.9999985263).margin(tolerance)); // NOLINT
+    CHECK(stats.mean() == Approx(0.5004564637).margin(tolerance)); // NOLINT
+    CHECK(stats.variance() == Approx(0.0832747386).margin(tolerance)); // NOLINT
+    CHECK(stats.standard_deviation() == Approx(0.2885736278).margin(tolerance)); // NOLINT
+    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(tolerance));
+    CHECK(stats.skewness() == Approx(-0.0028158571).margin(tolerance)); // NOLINT
+    CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance));
 }
 
 TEST_CASE("RandomNumber set seed", "[models]")
 {
     RandomNumber random_number{ 0 };
 
-    CHECK(random_number() == Approx(0.1597933634).margin(0.0001));
+    CHECK(random_number() == Approx(0.1597933634).margin(tolerance)); // NOLINT
 
     random_number.seed(RandomNumber::magic_seed);
-    CHECK(random_number() == Approx(0.755155533).margin(0.0001));
+    CHECK(random_number() == Approx(0.755155533).margin(tolerance)); // NOLINT
 }

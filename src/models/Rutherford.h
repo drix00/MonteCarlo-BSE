@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_RUTHERFORD_H
 #define MONTECARLO_BSE_RUTHERFORD_H
+
 /**
  * @file
+ *
+ * @brief Electron elastic cross section Rutherford model.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -28,14 +31,50 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief Electron elastic cross section Rutherford model.
+ */
 class Rutherford
 {
   public:
-    Rutherford(unsigned int atomic_number_) : atomic_number{ atomic_number_ }
-    {}
+    /**
+     * Constructor with the element property needed to compute the electron elastic cross section.
+     *
+     * @param[in] atomic_number_
+     */
+    Rutherford(unsigned int atomic_number_) : atomic_number{ atomic_number_ } {}
+
+    /**
+     * Compute the screening factor for the Rutherford model.
+     *
+     * @param[in] energy_eV
+     * @return the screening factor.
+     */
     double compute_alpha(double energy_eV) const;
+
+    /**
+     * Compute the total elastic cross section.
+     *
+     * @param[in] energy_eV
+     * @return the total elastic cross section in nm2.
+     */
     double compute_sigma_nm2(double energy_eV) const;
+
+    /**
+     * Compute the deflection angle.
+     *
+     * @param[in] energy_eV
+     * @param[in] random_number
+     * @return the deflection angle in radian.
+     */
     double compute_scattering_angle_rad(double energy_eV, double random_number) const;
+
+    /**
+     * Compute the azimuthal scattering angle.
+     *
+     * @param[in] random_number
+     * @return the azimuthal scattering angle in radian.
+     */
     double compute_azimuthal_angle_rad(double random_number) const;
 
   private:

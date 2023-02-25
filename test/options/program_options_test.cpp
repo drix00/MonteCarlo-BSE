@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for ProgramOptions.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -34,21 +36,21 @@
 
 TEST_CASE("Test if ProgramOptions tests were find", "[options]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("ProgramOptions default constructor", "[options]")
 {
-   ProgramOptions po;
+    const ProgramOptions program_options;
 
-   REQUIRE(po.input_file_name == "");
-   REQUIRE(po.output_file_name == "");
-   REQUIRE(po.display_version == false);
-   REQUIRE(po.overwrite == false);
-   REQUIRE(po.number_threads == 0);
-   REQUIRE(po.exit_value == EXIT_SUCCESS);
-   REQUIRE(po.console_logger == true);
-   REQUIRE(po.console_logger_level == spdlog::level::warn);
-   REQUIRE(po.file_logger == true);
-   REQUIRE(po.file_logger_level == spdlog::level::debug);
+    REQUIRE(program_options.input_file_name.empty());
+    REQUIRE(program_options.output_file_name.empty());
+    REQUIRE(program_options.display_version == false);
+    REQUIRE(program_options.overwrite == false);
+    REQUIRE(program_options.number_threads == 0);
+    REQUIRE(program_options.exit_value == EXIT_SUCCESS);
+    REQUIRE(program_options.console_logger == true);
+    REQUIRE(program_options.console_logger_level == spdlog::level::warn);
+    REQUIRE(program_options.file_logger == true);
+    REQUIRE(program_options.file_logger_level == spdlog::level::debug);
 }

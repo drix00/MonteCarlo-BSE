@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_COUNTER_H
 #define MONTECARLO_BSE_COUNTER_H
+
 /**
  * @file
+ *
+ * @brief A counter to compute statistic of a results without storing all values.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -28,16 +31,60 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief A counter to compute statistic of a results without storing all values.
+ */
 class Counter
 {
   public:
+    /**
+     * @brief Add a value to the result.
+     *
+     * @param[in] value
+     */
     void add_value(double value);
-    int counts() const { return number_x; };
-    double min() const { return min_x; };
-    double max() const { return max_x; };
-    double mean() const;
-    double variance() const;
-    double standard_deviation() const;
+
+    /**
+     * @brief Number of values added to the counter.
+     *
+     * @return the number of values added to the counter.
+     */
+    [[nodiscard]] int counts() const { return number_x; };
+
+    /**
+     * @brief Minimum value of the counter.
+     *
+     * @return the minimum value of the counter.
+     */
+    [[nodiscard]] double min() const { return min_x; };
+
+    /**
+     * @brief Maximum value of the counter.
+     *
+     * @return the maximum value of the counter.
+     */
+    [[nodiscard]] double max() const { return max_x; };
+
+    /**
+     * @brief Mean value of the counter.
+     *
+     * @return the mean value of the counter.
+     */
+    [[nodiscard]] double mean() const;
+
+    /**
+     * @brief Variance value of the counter.
+     *
+     * @return the variance value of the counter.
+     */
+    [[nodiscard]] double variance() const;
+
+    /**
+     * @brief Standard deviation value of the counter.
+     *
+     * @return the standard deviation value of the counter.
+     */
+    [[nodiscard]] double standard_deviation() const;
 
   private:
     int number_x = 0;
@@ -49,4 +96,4 @@ class Counter
     double max_x = -1.0e9;
 };
 
-#endif//MONTECARLO_BSE_COUNTER_H
+#endif// MONTECARLO_BSE_COUNTER_H

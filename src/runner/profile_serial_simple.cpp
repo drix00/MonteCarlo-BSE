@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Executable to profile a serial Monte Carlo simulation.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -35,6 +37,11 @@
 
 // Global and constant variables/functions.
 
+/**
+ * @brief Executable to profile a serial Monte Carlo simulation.
+ *
+ * @return status of the execution.
+ */
 int main(int , const char **)
 {
     std::string suffix = get_suffix();

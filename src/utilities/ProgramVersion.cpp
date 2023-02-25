@@ -1,6 +1,8 @@
 /**
  * @file
  *
+ * @brief Utilities for program version of MonteCarlo-BSE with build information.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -37,21 +39,11 @@
 ProgramVersion::ProgramVersion(VersionInfo new_version) noexcept
     : version(std::move(new_version))
 {
-    set_default();
+    file_version = version.to_string();
+    product_version = version.to_string();
+
     build_date_time = generate_build_date_time_string();
     compiler_build_parameters = generate_compiler_build_parameters_string();
-}
-
-void ProgramVersion::set_default()
-{
-    company_name = "McGill University";
-    file_description = "Monte Carlo BSE.";
-    file_version = version.to_string();
-    internal_name = "MCBSE.exe";
-    legal_copyright = "Copyright (C) 2022";
-    original_file_name = "MCBSE.exe";
-    product_name = "MCBSE";
-    product_version = version.to_string();
 }
 
 std::string ProgramVersion::get_company_name() const
@@ -162,13 +154,13 @@ std::string ProgramVersion::generate_build_date_time_string()
         pos = date.find(find_string, pos + find_string.size());
     }
 
-    std::ostringstream outputString;
-    outputString << date << seperator;
-    outputString << __TIME__;
+    std::ostringstream output_string;
+    output_string << date << seperator;
+    output_string << __TIME__;
 
-    const std::string newBuildString = outputString.str();
+    const std::string basic_string = output_string.str();
 
-    return newBuildString;
+    return basic_string;
 }
 
 std::string ProgramVersion::get_compiler_build_parameters_string() const
@@ -176,21 +168,133 @@ std::string ProgramVersion::get_compiler_build_parameters_string() const
     return compiler_build_parameters;
 }
 
+/**
+ * @todo Add G++ specific predefined macros.
+ * @todo Add Clang-specific predefined macros.
+ */
 std::string ProgramVersion::generate_compiler_build_parameters_string()
 {
-    const std::string seperator = "\t";
-    const std::string seperator_key_value = ":";
+    const std::string seperator = " ; ";
+    const std::string seperator_key_value = ": ";
 
     std::ostringstream output_string;
 
+// Standard predefined macros.
+#ifdef __cplusplus
+    output_string << "C++" << seperator_key_value;
+    output_string << __cplusplus << seperator;
+#endif
+
+#ifdef __STDC__
+    output_string << "__STDC__" << seperator_key_value;
+    output_string << __STDC__ << seperator;
+#endif
+
+#ifdef __STDC_HOSTED__
+    output_string << "__STDC_HOSTED__ " << seperator_key_value;
+    output_string << __STDC_HOSTED__ << seperator;
+#endif
+
+#ifdef __STDC_NO_ATOMICS__
+    output_string << "__STDC_NO_ATOMICS__ " << seperator_key_value;
+    output_string << __STDC_NO_ATOMICS__ << seperator;
+#endif
+
+#ifdef __STDC_NO_COMPLEX__
+    output_string << "__STDC_NO_COMPLEX__ " << seperator_key_value;
+    output_string << __STDC_NO_COMPLEX__ << seperator;
+#endif
+
+#ifdef __STDC_NO_THREADS__
+    output_string << "__STDC_NO_THREADS__ " << seperator_key_value;
+    output_string << __STDC_NO_THREADS__ << seperator;
+#endif
+
+#ifdef __STDC_NO_VLA__
+    output_string << "__STDC_NO_VLA__ " << seperator_key_value;
+    output_string << __STDC_NO_VLA__ << seperator;
+#endif
+
+#ifdef __STDC_VERSION__
+    output_string << "__STDC_VERSION__ " << seperator_key_value;
+    output_string << __STDC_VERSION__ << seperator;
+#endif
+
+#ifdef __STDCPP_DEFAULT_NEW_ALIGNMENT__
+    output_string << "__STDCPP_DEFAULT_NEW_ALIGNMENT__ " << seperator_key_value;
+    output_string << __STDCPP_DEFAULT_NEW_ALIGNMENT__ << seperator;
+#endif
+
+#ifdef __STDCPP_THREADS__
+    output_string << "__STDCPP_THREADS__ " << seperator_key_value;
+    output_string << __STDCPP_THREADS__ << seperator;
+#endif
+
+// Microsoft-specific predefined macros.
+#ifdef __ATOM__
+    output_string << "__ATOM__" << seperator_key_value;
+    output_string << __ATOM__ << seperator;
+#endif
+
+#ifdef __AVX__
+    output_string << "__AVX__" << seperator_key_value;
+    output_string << __AVX__ << seperator;
+#endif
+
+#ifdef __AVX2__
+    output_string << "__AVX2__" << seperator_key_value;
+    output_string << __AVX2__ << seperator;
+#endif
+
+#ifdef __AVX512BW__
+    output_string << "__AVX512BW__" << seperator_key_value;
+    output_string << __AVX512BW__ << seperator;
+#endif
+
+#ifdef __AVX512CD__
+    output_string << "__AVX512CD__" << seperator_key_value;
+    output_string << __AVX512CD__ << seperator;
+#endif
+
+#ifdef __AVX512DQ__
+    output_string << "__AVX512DQ__" << seperator_key_value;
+    output_string << __AVX512DQ__ << seperator;
+#endif
+
+#ifdef __AVX512F__
+    output_string << "__AVX512F__" << seperator_key_value;
+    output_string << __AVX512F__ << seperator;
+#endif
+
+#ifdef __AVX512VL__
+    output_string << "__AVX512VL__" << seperator_key_value;
+    output_string << __AVX512VL__ << seperator;
+#endif
+
+#ifdef _CHAR_UNSIGNED
+    output_string << "_CHAR_UNSIGNED" << seperator_key_value;
+    output_string << _CHAR_UNSIGNED << seperator;
+#endif
+
+#ifdef __CLR_VER
+    output_string << "__CLR_VER" << seperator_key_value;
+    output_string << __CLR_VER << seperator;
+#endif
+
+#ifdef _CONTROL_FLOW_GUARD
+    output_string << "_CONTROL_FLOW_GUARD " << seperator_key_value;
+    output_string << _CONTROL_FLOW_GUARD  << seperator;
+#endif
+
+// ATL or MFC library version
 #ifdef _ATL_VER
     output_string << "Active_Template_Library" << seperator_key_value;
     output_string << _ATL_VER << seperator;
 #endif
 
-#ifdef __CLR_VER
-    output_string << "Common_Language_Runtime" << seperator_key_value;
-    output_string << __CLR_VER << seperator;
+#ifdef _MFC_VER
+    output_string << "MFC" << seperator_key_value;
+    output_string << _MFC_VER << seperator;
 #endif
 
 #ifdef __cplusplus_cli
@@ -198,9 +302,9 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
     output_string << __cplusplus_cli << seperator;
 #endif
 
-#ifdef __cplusplus
-    output_string << "C++" << seperator_key_value;
-    output_string << __cplusplus << seperator;
+#ifdef __cplusplus_winrt
+    output_string << "__cplusplus_winrt" << seperator;
+    output_string << __cplusplus_winrt << seperator;
 #endif
 
 #ifdef _CPPRTTI
@@ -229,9 +333,89 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
     output_string << _INTEGRAL_MAX_BITS << seperator;
 #endif
 
+#ifdef __INTELLISENSE__
+    output_string << "__INTELLISENSE__" << seperator_key_value;
+    output_string << __INTELLISENSE__ << seperator;
+#endif
+
+#ifdef _ISO_VOLATILE
+    output_string << "_ISO_VOLATILE" << seperator_key_value;
+    output_string << _ISO_VOLATILE << seperator;
+#endif
+
+#ifdef _KERNEL_MODE
+    output_string << "_KERNEL_MODE" << seperator_key_value;
+    output_string << _KERNEL_MODE << seperator;
+#endif
+
 #ifdef _M_AMD64
     output_string << "amd64" << seperator_key_value;
     output_string << _M_AMD64 << seperator;
+#endif
+
+#ifdef _M_ARM
+    output_string << "_M_ARM" << seperator_key_value;
+    output_string << _M_ARM << seperator;
+#endif
+
+#ifdef _M_ARM_ARMV7VE
+    output_string << "_M_ARM_ARMV7VE" << seperator_key_value;
+    output_string << _M_ARM_ARMV7VE << seperator;
+#endif
+
+#ifdef _M_ARM_FP
+    output_string << "_M_ARM_FP" << seperator_key_value;
+    output_string << _M_ARM_FP << seperator;
+#endif
+
+#ifdef _M_ARM64
+    output_string << "_M_ARM64" << seperator_key_value;
+    output_string << _M_ARM64 << seperator;
+#endif
+
+#ifdef _M_ARM64EC
+    output_string << "_M_ARM64EC" << seperator_key_value;
+    output_string << _M_ARM64EC << seperator;
+#endif
+
+#ifdef _M_CEE
+    output_string << "_M_CEE" << seperator_key_value;
+    output_string << _M_CEE << seperator;
+#endif
+
+#ifdef _M_CEE_PURE
+    output_string << "_M_CEE_PURE" << seperator_key_value;
+    output_string << _M_CEE_PURE << seperator;
+#endif
+
+#ifdef _M_CEE_SAFE
+    output_string << "_M_CEE_SAFE" << seperator_key_value;
+    output_string << _M_CEE_SAFE << seperator;
+#endif
+
+#ifdef _M_FP_CONTRACT
+    output_string << "_M_FP_CONTRACT" << seperator_key_value;
+    output_string << _M_FP_CONTRACT << seperator;
+#endif
+
+#ifdef _M_FP_EXCEPT
+    output_string << "_M_FP_EXCEPT" << seperator_key_value;
+    output_string << _M_FP_EXCEPT << seperator;
+#endif
+
+#ifdef _M_FP_FAST
+    output_string << "_M_FP_FAST" << seperator_key_value;
+    output_string << _M_FP_FAST << seperator;
+#endif
+
+#ifdef _M_FP_PRECISE
+    output_string << "_M_FP_PRECISE" << seperator_key_value;
+    output_string << _M_FP_PRECISE << seperator;
+#endif
+
+#ifdef _M_FP_STRICT
+    output_string << "_M_FP_STRICT" << seperator_key_value;
+    output_string << _M_FP_STRICT << seperator;
 #endif
 
 #ifdef _M_IX86
@@ -239,10 +423,10 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
     output_string << _M_IX86 << seperator;
 #endif
 
-#ifdef _M_IA64
-    output_string << "ia64" << seperator_key_value;
+#ifdef _M_IX86_FP
+    output_string << "_M_IX86_FP" << seperator_key_value;
+    output_string << _M_IX86_FP << seperator;
 #endif
-
 #if _M_IX86_FP == 0
     output_string << "noSSE" << seperator;
 #elif _M_IX86_FP == 1
@@ -253,14 +437,23 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
     output_string << _M_IX86_FP << seperator;
 #endif
 
+#ifdef _M_IA64
+    output_string << "ia64" << seperator_key_value;
+#endif
+
 #ifdef _M_X64
     output_string << "x64" << seperator_key_value;
     output_string << _M_X64 << seperator;
 #endif
 
-#ifdef _MFC_VER
-    output_string << "MFC" << seperator_key_value;
-    output_string << _MFC_VER << seperator;
+#ifdef _MANAGED
+    output_string << "_MANAGED" << seperator_key_value;
+    output_string << _MANAGED << seperator;
+#endif
+
+#ifdef _MSC_BUILD
+    output_string << "_MSC_BUILD" << seperator_key_value;
+    output_string << _MSC_BUILD << seperator;
 #endif
 
 #ifdef _MSC_EXTENSIONS
@@ -268,23 +461,63 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
     output_string << _MSC_EXTENSIONS << seperator;
 #endif
 
+#ifdef _MSC_FULL_VER
+    output_string << "_MSC_FULL_VER" << seperator_key_value;
+    output_string << _MSC_FULL_VER << seperator;
+#endif
+
+#ifdef _MSC_VER
+    output_string << "_MSC_VER" << seperator_key_value;
+    output_string << _MSC_VER << seperator;
+#endif
+
+#ifdef _MSVC_LANG
+    output_string << "_MSVC_LANG" << seperator_key_value;
+    output_string << _MSVC_LANG << seperator;
+#endif
+
 #ifdef __MSVC_RUNTIME_CHECKS
-    output_string << "Run-Time_Error_Checks" << seperator_key_value;
+    output_string << "__MSVC_RUNTIME_CHECKS" << seperator_key_value;
     output_string << __MSVC_RUNTIME_CHECKS << seperator;
+#endif
+
+#ifdef _MSVC_TRADITIONAL
+    output_string << "_MSVC_TRADITIONAL" << seperator_key_value;
+    output_string << _MSVC_TRADITIONAL << seperator;
 #endif
 
 #ifdef _MT
     output_string << "Multithread" << seperator;
 #endif
 
-#ifdef _MSC_FULL_VER
-    output_string << "Visual_C++_Compiler" << seperator_key_value;
-    output_string << _MSC_FULL_VER << seperator;
+#ifdef _NATIVE_WCHAR_T_DEFINED
+    output_string << "_NATIVE_WCHAR_T_DEFINED" << seperator;
 #endif
 
-#ifdef _MSC_BUILD
-    output_string << "Visual_C++_Compiler_Build_Number" << seperator_key_value;
-    output_string << _MSC_BUILD << seperator;
+#ifdef _OPENMP
+    output_string << "_OPENMP" << seperator_key_value;
+    output_string << _OPENMP << seperator;
+#endif
+
+#ifdef _PREFAST_
+    output_string << "_PREFAST_" << seperator_key_value;
+    output_string << _PREFAST_ << seperator;
+#endif
+
+#ifdef __SANITIZE_ADDRESS__
+    output_string << "__SANITIZE_ADDRESS__" << seperator_key_value;
+    output_string << __SANITIZE_ADDRESS__ << seperator;
+#endif
+
+#ifdef _VC_NODEFAULTLIB
+    output_string << "_VC_NODEFAULTLIB" << seperator_key_value;
+    output_string << _VC_NODEFAULTLIB << seperator;
+#endif
+
+#ifdef _WCHAR_T_DEFINED
+    output_string << "_WCHAR_T_DEFINED" << seperator;
+//    output_string << "_WCHAR_T_DEFINED" << seperator_key_value;
+//    output_string << _WCHAR_T_DEFINED << seperator;
 #endif
 
 #ifdef _WIN32
@@ -293,6 +526,10 @@ std::string ProgramVersion::generate_compiler_build_parameters_string()
 
 #ifdef _WIN64
     output_string << "win64" << seperator;
+#endif
+
+#ifdef _WINRT_DLL
+    output_string << "_WINRT_DLL " << seperator;
 #endif
 
     std::string new_compiler_build_string = output_string.str();

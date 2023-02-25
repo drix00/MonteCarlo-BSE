@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_STATISTIC_H
 #define MONTECARLO_BSE_STATISTIC_H
+
 /**
  * @file
+ *
+ * @brief A utility to compute statistic of a results without storing all values.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -28,19 +31,81 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief A utility to compute statistic of a results without storing all values.
+ */
 class Statistic
 {
   public:
+    /**
+     * @brief Add a value to the result.
+     *
+     * @param[in] value new value to add to result
+     */
     void add_value(double value);
-    int counts() const { return number_x; };
-    double min() const { return min_x; };
-    double max() const { return max_x; };
-    double mean() const;
-    double variance() const;
-    double standard_deviation() const;
-    double mean_absolute_deviation() const;
-    double skewness() const;
-    double kurtosis() const;
+
+    /**
+     * @brief Number of values added to the result.
+     *
+     * @return the number of values added to the result.
+     */
+    [[nodiscard]] int counts() const { return number_x; };
+
+    /**
+     * @brief Minimum value of the result.
+     *
+     * @return the minimum value of the result.
+     */
+    [[nodiscard]] double min() const { return min_x; };
+
+    /**
+     * @brief Maximum value of the result.
+     *
+     * @return the maximum value of the result.
+     */
+    [[nodiscard]] double max() const { return max_x; };
+
+    /**
+     * @brief Mean value of the result.
+     *
+     * @return the mean value of the result.
+     */
+    [[nodiscard]] double mean() const;
+
+    /**
+     * @brief Variance value of the result.
+     *
+     * @return the variance value of the result.
+     */
+    [[nodiscard]] double variance() const;
+
+    /**
+     * @brief Standard deviation value of the result.
+     *
+     * @return the standard deviation value of the result.
+     */
+    [[nodiscard]] double standard_deviation() const;
+
+    /**
+     * @brief Mean absolute deviation value of the result.
+     *
+     * @return the mean absolute deviation value of the result.
+     */
+    [[nodiscard]] double mean_absolute_deviation() const;
+
+    /**
+     * @brief Skewness value of the result.
+     *
+     * @return the skewness value of the result.
+     */
+    [[nodiscard]] double skewness() const;
+
+    /**
+     * @brief Kurtosis value of the result.
+     *
+     * @return the kurtosis value of the result.
+     */
+    [[nodiscard]] double kurtosis() const;
 
   private:
     int number_x = 0;

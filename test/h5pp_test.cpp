@@ -1,6 +1,8 @@
 /**
  * @file
  *
+ * Tests to learn how to use the h5pp library for using HDF5 file.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -40,21 +42,21 @@ TEST_CASE("Test if h5pp tests were find", "[h5pp_test]")
 
 TEST_CASE("Test write /read a vector", "[h5pp_test]")
 {
-    fs::path file_path = fs::temp_directory_path() / "vector.h5";
+    const fs::path file_path = fs::temp_directory_path() / "vector.h5";
     if (fs::is_regular_file(file_path))
     {
         fs::remove(file_path);
     }
     REQUIRE(fs::is_regular_file(file_path) == false);
 
-    std::vector<double> vector_ref = { 1.0, 2.0, 3.0 };
+    const std::vector<double> vector_ref = { 1.0, 2.0, 3.0 };
 
     h5pp::File write_file(file_path);
     write_file.writeDataset(vector_ref, "std_vector");
 
-    REQUIRE(fs::is_regular_file(file_path));
+    REQUIRE(fs::is_regular_file(file_path)); // NOLINT
 
-    h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
+    const h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
     auto vector_values = file.readDataset<std::vector<double>>("std_vector");
 
     REQUIRE(vector_values == vector_ref);
@@ -62,37 +64,37 @@ TEST_CASE("Test write /read a vector", "[h5pp_test]")
 
 TEST_CASE("Test write /read a int", "[h5pp_test]")
 {
-    fs::path file_path = fs::temp_directory_path() / "int.h5";
+    const fs::path file_path = fs::temp_directory_path() / "int.h5";
 
-    int write_int{42};
+    const int write_int{42};
 
     h5pp::File write_file(file_path, h5pp::FileAccess::REPLACE);
     write_file.writeDataset(write_int, "integer_data");
 
-    REQUIRE(fs::is_regular_file(file_path));
+    REQUIRE(fs::is_regular_file(file_path)); // NOLINT
 
-    h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
+    const h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
 
     auto read_int = file.readDataset<int>("integer_data");
     REQUIRE(read_int == write_int);
 
-    int read_int_alt;
+    int read_int_alt{0};
     file.readDataset(read_int_alt, "integer_data");
     REQUIRE(read_int_alt == write_int);
 }
 
 TEST_CASE("Test write /read a string", "[h5pp_test]")
 {
-    fs::path file_path = fs::temp_directory_path() / "string.h5";
+    const fs::path file_path = fs::temp_directory_path() / "string.h5";
 
-    std::string write_str{"Hello world"};
+    const std::string write_str{"Hello world"};
 
     h5pp::File write_file(file_path, h5pp::FileAccess::REPLACE);
     write_file.writeDataset(write_str, "string_data");
 
-    REQUIRE(fs::is_regular_file(file_path));
+    REQUIRE(fs::is_regular_file(file_path)); // NOLINT
 
-    h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
+    const h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
 
     auto read_str = file.readDataset<std::string>("string_data");
     REQUIRE(read_str == write_str);
@@ -104,24 +106,24 @@ TEST_CASE("Test write /read a string", "[h5pp_test]")
 
 TEST_CASE("Test write /read an attribute", "[h5pp_test]")
 {
-    fs::path file_path = fs::temp_directory_path() / "attribute.h5";
+    const fs::path file_path = fs::temp_directory_path() / "attribute.h5";
 
-    int write_int{42};
+    const int write_int{42};
 
     h5pp::File write_file(file_path, h5pp::FileAccess::REPLACE);
     write_file.writeDataset(write_int, "int_group/my_int");
 
     write_file.writeAttribute("this is some info about my int", "int_group/my_int", "myInt_stringAttribute");
-    write_file.writeAttribute(3.14, "int_group/my_int", "myInt_doubleAttribute");
+    write_file.writeAttribute(3.14, "int_group/my_int", "myInt_doubleAttribute"); // NOLINT
 
-    REQUIRE(fs::is_regular_file(file_path));
+    REQUIRE(fs::is_regular_file(file_path)); // NOLINT
 
-    h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
+    const h5pp::File file(file_path, h5pp::FileAccess::READWRITE);
     h5pp::print("{}\n", file.getAttributeNames("int_group/my_int"));
 
     auto stringAttribute = file.readAttribute<std::string>("int_group/my_int", "myInt_stringAttribute");
     auto doubleAttribute = file.readAttribute<double>("int_group/my_int", "myInt_doubleAttribute");
 
-    REQUIRE(stringAttribute == "this is some info about my int");
-    REQUIRE(doubleAttribute == 3.14);
+    REQUIRE(stringAttribute == "this is some info about my int"); // NOLINT
+    REQUIRE(doubleAttribute == 3.14); // NOLINT
 }

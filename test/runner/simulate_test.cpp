@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for runner/simulate.cpp and runner/simulate.h.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -21,6 +23,7 @@
 
 // C system headers
 // C++ system header
+#include <string>
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
@@ -32,13 +35,13 @@
 
 TEST_CASE("Test if simulate tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Test get_suffix", "[test]")
 {
-   std::string suffix = get_suffix();
+    const std::string suffix = get_suffix();
 
-   REQUIRE(suffix != "");
-   REQUIRE(suffix.size() == 16);
+    REQUIRE(suffix.empty() == false);
+    REQUIRE(suffix.size() == 16);
 }

@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Tests for ProgramVersion.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -33,24 +35,24 @@ using namespace mcbse::version;
 
 TEST_CASE("Test if ProgramVersion tests were find", "[version]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
-TEST_CASE( " ProgramVersion test_complete_build_version", "[version]")
+TEST_CASE(" ProgramVersion test_complete_build_version", "[version]")
 {
-    VersionInfo version(1U, 2U, 3U, 4U);
+    const VersionInfo version(1U, 2U, 3U, 4U);
 
     REQUIRE(1U == version.get_version_major());
     REQUIRE(2U == version.get_version_minor());
     REQUIRE(3U == version.get_version_patch());
-    REQUIRE(4U == version.get_version_tweak());
+    REQUIRE(4U == version.get_version_tweak()); // NOLINT
 
-    ProgramVersion programVersion(version);
+    const ProgramVersion programVersion(version);
 
-    std::string buildString = programVersion.get_build_date_time_string();
-    REQUIRE(false == buildString.empty());
+    const std::string buildString = programVersion.get_build_date_time_string();
+    REQUIRE(false == buildString.empty()); // NOLINT
 
-    std::string compilerBuildString = programVersion.get_compiler_build_parameters_string();
+    const std::string compilerBuildString = programVersion.get_compiler_build_parameters_string();
     REQUIRE(false == compilerBuildString.empty());
 
     REQUIRE(true);
@@ -67,58 +69,58 @@ TEST_CASE("Check current program version constant CURRENT_PROGRAM_VERSION", "[ve
     REQUIRE(1U == CURRENT_PROGRAM_VERSION.get_version().get_version_tweak());
 }
 
-TEST_CASE("Test ProgramVersion set_default", "[version]")
+TEST_CASE("Test ProgramVersion default values", "[version]")
 {
-    ProgramVersion program_version{VersionInfo{1U, 2U, 3U, 4U}};
+    const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
     REQUIRE("McGill University" == program_version.get_company_name());
     REQUIRE("Monte Carlo BSE." == program_version.get_file_description());
     REQUIRE("1.2.3.4" == program_version.get_file_version());
-    REQUIRE("MCBSE.exe" == program_version.get_internal_name());
+    REQUIRE("mcbse_console.exe" == program_version.get_internal_name());
     REQUIRE("Copyright (C) 2022" == program_version.get_legal_copyright());
-    REQUIRE("MCBSE.exe"== program_version.get_original_file_name());
-    REQUIRE("MCBSE" == program_version.get_product_name());
+    REQUIRE("mcbse_console.exe" == program_version.get_original_file_name());
+    REQUIRE("MC-BSE" == program_version.get_product_name());
     REQUIRE("1.2.3.4" == program_version.get_product_version());
-    REQUIRE(VersionInfo{1U, 2U, 3U, 4U} == program_version.get_version());
+    REQUIRE(VersionInfo{ 1U, 2U, 3U, 4U } == program_version.get_version());
 }
 
 TEST_CASE("Test ProgramVersion get_build_date_time_string", "[version]")
 {
-    ProgramVersion program_version{VersionInfo{1U, 2U, 3U, 4U}};
+    const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
 
-    const std::string build_date_time{ program_version.get_build_date_time_string()};
+    const std::string build_date_time{ program_version.get_build_date_time_string() };
     REQUIRE(build_date_time.empty() == false);
 }
 
 TEST_CASE("Test ProgramVersion get_compiler_build_parameters_string", "[version]")
 {
-    ProgramVersion program_version{VersionInfo{1U, 2U, 3U, 4U}};
+    const ProgramVersion program_version{ VersionInfo{ 1U, 2U, 3U, 4U } };
 
-    const std::string compiler_build_parameters{ program_version.get_compiler_build_parameters_string()};
+    const std::string compiler_build_parameters{ program_version.get_compiler_build_parameters_string() };
     REQUIRE(compiler_build_parameters.empty() == false);
 }
 
 TEST_CASE("Test ProgramVersion comparison operators", "[version]")
 {
-    ProgramVersion program_version1{VersionInfo{1U, 2U, 3U, 4U}};
+    ProgramVersion program_version1{ VersionInfo{ 1U, 2U, 3U, 4U } };
 
-    ProgramVersion program_version2{VersionInfo{1U, 2U, 3U, 4U}};
+    const ProgramVersion program_version2{ VersionInfo{ 1U, 2U, 3U, 4U } };
 
-    ProgramVersion program_version3{VersionInfo{5U, 2U, 3U, 4U}};
+    ProgramVersion program_version3{ VersionInfo{ 5U, 2U, 3U, 4U } }; // NOLINT
     program_version3.set_company_name("true");
 
-    ProgramVersion program_version4{VersionInfo{1U, 5U, 3U, 4U}};
+    ProgramVersion program_version4{ VersionInfo{ 1U, 5U, 3U, 4U } }; // NOLINT
     program_version4.set_file_description("true");
 
-    ProgramVersion program_version5{VersionInfo{1U, 2U, 6U, 4U}};
+    ProgramVersion program_version5{ VersionInfo{ 1U, 2U, 6U, 4U } }; // NOLINT
     program_version5.set_internal_name("true");
 
-    ProgramVersion program_version6{VersionInfo{1U, 2U, 3U, 7U}};
+    ProgramVersion program_version6{ VersionInfo{ 1U, 2U, 3U, 7U } }; // NOLINT
     program_version6.set_legal_copyright("true");
 
-    ProgramVersion program_version7{VersionInfo{1U, 2U, 6U, 4U}};
+    ProgramVersion program_version7{ VersionInfo{ 1U, 2U, 6U, 4U } }; // NOLINT
     program_version7.set_original_file_name("true");
 
-    ProgramVersion program_version8{VersionInfo{1U, 2U, 3U, 7U}};
+    ProgramVersion program_version8{ VersionInfo{ 1U, 2U, 3U, 7U } }; // NOLINT
     program_version8.set_product_name("true");
 
 
@@ -168,7 +170,7 @@ TEST_CASE("Test ProgramVersion comparison operators", "[version]")
     REQUIRE((program_version2 < program_version1) == true);
 
     program_version1 = program_version2;
-    program_version1.set_internal_name("false");
+    program_version1.set_internal_name("zebra");
     REQUIRE((program_version1 < program_version2) == false);
     REQUIRE((program_version2 < program_version1) == true);
 
@@ -178,7 +180,7 @@ TEST_CASE("Test ProgramVersion comparison operators", "[version]")
     REQUIRE((program_version2 < program_version1) == true);
 
     program_version1 = program_version2;
-    program_version1.set_original_file_name("false");
+    program_version1.set_original_file_name("zebra");
     REQUIRE((program_version1 < program_version2) == false);
     REQUIRE((program_version2 < program_version1) == true);
 
@@ -193,7 +195,7 @@ TEST_CASE("Test ProgramVersion comparison operators", "[version]")
     REQUIRE((program_version2 < program_version1) == true);
 
     program_version1 = program_version2;
-    program_version1.set_version(VersionInfo{1U, 2U, 3U, 7U});
+    program_version1.set_version(VersionInfo{ 1U, 2U, 3U, 7U }); // NOLINT
     REQUIRE((program_version1 < program_version2) == false);
     REQUIRE((program_version2 < program_version1) == true);
 }

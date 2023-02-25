@@ -32,8 +32,14 @@
 // Project headers
 // Project private headers
 
-namespace monte_carlo::constants::logger {
+/**
+ * Program constants related to logging.
+ */
+namespace mcbse::constants::logger {
 
+/**
+ * Map logger level with string.
+ */
 const std::map<std::string, spdlog::level::level_enum> map_levels{
     { "off", spdlog::level::off },
     { "critical", spdlog::level::critical },
@@ -44,6 +50,6 @@ const std::map<std::string, spdlog::level::level_enum> map_levels{
     { "trace", spdlog::level::trace }
 };
 
-}// namespace monte_carlo::constants::logger
+}// namespace mcbse::constants::logger
 
 #endif// MONTECARLO_BSE_LOGGER_H

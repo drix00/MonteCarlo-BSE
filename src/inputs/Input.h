@@ -1,5 +1,6 @@
 #ifndef MONTECARLO_BSE_INPUT_H
 #define MONTECARLO_BSE_INPUT_H
+
 /**
  * @file
  *
@@ -46,11 +47,29 @@ class Input
     Input(Element element_, double initial_energy_eV_, int number_trajectories_, int repetition_id_ = 1)
         : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{ repetition_id_ } {};
 
-  public:
+    /**
+     * Input element.
+     */
     Element element;
+
+    /**
+     * Input initial energy in eV.
+     */
     double initial_energy_eV;
+
+    /**
+     * Input number of trajectories.
+     */
     int number_trajectories;
+
+    /**
+     * Input sample thickness in nm.
+     */
     double thickness_nm = 1.0e9;
+
+    /**
+     * Input simulation repetition id.
+     */
     int repetition_id;
 };
 

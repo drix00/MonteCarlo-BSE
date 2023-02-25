@@ -41,12 +41,15 @@ Need to install:
 
 1. Install Python
 2. Setup venv in the project folder
-3. .\venv\Scripts\activate.ps1
+3. ".\venv\Scripts\activate.ps1"
 4. python -m pip install conan
-
 
 ### Clion
 
+1. Setup venv in the project setting
+2. Add conan package in setting
+3. Add toolchain
+4. Add CMake profile
 
 ### Visual Studio 2019 (Windows)
 

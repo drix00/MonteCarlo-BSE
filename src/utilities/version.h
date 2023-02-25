@@ -4,6 +4,11 @@
 /**
  * @file
  *
+ * @brief Utility to get the program version from CMake project file.
+ *
+ * CMake use the file utilities/version.cpp.in to generate the utilities/version.cpp file with the version numbers
+ * defined in cmake/ProjectVersionDetails.cmake.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -30,11 +35,46 @@
 // Project headers
 // Project private headers
 
+/**
+ * Access the project name defined in CMake.
+ *
+ * @return the program name.
+ */
 std::string get_project_name();
+
+/**
+ * Access the string of the version numbers defined in CMake.
+ *
+ * @return a string of the version numbers.
+ */
 std::string get_version_str();
+
+/**
+ * Access the major value defined in CMake.
+ *
+ * @return the version major value.
+ */
 unsigned int get_version_major();
+
+/**
+ * Access the minor value defined in CMake.
+ *
+ * @return the version minor value.
+ */
 unsigned int get_version_minor();
+
+/**
+ * Access the patch value defined in CMake.
+ *
+ * @return the version patch value.
+ */
 unsigned int get_version_patch();
+
+/**
+ * Access the tweak value defined in CMake.
+ *
+ * @return the version tweak value.
+ */
 unsigned int get_version_tweak();
 
 #endif// MONTECARLO_BSE_VERSION_H

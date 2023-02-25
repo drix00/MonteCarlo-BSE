@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Model to compute the seed for the random generator.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -37,6 +39,8 @@
 /**
  * Seem to have a problem if the function is repeatably called quickly to seed the Simulation class.
  * Need to investigate and test further.
+ *
+ * @todo Seem to have a problem if the function is repeatably called quickly to seed the Simulation class.
  *
  * @return
  */

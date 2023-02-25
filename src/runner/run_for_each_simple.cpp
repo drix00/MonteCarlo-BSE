@@ -1,9 +1,9 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -33,6 +33,11 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Run and compare for_each loop using default sequential and parallel algorythm.
+ *
+ * @return success of the main.
+ */
 int main(int , const char **)
 {
     std::string suffix = get_suffix();

@@ -30,7 +30,10 @@
 // Project headers
 // Project private headers
 
-namespace monte_carlo::constants::element {
+/**
+ * Program constants related to element.
+ */
+namespace mcbse::constants::element {
 
 /**
  * Get the element symbol from an atomic number.
@@ -42,6 +45,7 @@ namespace monte_carlo::constants::element {
  * @return symbol of the element
  */
 std::string get_symbol(unsigned int atomic_number);
+
 /**
  * Get the element name from an atomic number.
  *
@@ -52,8 +56,9 @@ std::string get_symbol(unsigned int atomic_number);
  * @return name of the element
  */
 std::string get_name(unsigned int atomic_number);
+
 /**
- * Get the atomic weight (g/mol) from an atomic number.
+ * Get the atomic weight (\f$\frac{g}{mol}\f$) from an atomic number.
  *
  * From green book: IUPAC-GB3-2012-2ndPrinting-PDFsearchable
  * Wikipedia contributors, "List of chemical elements," Wikipedia, The Free Encyclopedia, https://en.wikipedia.org/w/index.php?title=List_of_chemical_elements&oldid=1033101281 (accessed July 27, 2021).
@@ -62,8 +67,9 @@ std::string get_name(unsigned int atomic_number);
  * @return atomic weight in g/mol
  */
 double get_atomic_weight_g_mol(unsigned int atomic_number);
+
 /**
- * Get the mass density (g/cm3) from an atomic number.
+ * Get the mass density (\f$\frac{g}{mol}\f$) from an atomic number.
  *
  * From green book: IUPAC-GB3-2012-2ndPrinting-PDFsearchable
  * Wikipedia contributors, "List of chemical elements," Wikipedia, The Free Encyclopedia, https://en.wikipedia.org/w/index.php?title=List_of_chemical_elements&oldid=1033101281 (accessed July 27, 2021).
@@ -73,6 +79,6 @@ double get_atomic_weight_g_mol(unsigned int atomic_number);
  */
 double get_atomic_mass_density_g_cm3(unsigned int atomic_number);
 
-}// namespace monte_carlo::constants::element
+}// namespace mcbse::constants::element
 
 #endif// MONTECARLO_BSE_CONSTANTS_ELEMENT_H

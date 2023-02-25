@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Simulate the electron interaction with matter.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -32,6 +34,9 @@
 
 // Global and constant variables/functions.
 
+/**
+ * @todo Refactor in smaller methods.
+ */
 void Simulation::do_simulation()
 {
     std::chrono::steady_clock::time_point start_time{ std::chrono::steady_clock::now() };
@@ -120,6 +125,9 @@ void Simulation::do_simulation()
     elapse_time_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapse_time);
 }
 
+/**
+ * @todo Use the Timer utility for conversion between ns to s.
+ */
 double Simulation::elapse_time_s()
 {
     auto elapse_time_s = std::chrono::duration_cast<std::chrono::seconds>(elapse_time_ns).count();

@@ -1,7 +1,10 @@
 #ifndef MONTECARLO_BSE_MEAN_FREE_PATH_H
 #define MONTECARLO_BSE_MEAN_FREE_PATH_H
+
 /**
  * @file
+ *
+ * @brief Model to compute the mean free path and distance between two elastic collisions.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -28,19 +31,44 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief Model to compute the mean free path and distance between two elastic collisions
+ */
 class MeanFreePath
 {
   public:
-    MeanFreePath(double atomic_weight_g_mol_, double density_g_cm3_) : atomic_weight_g_mol{ atomic_weight_g_mol_ }, density_g_cm3{ density_g_cm3_ } {};
-    double compute_nm(double sigma_nm2) const;
-    double step_nm(double mfp_nm, double random_number) const;
+    /**
+     * @brief Constructor with the element properties needed for the calculation.
+     *
+     * @param[in] atomic_weight_g_mol_
+     * @param[in] density_g_cm3_
+     */
+    MeanFreePath(double atomic_weight_g_mol_, double density_g_cm3_) : atomic_weight_g_mol{ atomic_weight_g_mol_ },
+                                                                       density_g_cm3{ density_g_cm3_ } {};
+
+    /**
+     * Compute the mean free path from the total elastic cross section.
+     *
+     * @param[in] sigma_nm2 the total elastic cross section in nm2
+     * @return mean free path value in nm.
+     */
+    [[nodiscard]] double compute_nm(double sigma_nm2) const;
+
+    /**
+     * Compute the distance between two elastic collisions from the mean free path and a random number.
+     *
+     * @param[in] mfp_nm the mean free path in nm
+     * @param[in] random_number a random number between 0.0 and 1.0
+     * @return distance between two elastic collisions in nm.
+     */
+    [[nodiscard]] double step_nm(double mfp_nm, double random_number) const;
 
   private:
     double atomic_weight_g_mol;
     double density_g_cm3;
-    double const avogadro_number_1_mol = 6.02214076e23;
-    double const nm2cm = 1.0e-7;
-    double const cm2nm = 1.0e7;
+    double const avogadro_number_1_mol{ 6.02214076e23 };
+    double const nm2cm{1.0e-7};
+    double const cm2nm{1.0e7};
 };
 
 #endif//MONTECARLO_BSE_MEAN_FREE_PATH_H

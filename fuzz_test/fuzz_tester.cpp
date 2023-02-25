@@ -1,8 +1,10 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
+ * @file
+ *
+ * Template for fuzzing testing.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
 */
 
 //   Copyright 2022 Hendrix Demers
@@ -32,20 +34,33 @@
 
 // Global and constant variables/functions.
 
-[[nodiscard]] auto sum_values(const uint8_t *Data, size_t Size)
+/**
+ * Sum values.
+ *
+ * @param[in] data
+ * @param[in] size
+ * @return the sum value
+ */
+[[nodiscard]] auto sum_values(const uint8_t *data, size_t size)
 {
   constexpr auto scale = 1000;
 
   int value = 0;
-  for (std::size_t offset = 0; offset < Size; ++offset) {
-    value += static_cast<int>(*std::next(Data, static_cast<long>(offset))) * scale;
+  for (std::size_t offset = 0; offset < size; ++offset) {
+    value += static_cast<int>(*std::next(data, static_cast<long>(offset))) * scale;
   }
   return value;
 }
 
-// Fuzzer that attempts to invoke undefined behavior for signed integer overflow
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size)
+/**
+ * Fuzzer that attempts to invoke undefined behavior for signed integer overflow.
+ *
+ * @param[in] data
+ * @param[in] size
+ * @return 0
+ */
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 {
-  std::cout << "Value sum: " << sum_values(Data, Size) << ", len " << Size << "\n";
+  std::cout << "Value sum: " << sum_values(data, size) << ", len " << size << "\n";
   return 0;
 }

@@ -33,7 +33,7 @@ set(test_source_files ${test_source_files} runner/Data_test.cpp)
 set(test_source_files ${test_source_files} runner/inputs_test.cpp)
 set(test_source_files ${test_source_files} mcbse_console_test.cpp)
 set(test_source_files ${test_source_files} runner/simulate_test.cpp)
-set(test_source_files ${test_source_files} h5pp_test.cpp)
+set(test_source_files ${test_source_files} h5pp_test.cpp utilities/h5pp_wrapper_test.cpp)
 
 list(LENGTH test_source_files len)
 message("MCBSE test source files length = ${len}")

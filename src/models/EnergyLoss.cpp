@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Model for the electron energy loss.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -33,7 +35,7 @@
 
 double EnergyLoss::compute_keV_g_cm2(double energy_eV) const
 {
-    double value_keV_g_cm2 = compute_joy_luo1989(energy_eV);
+    double const value_keV_g_cm2 = compute_joy_luo1989(energy_eV);
     return value_keV_g_cm2;
 }
 

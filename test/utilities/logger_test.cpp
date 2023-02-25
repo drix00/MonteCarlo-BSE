@@ -1,6 +1,8 @@
 /**
  * @file
  *
+ * Tests related to logging in file utilities/logger.cpp and utilities/logger.h.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -23,7 +25,7 @@
 // C++ system header
 #include <sstream>
 #include <string>
-
+#include <array>
 // Library headers
 #include <catch2/catch.hpp>
 #include "spdlog/spdlog.h"
@@ -31,7 +33,6 @@
 // Precompiled header
 // Project headers
 #include "utilities/logger.h"
-
 // Project private headers
 
 // Global and constant variables/functions.
@@ -62,12 +63,12 @@ TEST_CASE("log_program_arguments", "[logger]")
     }
     spdlog::set_default_logger(ostream_logger);
 
-    int argc = 1;
-    const char *argv[] = { "test23" };
-    log_program_arguments(argc, argv);
+    const int argc = 1;
+    std::array<const char*,argc> argv{ "test23" };
+    log_program_arguments(argc, argv.data());
 
-    std::string test = _oss.str();
-    auto result = test.find("0");
+    const std::string test = _oss.str();
+    auto result = test.find('0');
 
     REQUIRE(result != std::string::npos);
 }
@@ -86,7 +87,7 @@ TEST_CASE("log_program_information", "[logger]")
 
     log_program_information();
 
-    std::string test = _oss.str();
+    const std::string test = _oss.str();
     auto result = test.find("MonteCarlo-BSE");
 
     REQUIRE(result != std::string::npos);

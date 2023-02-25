@@ -1,7 +1,7 @@
 /**
  * @file
  *
- * @brief Random number generator model.
+ * @brief Tests for utilities/h5pp_wrapper.h file.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -24,9 +24,15 @@
 // C system headers
 // C++ system header
 // Library headers
+#include <catch2/catch.hpp>
 // Precompiled header
-// Current declaration header file of this implementation file.
 // Project headers
+#include "utilities/h5pp_wrapper.h"
 // Project private headers
 
 // Global and constant variables/functions.
+
+TEST_CASE("Test if h5pp_wrapper tests were find", "[h5pp_wrapper_test]")
+{
+    REQUIRE(true);
+}

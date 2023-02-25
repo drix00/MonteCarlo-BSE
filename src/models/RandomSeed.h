@@ -1,7 +1,10 @@
-#ifndef MONTECARLO_BSE_RANDOMSEED_H
-#define MONTECARLO_BSE_RANDOMSEED_H
+#ifndef MONTECARLO_BSE_RANDOM_SEED_H
+#define MONTECARLO_BSE_RANDOM_SEED_H
+
 /**
  * @file
+ *
+ * @brief Model to compute the seed for the random generator.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
@@ -28,14 +31,28 @@
 // Project headers
 // Project private headers
 
+/**
+ * @brief Model to compute the seed for the random generator.
+ */
 class RandomSeed
 {
   public:
+    /**
+     * Constructor for the random generator seed using the minimum entropy value.
+     *
+     * @param[in] new_minimum_entropy
+     */
     RandomSeed(int new_minimum_entropy = 10): minimum_entropy{new_minimum_entropy} {};
+
+    /**
+     * Compute the random number seed.
+     *
+     * @return the random number seed.
+     */
     unsigned int long operator()();
 
   private:
     int minimum_entropy;
 };
 
-#endif//MONTECARLO_BSE_RANDOMSEED_H
+#endif // MONTECARLO_BSE_RANDOM_SEED_H

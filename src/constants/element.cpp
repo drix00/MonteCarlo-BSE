@@ -32,8 +32,11 @@
 
 // Global and constant variables/functions.
 
-namespace monte_carlo::constants::element {
+namespace mcbse::constants::element {
 
+/**
+ * Map atomic number to element symbol.
+ */
 const std::map<const unsigned int, const std::string> symbols{
     std::pair(1, "H"),
     std::pair(2, "He"),
@@ -143,6 +146,9 @@ const std::map<const unsigned int, const std::string> symbols{
     std::pair(106, "Sg")
 };
 
+/**
+ * Map atomic number to element name.
+ */
 const std::map<const unsigned int, const std::string> names{
     std::pair(1, "Hydrogen"),
     std::pair(2, "Helium"),
@@ -252,6 +258,9 @@ const std::map<const unsigned int, const std::string> names{
     std::pair(106, "Seaborgium")
 };
 
+/**
+ * Map atomic number to element atomic weight in \f$\frac{g}{mol}\f$.
+ */
 const std::map<const unsigned int, const double> atomic_weights_g_mol{
     { 1, 1.00794 },
     { 2, 4.002602 },
@@ -361,6 +370,9 @@ const std::map<const unsigned int, const double> atomic_weights_g_mol{
     { 106, 269.0 }
 };
 
+/**
+ * Map atomic number to element atomic mass density \f$\frac{g}{cm^{3}}\f$.
+ */
 const std::map<unsigned int, double> atomic_mass_density_g_cm3{
     { 1, 0.0899 },
     { 2, 0.1787 },
@@ -493,4 +505,4 @@ double get_atomic_mass_density_g_cm3(unsigned int atomic_number)
     return atomic_mass_density_g_cm3.at(atomic_number);
 }
 
-}// namespace monte_carlo::constants::element
+}// namespace mcbse::constants::element

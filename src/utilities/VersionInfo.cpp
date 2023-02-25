@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Information about the version of the program.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -33,37 +35,71 @@
 // Project private headers
 
 // Global and constant variables/functions.
-const std::string FEATURE_BSE{"bse"};
+/** @defgroup features_group Features
+ * List of features that can be queried using VersionInfo::has_feature.
+ * @{
+ */
 
-unsigned int VersionInfo::get_version_major() const {
+ /**
+  * Get the BSE feature string.
+  *
+  * @return BSE feature string.
+  */
+ std::string get_feature_bse() {
+    const static std::string FEATURE_BSE{ "bse" };
+    return FEATURE_BSE;
+ }
+
+ /**
+  * Get the box geometry feature string.
+  *
+  * @return box geometry feature string.
+  */
+ std::string get_feature_geometry_box() {
+    const static std::string FEATURE_GEOMETRY_BOX{ "box" };
+    return FEATURE_GEOMETRY_BOX;
+ }
+/** @} */// end of features_group
+
+unsigned int VersionInfo::get_version_major() const
+{
     return major;
 }
 
-unsigned int VersionInfo::get_version_minor() const {
+unsigned int VersionInfo::get_version_minor() const
+{
     return minor;
 }
 
-unsigned int VersionInfo::get_version_patch() const {
+unsigned int VersionInfo::get_version_patch() const
+{
     return patch;
 }
 
-unsigned int VersionInfo::get_version_tweak() const {
+unsigned int VersionInfo::get_version_tweak() const
+{
     return tweak;
 }
 
 bool VersionInfo::is_at_least(const unsigned int other_major, const unsigned int other_minor,
-    const unsigned int other_patch) const {
-    return *this >= VersionInfo{other_major, other_minor, other_patch};
+    const unsigned int other_patch) const
+{
+    return *this >= VersionInfo{ other_major, other_minor, other_patch };
 }
 
-bool VersionInfo::is_at_least(const VersionInfo& version) const {
+bool VersionInfo::is_at_least(const VersionInfo &version) const
+{
     return *this >= version;
 }
 
-bool VersionInfo::has_feature(const std::string &name) const {
+bool VersionInfo::has_feature(const std::string &name) const
+{
     using namespace mcbse::version;
 
-    if (name == FEATURE_BSE && *this >= VERSION_0_1_0) {
+    if (name == get_feature_bse() && *this >= VERSION_0_1_0) {
+        return true;
+    }
+    if (name == get_feature_geometry_box() && *this >= VERSION_0_1_0) {
         return true;
     }
 
@@ -76,6 +112,9 @@ VersionInfo::VersionInfo(const unsigned int new_major, const unsigned int new_mi
 {
 }
 
+/**
+ * The format of the output string is "1.2.3.4".
+ */
 std::string VersionInfo::to_string() const
 {
     std::ostringstream outputString;
@@ -89,10 +128,14 @@ std::string VersionInfo::to_string() const
     return (versionString);
 }
 
-void VersionInfo::from_string(const std::string& version_string)
+/**
+ * The format of the input string is "1.2.3.4".
+ *
+ * @todo Improve the code to handle bad input string.
+ */
+void VersionInfo::from_string(const std::string &version_string)
 {
-    if (version_string != "")
-    {
+    if (!version_string.empty()) {
         char dummy{};
         std::istringstream inputString(version_string);
         inputString >> major >> dummy;
@@ -114,18 +157,25 @@ bool VersionInfo::operator!=(const VersionInfo &rhs) const
 
 bool VersionInfo::operator<(const VersionInfo &rhs) const
 {
-    if (major < rhs.major)
+    if (major < rhs.major) {
         return true;
-    if (rhs.major < major)
+    }
+    if (rhs.major < major) {
         return false;
-    if (minor < rhs.minor)
+    }
+    if (minor < rhs.minor) {
         return true;
-    if (rhs.minor < minor)
+    }
+    if (rhs.minor < minor) {
         return false;
-    if (patch < rhs.patch)
+    }
+    if (patch < rhs.patch) {
         return true;
-    if (rhs.patch < patch)
+    }
+    if (rhs.patch < patch) {
         return false;
+    }
+
     return tweak < rhs.tweak;
 }
 

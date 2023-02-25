@@ -4,6 +4,11 @@
 /**
  * @file
  *
+ * @brief Wrapper to suppress warning in h5pp code when using MSVC.
+ *
+ * @note h5pp/h5pp.h should not directly included in the source code, but utilities/h5pp_wrapper.h included
+ * when h5pp is needed.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -38,6 +43,5 @@
 #endif
 // Project headers
 // Project private headers
-
 
 #endif// MONTECARLO_BSE_H5PP_WRAPPER_H

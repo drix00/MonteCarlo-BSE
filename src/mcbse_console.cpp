@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Main entry of the MC-BSE console program.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -36,12 +38,17 @@
 
 // Global and constant variables/functions.
 
-int mcbse_exit(const int exit_value=EXIT_SUCCESS)
+/**
+ * Log the exit value for the program.
+ *
+ * @param[in] exit_value
+ * @return A integer value to indicate the success or failure of the program run.
+ */
+int mcbse_exit(const int exit_value = EXIT_SUCCESS)
 {
     if (exit_value == EXIT_SUCCESS) {
         SPDLOG_INFO("MC-BSE run successfully: {}", exit_value);
-    }
-    else{
+    } else {
         SPDLOG_INFO("MC-BSE has error: {}", exit_value);
     }
 
@@ -52,8 +59,8 @@ int mcbse_exit(const int exit_value=EXIT_SUCCESS)
 /**
  * MC-BSE console main.
  *
- * \todo Add timing feature for each major part of the program.
- * \todo Add progress bar.
+ * @todo Add timing feature for each major part of the program.
+ * @todo Add progress bar.
  *
  * @param[in] argc Non-negative value representing the number of arguments passed to the program from the environment
  * in which the program is run.
@@ -63,11 +70,12 @@ int mcbse_exit(const int exit_value=EXIT_SUCCESS)
  * it points to a string that represents the name used to invoke the program, or to an empty string.
  * @return A integer value to indicate the success or failure of the program run.
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     try {
         create_logger();
 
-        ProgramOptions program_options = parse_command_line(argc, argv);
+        const ProgramOptions program_options = parse_command_line(argc, argv);
 
         create_logger(program_options.console_logger, program_options.file_logger);
 
@@ -75,19 +83,16 @@ int main(int argc, char *argv[]) {
         log_program_arguments(argc, argv);
         log_program_information();
 
-        if (program_options.exit_value != EXIT_SUCCESS)
-        {
+        if (program_options.exit_value != EXIT_SUCCESS) {
             return mcbse_exit(program_options.exit_value);
         }
 
-        if (program_options.display_version)
-        {
+        if (program_options.display_version) {
             std::cout << "Monte Carlo BSE version: " << get_version_str() << std::endl;
             return mcbse_exit(EXIT_SUCCESS);
         }
-    }
-    catch (...) {
-        SPDLOG_ERROR( "Uncaught exception in main function of MC-BSE. Program terminated");
+    } catch (...) {
+        SPDLOG_ERROR("Uncaught exception in main function of MC-BSE. Program terminated");
         return mcbse_exit(EXIT_FAILURE);
     }
 

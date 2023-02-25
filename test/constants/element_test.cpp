@@ -1,6 +1,8 @@
 /**
  * @file
  *
+ * Tests for constants/element.cpp and constants/element.h.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -38,13 +40,13 @@ TEST_CASE("Test if element tests were find", "[test]")
 
 TEST_CASE("Constants element are tested", "[constants]")
 {
-    REQUIRE(monte_carlo::constants::element::get_symbol(1) == "H");
-    REQUIRE(monte_carlo::constants::element::get_symbol(8) == "O");
-    REQUIRE(monte_carlo::constants::element::get_symbol(94) == "Pu");
+    REQUIRE(mcbse::constants::element::get_symbol(1) == "H");
+    REQUIRE(mcbse::constants::element::get_symbol(8) == "O");
+    REQUIRE(mcbse::constants::element::get_symbol(94) == "Pu");
 
-    REQUIRE(monte_carlo::constants::element::get_name(1) == "Hydrogen");
-    REQUIRE(monte_carlo::constants::element::get_name(8) == "Oxygen");
-    REQUIRE(monte_carlo::constants::element::get_name(94) == "Plutonium");
+    REQUIRE(mcbse::constants::element::get_name(1) == "Hydrogen");
+    REQUIRE(mcbse::constants::element::get_name(8) == "Oxygen");
+    REQUIRE(mcbse::constants::element::get_name(94) == "Plutonium");
 }
 
 TEST_CASE("Constants element symbols are tested", "[constants]")
@@ -57,7 +59,7 @@ TEST_CASE("Constants element symbols are tested", "[constants]")
         "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg" };
 
     for (unsigned int i = 1; i <= std::size(symbols_ref); ++i) {
-        REQUIRE(monte_carlo::constants::element::get_symbol(i) == symbols_ref.at(i - 1));
+        REQUIRE(mcbse::constants::element::get_symbol(i) == symbols_ref.at(i - 1));
     }
 }
 
@@ -171,7 +173,7 @@ TEST_CASE("Constants element names are tested", "[constants]")
         "Seaborgium" };
 
     for (unsigned int i = 1; i <= std::size(names_ref); ++i) {
-        REQUIRE(monte_carlo::constants::element::get_name(i) == names_ref.at(i - 1));
+        REQUIRE(mcbse::constants::element::get_name(i) == names_ref.at(i - 1));
     }
 }
 
@@ -183,7 +185,7 @@ TEST_CASE("Constants element atomic mass are tested", "[constants]")
 
     for (unsigned int i = 1; i <= std::size(atomic_weight_g_mol); ++i) {
         INFO("The atomic number is " << i);
-        REQUIRE(monte_carlo::constants::element::get_atomic_weight_g_mol(i) == atomic_weight_g_mol.at(i - 1));
+        REQUIRE(mcbse::constants::element::get_atomic_weight_g_mol(i) == atomic_weight_g_mol.at(i - 1));
     }
 }
 
@@ -195,6 +197,6 @@ TEST_CASE("Constants element atomic mass density are tested", "[constants]")
 
     for (unsigned int i = 1; i <= std::size(rho_g_cm3); ++i) {
         INFO("The atomic number is " << i);
-        REQUIRE(monte_carlo::constants::element::get_atomic_mass_density_g_cm3(i) == rho_g_cm3.at(i - 1));
+        REQUIRE(mcbse::constants::element::get_atomic_mass_density_g_cm3(i) == rho_g_cm3.at(i - 1));
     }
 }

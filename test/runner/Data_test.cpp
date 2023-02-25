@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for Data.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -21,6 +23,7 @@
 
 // C system headers
 // C++ system header
+#include <string>
 // Library headers
 #include <catch2/catch.hpp>
 // Precompiled header
@@ -33,23 +36,23 @@
 
 TEST_CASE("Test if Data tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Test Data constructor", "[test]")
 {
-   const auto initial_energy_eV{10.0e3};
-   const auto number_trajectories{10000};
-   const auto thickness_nm{1.0e9};
+    const auto initial_energy_eV{ 10.0e3 };
+    const auto number_trajectories{ 10000 };
+    const auto thickness_nm{ 1.0e9 };
 
-   Input input{ get_au(), initial_energy_eV, number_trajectories };
-   std::string line{"this is a line"};
+    const Input input{ get_au(), initial_energy_eV, number_trajectories };
+    const std::string line{ "this is a line" };
 
-   Data data{input, line};
+    const Data data{ input, line };
 
-   REQUIRE(data.input.initial_energy_eV == initial_energy_eV);
-   REQUIRE(data.input.number_trajectories == number_trajectories);
-   REQUIRE(data.input.thickness_nm == thickness_nm);
+    REQUIRE(data.input.initial_energy_eV == initial_energy_eV); // NOLINT
+    REQUIRE(data.input.number_trajectories == number_trajectories); // NOLINT
+    REQUIRE(data.input.thickness_nm == thickness_nm); // NOLINT
 
-   REQUIRE(data.line == line);
+    REQUIRE(data.line == line);
 }

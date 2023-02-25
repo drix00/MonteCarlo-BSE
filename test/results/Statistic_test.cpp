@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for Statistic.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -30,10 +32,12 @@
 // Project private headers
 
 // Global and constant variables/functions.
+constexpr double tolerance{0.0001};
+constexpr double smaller_tolerance{1.0e-6};
 
 TEST_CASE("Test if Statistic tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Statistic random counts", "[results]")
@@ -43,19 +47,19 @@ TEST_CASE("Statistic random counts", "[results]")
     Statistic stats;
     int const number_values = 20;
 
-    for (int i = 0; i < number_values; ++i) {
+    for (int i = 0; i < number_values; ++i) { // NOLINT
         stats.add_value(random_number());
     }
 
     CHECK(stats.counts() == 20);
-    CHECK(stats.min() == Approx(0.0123827711).margin(0.0001));
-    CHECK(stats.max() == Approx(0.9456984866).margin(0.0001));
-    CHECK(stats.mean() == Approx(0.4918011615).margin(0.0001));
-    CHECK(stats.variance() == Approx(0.0874879358).margin(0.0001));
-    CHECK(stats.standard_deviation() == Approx(0.2957835963).margin(0.0001));
-    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(0.0001));
-    CHECK(stats.skewness() == Approx(-0.2486961137).margin(0.0001));
-    CHECK(stats.kurtosis() == Approx(0.0).margin(0.0001));
+    CHECK(stats.min() == Approx(0.0123827711).margin(tolerance)); // NOLINT
+    CHECK(stats.max() == Approx(0.9456984866).margin(tolerance)); // NOLINT
+    CHECK(stats.mean() == Approx(0.4918011615).margin(tolerance)); // NOLINT
+    CHECK(stats.variance() == Approx(0.0874879358).margin(tolerance)); // NOLINT
+    CHECK(stats.standard_deviation() == Approx(0.2957835963).margin(tolerance)); // NOLINT
+    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
+    CHECK(stats.skewness() == Approx(-0.2486961137).margin(tolerance)); // NOLINT
+    CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance)); // NOLINT
 }
 
 TEST_CASE("Statistic skewness", "[results]")
@@ -63,20 +67,20 @@ TEST_CASE("Statistic skewness", "[results]")
     Statistic stats;
 
     stats.add_value(2);
-    stats.add_value(7);
+    stats.add_value(7); // NOLINT
     stats.add_value(4);
-    stats.add_value(9);
+    stats.add_value(9); // NOLINT
     stats.add_value(3);
 
     CHECK(stats.counts() == 5);
-    CHECK(stats.min() == Approx(2.0).margin(0.0001));
-    CHECK(stats.max() == Approx(9.0).margin(0.0001));
-    CHECK(stats.mean() == Approx(5.0).margin(0.0001));
-    CHECK(stats.variance() == Approx(6.8).margin(0.0001));
-    CHECK(stats.standard_deviation() == Approx(2.6076809621).margin(0.0001));
-    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(0.0001));
-    CHECK(stats.skewness() == Approx(0.406040288214).margin(1.0e-6));
-    CHECK(stats.kurtosis() == Approx(0.0).margin(0.0001));
+    CHECK(stats.min() == Approx(2.0).margin(tolerance)); // NOLINT
+    CHECK(stats.max() == Approx(9.0).margin(tolerance)); // NOLINT
+    CHECK(stats.mean() == Approx(5.0).margin(tolerance)); // NOLINT
+    CHECK(stats.variance() == Approx(6.8).margin(tolerance)); // NOLINT
+    CHECK(stats.standard_deviation() == Approx(2.6076809621).margin(tolerance)); // NOLINT
+    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(tolerance));
+    CHECK(stats.skewness() == Approx(0.406040288214).margin(smaller_tolerance)); // NOLINT
+    CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance));
 }
 
 TEST_CASE("Statistic variance", "[results]")
@@ -87,15 +91,15 @@ TEST_CASE("Statistic variance", "[results]")
     stats.add_value(2);
     stats.add_value(3);
     stats.add_value(4);
-    stats.add_value(5);
+    stats.add_value(5); // NOLINT
 
     CHECK(stats.counts() == 5);
-    CHECK(stats.min() == Approx(1.0).margin(0.0001));
-    CHECK(stats.max() == Approx(5.0).margin(0.0001));
-    CHECK(stats.mean() == Approx(3.0).margin(0.0001));
-    CHECK(stats.variance() == Approx(2.0).margin(0.0001));
-    CHECK(stats.standard_deviation() == Approx(1.4142135624).margin(0.0001));
-    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(0.0001));
-    CHECK(stats.skewness() == Approx(0.0).margin(1.0e-6));
-    CHECK(stats.kurtosis() == Approx(0.0).margin(0.0001));
+    CHECK(stats.min() == Approx(1.0).margin(tolerance));
+    CHECK(stats.max() == Approx(5.0).margin(tolerance)); // NOLINT
+    CHECK(stats.mean() == Approx(3.0).margin(tolerance)); // NOLINT
+    CHECK(stats.variance() == Approx(2.0).margin(tolerance)); // NOLINT
+    CHECK(stats.standard_deviation() == Approx(1.4142135624).margin(tolerance)); // NOLINT
+    CHECK(stats.mean_absolute_deviation() == Approx(0.0).margin(tolerance));
+    CHECK(stats.skewness() == Approx(0.0).margin(smaller_tolerance));
+    CHECK(stats.kurtosis() == Approx(0.0).margin(tolerance));
 }

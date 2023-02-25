@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * Tests for Counter.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -30,10 +32,11 @@
 // Project private headers
 
 // Global and constant variables/functions.
+constexpr double tolerance{0.0001};
 
 TEST_CASE("Test if Counter tests were find", "[test]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Counter variance", "[results]")
@@ -44,14 +47,14 @@ TEST_CASE("Counter variance", "[results]")
     counter.add_value(2);
     counter.add_value(3);
     counter.add_value(4);
-    counter.add_value(5);
+    counter.add_value(5); // NOLINT
 
     CHECK(counter.counts() == 5);
-    CHECK(counter.min() == Approx(1.0).margin(0.0001));
-    CHECK(counter.max() == Approx(5.0).margin(0.0001));
-    CHECK(counter.mean() == Approx(3.0).margin(0.0001));
-    CHECK(counter.variance() == Approx(0.4).margin(0.0001));
-    CHECK(counter.standard_deviation() == Approx(0.632455532).margin(0.0001));
+    CHECK(counter.min() == Approx(1.0).margin(tolerance));
+    CHECK(counter.max() == Approx(5.0).margin(tolerance)); // NOLINT
+    CHECK(counter.mean() == Approx(3.0).margin(tolerance)); // NOLINT
+    CHECK(counter.variance() == Approx(0.4).margin(tolerance)); // NOLINT
+    CHECK(counter.standard_deviation() == Approx(0.632455532).margin(tolerance)); // NOLINT
 }
 
 TEST_CASE("Counter bse", "[results]")
@@ -69,11 +72,11 @@ TEST_CASE("Counter bse", "[results]")
     counter.add_value(0);
     counter.add_value(0);
 
-    double variance_ref = (0.4 * (1.0 - 0.4)) / 10.0;
+    const double variance_ref = (0.4 * (1.0 - 0.4)) / 10.0;
     CHECK(counter.counts() == 10);
-    CHECK(counter.min() == Approx(0.0).margin(0.0001));
-    CHECK(counter.max() == Approx(1.0).margin(0.0001));
-    CHECK(counter.mean() == Approx(0.4).margin(0.0001));
-    CHECK(counter.variance() == Approx(variance_ref).margin(0.0001));
-    CHECK(counter.standard_deviation() == Approx(std::sqrt(variance_ref)).margin(0.0001));
+    CHECK(counter.min() == Approx(0.0).margin(tolerance));
+    CHECK(counter.max() == Approx(1.0).margin(tolerance));
+    CHECK(counter.mean() == Approx(0.4).margin(tolerance)); // NOLINT
+    CHECK(counter.variance() == Approx(variance_ref).margin(tolerance));
+    CHECK(counter.standard_deviation() == Approx(std::sqrt(variance_ref)).margin(tolerance));
 }

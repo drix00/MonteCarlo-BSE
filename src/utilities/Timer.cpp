@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Utilities to compute the elapsed time in the program.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -30,22 +32,29 @@
 
 // Global and constant variables/functions.
 
-double Timer::get_elapse_time_s() {
-    double time_s = compute_elapse_time_s(last, std::chrono::steady_clock::now());
+double Timer::get_elapse_time_s()
+{
+    const double time_s = compute_elapse_time_s(last, std::chrono::steady_clock::now());
     last = std::chrono::steady_clock::now();
     return time_s;
 }
-double Timer::get_total_elapse_time_s() {
-    double time_s = compute_elapse_time_s(start_time, std::chrono::steady_clock::now());
+
+double Timer::get_total_elapse_time_s()
+{
+    const double time_s = compute_elapse_time_s(start_time, std::chrono::steady_clock::now());
     return time_s;
 }
 
-double Timer::compute_elapse_time_s(std::chrono::steady_clock::time_point start_time_, std::chrono::steady_clock::time_point end_time) {
-    std::chrono::duration elapse_time = end_time - start_time_;
+/**
+ * @todo Check if we can get the fraction of second in a better and cleaner way.
+ */
+double Timer::compute_elapse_time_s(std::chrono::steady_clock::time_point start_time_, std::chrono::steady_clock::time_point end_time)
+{
+    const std::chrono::duration elapse_time = end_time - start_time_;
     auto elapse_time_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(elapse_time);
     auto elapse_time_s = std::chrono::duration_cast<std::chrono::seconds>(elapse_time_ns).count();
-    double fraction = static_cast<double>(elapse_time_ns.count()) - static_cast<double>(elapse_time_s) * 1.0e9;
-    double time_s = static_cast<double>(elapse_time_s) + fraction * 1.0e-9;
+    const double fraction = static_cast<double>(elapse_time_ns.count()) - static_cast<double>(elapse_time_s) * 1.0e9;
+    const double time_s = static_cast<double>(elapse_time_s) + fraction * 1.0e-9;
 
     return time_s;
 }

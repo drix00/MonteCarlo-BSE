@@ -1,9 +1,9 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -32,31 +32,61 @@
 
 // Global and constant variables/functions.
 
+/**
+ * Run simulation with varied number of trajectories and simulation repetitions.
+ *
+ * @param[in] suffix simulation set suffix
+ */
 void simulate_number_trajectories_repetitions(std::string suffix)
 {
     run_simulations_async_simple("simulate_async_simple_number_trajectories_repetitions", suffix, get_inputs_number_trajectories_repetitions());
 }
 
+/**
+ * Run simulation with varied elements and energies.
+ *
+ * @param[in] suffix simulation set suffix
+ */
 void simulate_elements_energies(std::string suffix)
 {
     run_simulations_async_simple("simulate_async_simple_elements_energies", suffix, get_inputs_elements_energies());
 }
 
+/**
+ * Run simulation with varied atomic numbers.
+ *
+ * @param[in] suffix simulation set suffix
+ */
 void simulate_atomic_numbers(std::string suffix)
 {
     run_simulations_async_simple("simulate_async_simple_atomic_numbers", suffix, get_inputs_atomic_numbers());
 }
 
+/**
+ * Run simulation with varied densities.
+ *
+ * @param[in] suffix simulation set suffix
+ */
 void simulate_densities(std::string suffix)
 {
     run_simulations_async_simple("simulate_async_simple_densities", suffix, get_inputs_densities());
 }
 
+/**
+ * Run simulation with varied thickness.
+ *
+ * @param[in] suffix simulation set suffix
+ */
 void simulate_thickness(std::string suffix)
 {
     run_simulations_async_simple("simulate_async_simple_thickness", suffix, get_inputs_thickness());
 }
 
+/**
+ * Run set of simulations using async algorythm.
+ *
+ * @return main return state.
+ */
 int main(int , const char **)
 {
     std::string suffix = get_suffix();

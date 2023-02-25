@@ -4,6 +4,8 @@
 /**
  * @file
  *
+ * @brief Parser for the command line options.
+ *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
  * @copyright 2022
  */
@@ -30,6 +32,13 @@
 #include "options/program_options.h"
 // Project private headers
 
+/**
+ * @brief Parse the command line to get the program options.
+ *
+ * @param[in] argc number of command line arguments
+ * @param[in] argv command line arguments
+ * @return program options object.
+ */
 ProgramOptions parse_command_line(const int argc, const char *const *argv);
 
 #endif// MONTECARLO_BSE_PROGRAM_OPTIONS_PARSER_H

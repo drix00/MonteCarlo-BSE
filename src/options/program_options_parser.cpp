@@ -1,9 +1,11 @@
 /**
-* @file
-*
-* @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
-* @copyright 2022
-*/
+ * @file
+ *
+ * @brief Parser for the command line options.
+ *
+ * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
+ * @copyright 2022
+ */
 
 //   Copyright 2022 Hendrix Demers
 //
@@ -66,19 +68,22 @@ ProgramOptions parse_command_line(const int argc, const char *const *argv)
 
     spdlog::level::level_enum console_logger_level{spdlog::level::warn};
     app.add_option("--console_logger_level,", console_logger_level, "Console logger level")
-        ->transform(CLI::CheckedTransformer(monte_carlo::constants::logger::map_levels, CLI::ignore_case));
+        ->transform(CLI::CheckedTransformer(mcbse::constants::logger::map_levels, CLI::ignore_case));
 
     bool file_logger{true};
     app.add_flag("--file_logger,!--no-file_logger", file_logger, "Activate the file logger");
 
     spdlog::level::level_enum file_logger_level{spdlog::level::debug};
     app.add_option("--file_logger_level,", file_logger_level, "File logger level")
-        ->transform(CLI::CheckedTransformer(monte_carlo::constants::logger::map_levels, CLI::ignore_case));
+        ->transform(CLI::CheckedTransformer(mcbse::constants::logger::map_levels, CLI::ignore_case));
 
     ProgramOptions program_options;
 
     try {
         app.parse(argc, argv);
+    } catch (const CLI::CallForHelp &e) {
+        program_options.exit_value =  app.exit(e);
+        spdlog::info("Help shown to the console: {}: {}", e.get_name(), e.get_exit_code());
     } catch (const CLI::ParseError &e) {
         program_options.exit_value =  app.exit(e);
         spdlog::error("{}: {}", e.get_name(), e.get_exit_code());
