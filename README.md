@@ -55,3 +55,68 @@ Need to install:
 
 The best way to use the CMake project with Visual Studio 2019 is to use "File > Open > Folder" to open the project folder with the main CMakeLists.txt.
 Use the CMakeSettings.json to add target to the project.
+
+## Ideas to implement
+
+* Continuous slowing down energy loss models comparison.
+* Electron inelastic cross section models comparison. 
+* Electron elastic cross section models comparison.
+* Fix geometry
+  * bulk
+  * film on substrate
+  * thin film
+  * sphere on a substrate
+  * cube on a substrate
+  * sphere in a substrate
+  * vertical interface
+  * pyramid with a square base on a substrate
+  * pyramid with a triangle base on a substrate
+  * cylinder on its side
+  * cylinder on end
+  * hemispherical cap
+  * buried layer in substrate
+  * buried box in substrate
+* Constructive solid geometry (CSG)
+  * sphere
+  * ellipsoid
+  * plane
+  * cube (cuboid) and prism
+  * cylinder
+  * cone
+  * tetrahedron
+  * polyhedron
+  * truncated pyramid
+  * rounded box
+* Triangle meshes (surface representation modeling)
+  * Bounding volume hierarchies
+* Line scan
+* Map or image scan
+* Beam shape models comparison
+* Secondary electrons
+* Fast secondary electrons
+* Region (spatial zone)
+  * homogeneous composition
+  * continuous change of composition
+  * interface crossing models comparison
+* Parallelization
+  * single scanning point
+  * line scan and map scanning point
+* Simulation input file
+* Simulation results file
+* Results
+  * BSE
+  * trajectories
+  * exit electrons
+  * energy loss
+  * detector geometry and efficiency
+* X-ray
+  * characteristic cross section models comparison
+  * bremsstrahlung cross section models comparison
+  * absorption models comparison
+  * detector models
+* Simulate magnetic field.
+* Simulate electric field.
+* Plural scattering model.
+* Charge collection microscopy
+  * EBIC
+  * Cathodoluminescence
