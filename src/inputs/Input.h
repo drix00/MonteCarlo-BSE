@@ -44,7 +44,7 @@ class Input
      * @param[in] number_trajectories_
      * @param[in] repetition_id_
      */
-    Input(Element element_, double initial_energy_eV_, int number_trajectories_, int repetition_id_ = 1)
+    Input(const Element element_, const double initial_energy_eV_, const int number_trajectories_, const int repetition_id_ = 1)
         : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{ repetition_id_ } {};
 
     /**
