@@ -34,6 +34,7 @@ jobs:
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install conan
         source ~/.profile
+        conan profile detect
 
 #    - name: Install libtbb
 #      shell: bash
