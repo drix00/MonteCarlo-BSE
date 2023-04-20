@@ -16,17 +16,17 @@ jobs:
 #        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Install gcc9
-      shell: bash
-      run: |
-        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-        sudo apt-get -q update
-        sudo apt-get -y install gcc-9
-        sudo apt-get -y install g++-9
-        sudo apt-get -y install doxygen
-        source ~/.profile
+#    - name: Install gcc9
+#      shell: bash
+#      run: |
+#        sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+#        sudo apt-get -q update
+#        sudo apt-get -y install gcc-9
+#        sudo apt-get -y install g++-9
+#        sudo apt-get -y install doxygen
+#        source ~/.profile
 
     - name: Install conan
       shell: bash
@@ -35,16 +35,16 @@ jobs:
         python3 -m pip install conan
         source ~/.profile
 
-    - name: Install libtbb
-      shell: bash
-      env:
-        CC: gcc-9
-        CXX: g++-9
-      run: |
-        sudo add-apt-repository -y ppa:nnstreamer/ppa
-        sudo apt-get -q update
-        sudo apt-get -y install libtbb-dev
-        source ~/.profile
+#    - name: Install libtbb
+#      shell: bash
+#      env:
+#        CC: gcc-9
+#        CXX: g++-9
+#      run: |
+#        sudo add-apt-repository -y ppa:nnstreamer/ppa
+#        sudo apt-get -q update
+#        sudo apt-get -y install libtbb-dev
+#        source ~/.profile
 
     - name: Create Build Environment
       # Some projects don't allow in-source building, so create a separate build directory
@@ -55,9 +55,9 @@ jobs:
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
       shell: bash
-      env:
-        CC: gcc-9
-        CXX: g++-9
+#      env:
+#        CC: gcc-9
+#        CXX: g++-9
       working-directory: ${{runner.workspace}}/build
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
