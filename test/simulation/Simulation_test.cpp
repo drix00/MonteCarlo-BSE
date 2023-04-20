@@ -4,7 +4,7 @@
  * Tests for Simulation.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
+ * @copyright 2023
  */
 
 //   Copyright 2022 Hendrix Demers
@@ -28,9 +28,6 @@
 // Precompiled header
 // Project headers
 #include "simulation/Simulation.h"
-#include "inputs/Input.h"
-#include "inputs/Element.h"
-#include "models/RandomNumber.h"
 #include "models/RandomSeed.h"
 // Project private headers
 
@@ -39,7 +36,7 @@
 /**
  * Test if Simulation tests were find.
  */
-TEST_CASE("Test if Simulation tests were find", "[test]")
+TEST_CASE("Test if Simulation tests were find", "[simulation]")
 {
     REQUIRE(true);
 }
@@ -47,7 +44,7 @@ TEST_CASE("Test if Simulation tests were find", "[test]")
 /**
  * Test Simulation do_simulation C.
  */
-TEST_CASE("Simulation do_simulation C", "[simulation]")
+TEST_CASE("Simulation do_simulation C", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -57,19 +54,19 @@ TEST_CASE("Simulation do_simulation C", "[simulation]")
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.071).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0081215146).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.071).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0081215146).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }
 
 /**
  * Test Simulation do_simulation random seed.
  */
-TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
+TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -93,17 +90,17 @@ TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
     simulation5.do_simulation();
 
     double const tolerance = 0.0001;
-    CHECK(simulation1.bse.mean() != Approx(simulation2.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation1.bse.mean() != Approx(simulation3.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation1.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation1.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance)); // NOLINT
+    CHECK(simulation1.bse.mean() != Approx(simulation2.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation1.bse.mean() != Approx(simulation3.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation1.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation1.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance));// NOLINT
 
-    CHECK(simulation2.bse.mean() != Approx(simulation3.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation2.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation2.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance)); // NOLINT
+    CHECK(simulation2.bse.mean() != Approx(simulation3.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation2.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation2.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance));// NOLINT
 
-    CHECK(simulation3.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance)); // NOLINT
-    CHECK(simulation3.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance)); // NOLINT
+    CHECK(simulation3.bse.mean() != Approx(simulation4.bse.mean()).margin(tolerance));// NOLINT
+    CHECK(simulation3.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance));// NOLINT
 
     CHECK(simulation4.bse.mean() != Approx(simulation5.bse.mean()).margin(tolerance));
 }
@@ -111,7 +108,7 @@ TEST_CASE("Simulation do_simulation random seed", "[simulation] [!mayfail]")
 /**
  * Test Simulation do_simulation C thin film.
  */
-TEST_CASE("Simulation do_simulation C thin film", "[simulation]")
+TEST_CASE("Simulation do_simulation C thin film", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -122,43 +119,43 @@ TEST_CASE("Simulation do_simulation C thin film", "[simulation]")
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.011).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0032983329).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(0.988).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0034432543).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.011).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0032983329).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(0.988).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0034432543).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }
 
 /**
  * Test Simulation do_simulation C thin film with 25 eV.
  */
-TEST_CASE("Simulation do_simulation C thin film with 25 eV", "[simulation]")
+TEST_CASE("Simulation do_simulation C thin film with 25 eV", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
     Input input{ get_c(), initial_energy_eV, number_trajectories };
     input.thickness_nm = 100.0;
     Simulation simulation{ input, RandomNumber::magic_seed };
-    simulation.set_minimum_energy_eV(25.0); // NOLINT
+    simulation.set_minimum_energy_eV(25.0);// NOLINT
 
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.011).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0032983329).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(0.988).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0034432543).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.011).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0032983329).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(0.988).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0034432543).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }
 
 /**
  * Test Simulation do_simulation C very thin film.
  */
-TEST_CASE("Simulation do_simulation C very thin film", "[simulation]")
+TEST_CASE("Simulation do_simulation C very thin film", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -169,19 +166,19 @@ TEST_CASE("Simulation do_simulation C very thin film", "[simulation]")
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(1.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(1.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }
 
 /**
  * Test Simulation do_simulation C very small width.
  */
-TEST_CASE("Simulation do_simulation C very small width", "[simulation]")
+TEST_CASE("Simulation do_simulation C very small width", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -194,19 +191,19 @@ TEST_CASE("Simulation do_simulation C very small width", "[simulation]")
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(0.028).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0052168956).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(0.028).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0052168956).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }
 
 /**
  * Test Simulation do_simulation C no width.
  */
-TEST_CASE("Simulation do_simulation C no width", "[simulation]")
+TEST_CASE("Simulation do_simulation C no width", "[simulation]")// NOLINT
 {
     int const number_trajectories = 1000;
     double const initial_energy_eV = 10.0e3;
@@ -219,11 +216,11 @@ TEST_CASE("Simulation do_simulation C no width", "[simulation]")
     simulation.do_simulation();
 
     double const tolerance = 0.0001;
-    REQUIRE(simulation.bse.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.counts() == number_trajectories); // NOLINT
-    REQUIRE(simulation.te.mean() == Approx(0.008).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.te.standard_deviation() == Approx(0.0028170907).margin(tolerance)); // NOLINT
-    REQUIRE(simulation.elapse_time_s() < 10.0); // NOLINT
+    REQUIRE(simulation.bse.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.bse.mean() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.bse.standard_deviation() == Approx(0.0).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.counts() == number_trajectories);// NOLINT
+    REQUIRE(simulation.te.mean() == Approx(0.008).margin(tolerance));// NOLINT
+    REQUIRE(simulation.te.standard_deviation() == Approx(0.0028170907).margin(tolerance));// NOLINT
+    REQUIRE(simulation.elapse_time_s() < 10.0);// NOLINT
 }

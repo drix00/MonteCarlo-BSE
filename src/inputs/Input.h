@@ -5,7 +5,7 @@
  * @file
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
+ * @copyright 2023
  */
 
 //   Copyright 2022 Hendrix Demers
@@ -27,7 +27,7 @@
 // C++ system header
 // Library headers
 // Project headers
-#include "inputs/Element.h"
+#include "inputs/InputElement.h"
 // Project private headers
 
 /**
@@ -44,13 +44,13 @@ class Input
      * @param[in] number_trajectories_
      * @param[in] repetition_id_
      */
-    Input(const Element element_, const double initial_energy_eV_, const int number_trajectories_, const int repetition_id_ = 1)
+    Input(const InputElement element_, const double initial_energy_eV_, const int number_trajectories_, const int repetition_id_ = 1)
         : element{ element_ }, initial_energy_eV{ initial_energy_eV_ }, number_trajectories{ number_trajectories_ }, repetition_id{ repetition_id_ } {};
 
     /**
      * Input element.
      */
-    Element element;
+    InputElement element;
 
     /**
      * Input initial energy in eV.
@@ -65,7 +65,7 @@ class Input
     /**
      * Input sample thickness in nm.
      */
-    double thickness_nm = 1.0e9;
+    double thickness_nm{ 1.0e9 };
 
     /**
      * Input simulation repetition id.

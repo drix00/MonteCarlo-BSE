@@ -1,11 +1,11 @@
-#ifndef MONTECARLO_BSE_ELEMENT_H
-#define MONTECARLO_BSE_ELEMENT_H
+#ifndef MONTECARLO_BSE_INPUTS_INPUT_ELEMENT_H
+#define MONTECARLO_BSE_INPUTS_INPUT_ELEMENT_H
 
 /**
  * @file
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
+ * @copyright 2023
  */
 
 //   Copyright 2022 Hendrix Demers
@@ -32,7 +32,7 @@
 /**
  * Element parameter to use in the simulation.
  */
-class Element
+class InputElement
 {
   public:
     /**
@@ -42,7 +42,7 @@ class Element
      * @param[in] atomic_weight_g_mol_
      * @param[in] density_g_cm3_
      */
-    Element(const unsigned int atomic_number_, const double atomic_weight_g_mol_, const double density_g_cm3_)
+    InputElement(const unsigned int atomic_number_, const double atomic_weight_g_mol_, const double density_g_cm3_)
         : atomic_number{ atomic_number_ }, atomic_weight_g_mol{ atomic_weight_g_mol_ }, density_g_cm3{ density_g_cm3_ } {};
 
     /**
@@ -66,48 +66,48 @@ class Element
  *
  * @return Element C.
  */
-Element get_c();
+InputElement get_c();
 
 /**
  * Generate element properties for Al.
  *
  * @return Element Al.
  */
-Element get_al();
+InputElement get_al();
 
 /**
  * Generate element properties for Si.
  *
  * @return Element Si.
  */
-Element get_si();
+InputElement get_si();
 
 /**
  * Generate element properties for Fe.
  *
  * @return Element Fe.
  */
-Element get_fe();
+InputElement get_fe();
 
 /**
  * Generate element properties for Cu.
  *
  * @return Element Cu.
  */
-Element get_cu();
+InputElement get_cu();
 
 /**
  * Generate element properties for Ag.
  *
  * @return Element Ag.
  */
-Element get_ag();
+InputElement get_ag();
 
 /**
  * Generate element properties for Au.
  *
  * @return Element Au.
  */
-Element get_au();
+InputElement get_au();
 
-#endif//MONTECARLO_BSE_ELEMENT_H
+#endif// MONTECARLO_BSE_INPUTS_INPUT_ELEMENT_H

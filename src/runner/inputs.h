@@ -7,7 +7,7 @@
  * @brief Input data for simulation runner.
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
+ * @copyright 2023
  */
 
 //   Copyright 2022 Hendrix Demers
@@ -30,7 +30,7 @@
 #include <vector>
 // Library headers
 // Project headers
-#include "Data.h"
+#include "runner/Data.h"
 // Project private headers
 
 /**
@@ -82,4 +82,4 @@ std::vector<Data> get_inputs_profile_serial_simple();
  */
 std::vector<Data> get_inputs_valgrind();
 
-#endif//MONTECARLO_BSE_INPUTS_H
+#endif// MONTECARLO_BSE_INPUTS_H

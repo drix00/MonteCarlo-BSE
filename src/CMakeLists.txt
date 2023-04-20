@@ -5,7 +5,7 @@ target_include_directories(MonteCarlo-BSE_version PUBLIC ${CMAKE_CURRENT_SOURCE_
 set(mcbse_source_files ../src/constants/element.cpp ../src/constants/element.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/constants/logger.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/inputs/Input.cpp ../src/inputs/Input.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/inputs/Element.cpp ../src/inputs/Element.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/inputs/InputElement.cpp ../src/inputs/InputElement.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/DirectionCosine.cpp ../src/models/DirectionCosine.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/EnergyLoss.cpp ../src/models/EnergyLoss.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/models/MeanFreePath.cpp ../src/models/MeanFreePath.h)
@@ -16,6 +16,12 @@ set(mcbse_source_files ${mcbse_source_files} ../src/options/program_options.cpp 
 set(mcbse_source_files ${mcbse_source_files} ../src/options/program_options_parser.cpp ../src/options/program_options_parser.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Counter.cpp ../src/results/Counter.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/results/Statistic.cpp ../src/results/Statistic.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/Data.cpp ../src/runner/Data.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/inputs.cpp ../src/runner/inputs.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/runner/simulate.cpp ../src/runner/simulate.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/sample/atom.cpp ../src/sample/atom.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/sample/element.cpp ../src/sample/element.h)
+set(mcbse_source_files ${mcbse_source_files} ../src/sample/material.cpp ../src/sample/material.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/simulation/Simulation.cpp ../src/simulation/Simulation.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/logger.cpp ../src/utilities/logger.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/ProgramVersion.cpp ../src/utilities/ProgramVersion.h)
@@ -23,15 +29,12 @@ set(mcbse_source_files ${mcbse_source_files} ../src/utilities/Timer.cpp ../src/u
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/version.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/VersionInfo.cpp ../src/utilities/VersionInfo.h)
 set(mcbse_source_files ${mcbse_source_files} ../src/utilities/h5pp_wrapper.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/runner/Data.cpp ../src/runner/Data.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/runner/inputs.cpp ../src/runner/inputs.h)
-set(mcbse_source_files ${mcbse_source_files} ../src/runner/simulate.cpp ../src/runner/simulate.h)
 set(mcbse_source_files ${mcbse_source_files} PARENT_SCOPE )
 
 list(LENGTH mcbse_source_files len)
 message("MCBSE source files length = ${len}")
 
-add_executable(mcbse_console mcbse_console.cpp ${mcbse_source_files})
+add_executable(mcbse_console ../src/mcbse_console.cpp ${mcbse_source_files})
 target_include_directories(mcbse_console PRIVATE ../src)
 
 target_link_libraries(mcbse_console PRIVATE project_options project_warnings Threads::Threads CONAN_PKG::spdlog

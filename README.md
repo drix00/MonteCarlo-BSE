@@ -58,6 +58,41 @@ Use the CMakeSettings.json to add target to the project.
 
 ## Ideas to implement
 
+* Make Continuous build on github to work.
+  * Continuous integration via GitHub Actions
+* Code formatting enforced by clang-format and cmake-format via Format.cmake
+* Installable target with automatic versioning information and header generation via PackageProject.cmake
+* Compile on these compiler.
+  * GCC
+  * Clang
+  * cl (Visual Studio)
+  * clang-cl
+* Generated and publish documentation with doxygen.
+  * Automatic documentation and deployment with Doxygen and GitHub Pages
+* Generate test coverage
+  * coveralls
+  * codecov
+* Do static analysis
+  * at least -Wall -Wextra -Wshadow -Wconversion -Wpedantic -Werror and -W4 on Windows
+  * gcc -fanalyzer
+  * cl.exe /analyze
+  * cppcheck
+  * clang-tidy
+  * pvs studio https://pvs-studio.com/en/
+  * sonar's tools https://www.sonarsource.com/
+* Runtime analysis during testing 
+  * address sanitizer (https://clang.llvm.org/docs/index.html)
+  * undefined behavior sanitizer
+  * thread sanitizer
+  * valgrind (if you can tolerate it)
+  * debug checked iterators https://gcc.gnu.org/onlinedocs/libstdc++/manual/debug_mode_using.html#debug_mode.using.mode https://learn.microsoft.com/en-us/cpp/standard-library/checked-iterators?view=msvc-170
+  * drmemory
+* Fuzz Testing
+* Ship with hardening enabled
+  * Control Flow Guard - https://learn.microsoft.com/en-us/cpp/build/reference/guard-enable-control-flow-guard?view=msvc-170
+  * _FORITFY_SOURCE - https://developers.redhat.com/articles/2022/09/17/gccs-new-fortification-level
+  * Stack Protector - https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html
+  * UBSan "Minimal runtime" mode - https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html#minimal-runtime
 * Continuous slowing down energy loss models comparison.
 * Electron inelastic cross section models comparison. 
 * Electron elastic cross section models comparison.
@@ -94,7 +129,7 @@ Use the CMakeSettings.json to add target to the project.
 * Beam shape models comparison
 * Secondary electrons
 * Fast secondary electrons
-* Region (spatial zone)
+* Material (spatial zone)
   * homogeneous composition
   * continuous change of composition
   * interface crossing models comparison

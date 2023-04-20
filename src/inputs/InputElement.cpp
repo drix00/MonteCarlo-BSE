@@ -2,7 +2,7 @@
  * @file
  *
  * @author Hendrix Demers <hendrix.demers@mail.mcgill.ca>
- * @copyright 2022
+ * @copyright 2023
  */
 
 //   Copyright 2022 Hendrix Demers
@@ -24,7 +24,7 @@
 // Library headers
 // Precompiled header
 // Current declaration header file of this implementation file.
-#include "Element.h"
+#include "inputs/InputElement.h"
 // Project headers
 // Project private headers
 
@@ -32,44 +32,44 @@
 
 // Global and constant variables/functions.
 
-Element get_c()
+InputElement get_c()
 {
-    Element element{ 6, 12.011, 2.62 };
+    InputElement element{ 6, 12.011, 2.62 };// NOLINT
     return element;
 }
 
-Element get_al()
+InputElement get_al()
 {
-    Element element{ 13, 26.98, 2.7 };
+    InputElement element{ 13, 26.98, 2.7 };// NOLINT
     return element;
 }
 
-Element get_si()
+InputElement get_si()
 {
-    Element element{ 14, 28.09, 2.33 };
+    InputElement element{ 14, 28.09, 2.33 };// NOLINT
     return element;
 }
 
-Element get_fe()
+InputElement get_fe()
 {
-    Element element{ 26, 55.85, 7.86 };
+    InputElement element{ 26, 55.85, 7.86 };// NOLINT
     return element;
 }
 
-Element get_cu()
+InputElement get_cu()
 {
-    Element element{ 29, 63.55, 8.96 };
+    InputElement element{ 29, 63.55, 8.96 };// NOLINT
     return element;
 }
 
-Element get_ag()
+InputElement get_ag()
 {
-    Element element{ 47, 107.87, 10.5 };
+    InputElement element{ 47, 107.87, 10.5 };// NOLINT
     return element;
 }
 
-Element get_au()
+InputElement get_au()
 {
-    Element element{ 79, 196.97, 19.3 };
+    InputElement element{ 79, 196.97, 19.3 };// NOLINT
     return element;
 }
