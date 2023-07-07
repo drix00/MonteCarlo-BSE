@@ -51,6 +51,10 @@ if (ENABLE_PCH)
   target_precompile_headers(project_options INTERFACE <vector> <string> <map> <utility>)
 endif()
 
+# ---- Add Python venv ----
+include(cmake/PythonVenv.cmake)
+enable_python_venv()
+message("Python: ${Python3_EXECUTABLE}")
 
 # Set up some extra Conan dependencies based on our needs
 # before loading Conan

@@ -35,6 +35,17 @@ GitHub Action build (linux): ![Build Status](https://github.com/drix00/MonteCarl
 * Initial version with serial and simple Monte Carlo code to compute BSE coefficient.
 * Build 2020-05-11, see commit 38682f48529305fc85824fccd8fb98402920ef19.
 
+## Dependencies
+
+* catch2
+* spdlog
+  * fmt
+* cli11
+* h5pp
+  * eigen
+  * zlib
+  * hdf5
+
 ## Development
 
 Need to install:
@@ -59,6 +70,7 @@ Use the CMakeSettings.json to add target to the project.
 ## Ideas to implement
 
 * Make Continuous build on github to work.
+  * Update project to conan2
   * Continuous integration via GitHub Actions
 * Code formatting enforced by clang-format and cmake-format via Format.cmake
 * Installable target with automatic versioning information and header generation via PackageProject.cmake
